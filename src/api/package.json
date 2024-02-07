@@ -1,0 +1,16 @@
+{
+    "name": "@adventure-game/api",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "tsx watch --clear-screen=false ./src/index.ts",
+        "build": "tsx ./esbuild.config.mts build",
+        "preview": "node ../../dist/api/index.js"
+    },
+    "devDependencies": {
+        "dotenv": "16.3.1",
+        "esbuild": "0.19.10",
+        "esbuild-plugin-eslint": "0.3.7",
+        "rimraf": "5.0.5"
+    }
+}
