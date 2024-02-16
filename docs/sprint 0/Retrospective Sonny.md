@@ -8,7 +8,7 @@ Onze samenwerking verliep voorspoedig; we hebben veel onderwerpen kunnen besprek
 
 ### Wat ging er goed?
 
-Ik heb de individuele opdracht af kunnen krijgen en heb ook wat extra uitdagingen gedaan. Het samenwerken ging goed. Ik kon op mijn eigen werk focussen terwijl mijn teamgenoten bezig waren met hun eigen werk. We hadden van tevoren de taken verdeelt. Ik had de uiteindelijke sequence diagram gemaakt.
+Ik heb de individuele opdracht af kunnen krijgen en heb ook wat extra uitdagingen gedaan. Het samenwerken ging goed. Ik kon op mijn eigen werk focussen terwijl mijn teamgenoten bezig waren met hun eigen werk. We hadden van tevoren de taken verdeeld. Ik had de uiteindelijke sequence diagram gemaakt.
 
 ### Wat ging er minder goed?
 
