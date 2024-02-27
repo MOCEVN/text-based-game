@@ -17,9 +17,11 @@ if (commandLine.length === 0) {
         sourcemap: "external",
         platform: "node",
         target: "node18",
-        plugins: [eslint({
-            throwOnError: true
-        })],
+        plugins: [
+            eslint({
+                throwOnError: true,
+            }),
+        ],
     };
 
     await esbuild.build(settings);

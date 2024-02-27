@@ -63,6 +63,6 @@ export default defineConfig((config) => {
         preview: {
             strictPort: true,
             port: 3000,
-        }
+        },
     };
 });
