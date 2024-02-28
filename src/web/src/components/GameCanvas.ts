@@ -9,8 +9,8 @@ export class GameCanvas extends LitElement {
         .game {
             height: 100%;
             display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: auto auto 1fr auto;
+            grid-template-columns: 5fr 3fr 2fr;
+            grid-template-rows: auto 1fr;
             grid-column-gap: 0px;
             grid-row-gap: 0px;
         }
@@ -18,6 +18,8 @@ export class GameCanvas extends LitElement {
         .title {
             text-align: center;
             margin-top: 10px;
+            grid-column-start: 1;
+            grid-column-end: 4;
         }
 
         .header {
@@ -26,7 +28,7 @@ export class GameCanvas extends LitElement {
             align-items: center;
             flex-grow: 1;
             position: relative;
-            margin-top: 10px;
+            margin: 10px;
         }
 
         .header img {
@@ -43,7 +45,9 @@ export class GameCanvas extends LitElement {
             flex-grow: 1;
             overflow: auto;
             margin-top: 10px;
-            padding: 0 10px;
+            padding: 10px;
+            background-color: #101010;
+            border-radius: 10px 10px 0 0;
         }
 
         .content p {
@@ -55,12 +59,11 @@ export class GameCanvas extends LitElement {
         }
 
         .footer {
-            border-radius: 10px 10px 0 0;
+            border-radius: 10px 0 0 0;
             background-color: #52478b;
             border: 1px solid #332c57;
             margin-top: 10px;
             display: flex;
-            height: 105px;
         }
 
         .footer .buttons {
