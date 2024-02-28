@@ -135,7 +135,7 @@ D. Biljarttafel
 
 ![Kamer 3](images/kamer-3.png "Kamer 3")
 
-In kamer 3 (teamlid 3) ontmoet de speler drie levende skeletten (karakter). De speler krijgt van alle drie de skeletten een raadsel, elk opgelost raadsel heeft een cijfer als beloning. Als de speler alle raadsels heeft opgelost, heeft hij/zij 3 cijfers (voorwaarde). Die cijfers zijn nodig om de deur van kamer 4 te openen. De speler krijgt de cijfers in de juiste volgorde.
+In kamer 3 (teamlid 3) ontmoet de speler een levend skelet (karakter). De speler krijgt van het skelet een raadsel. Als de speler alle raadsels heeft opgelost, heeft hij/zij 3 cijfers (voorwaarde). Die cijfers zijn nodig om de deur van kamer 4 te openen. De speler krijgt de cijfers in de juiste volgorde. 
 
 **_Raadsel 1:_**
 
@@ -153,39 +153,7 @@ _Correct Answer:_
 
 C. Snor
 
-  
-
-**_Raadsel 2:_**
-
-"Het is groen en het zit op een hek. Wat is het?"
-
-  
-
-_Opties:_
-
-A. Kikker B. Blad C. Verf D. Hekwerk
-
-_Antwoord:_
-
-C. Verf
-
-  
-
-**_Raadsel 3:_**
-
-"Ik heb steden, maar geen huizen. Ik heb bergen, maar geen bomen. Ik heb water, maar geen vissen. Wat ben ik?"
-
-  
-
-_Opties:_
-
-A. Kaart B. Globe C. Spiegel D. Schaduw
-
-  
-
-_Antwoord:_
-
- A. Kaart
+<br><br>  
 
 <h1>Level 4</h1>
 
