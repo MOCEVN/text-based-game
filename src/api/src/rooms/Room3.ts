@@ -7,44 +7,35 @@ import { TalkAction } from "../base/actions/TalkAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
-import { EndRoom } from "./EndRoom";
+import { Room4 } from "./Room4";
 
-export const Room5Alias: string = "room5";
+export const Room3Alias: string = "room3";
 
-export class Room5 extends Room {
+export class Room3 extends Room {
     public constructor() {
-        super(Room5Alias);
+        super(Room3Alias);
     }
-<<<<<<< HEAD
-    
-=======
-    public examine(): ActionResult | undefined {
-        return new TextActionResult(["This is room 5"]);
-    }
->>>>>>> origin/main
+
     public name(): string {
-        return "Room 5";
+        return "Room 3";
+    }
+    public examine(): ActionResult | undefined {
+        return new TextActionResult(["This is room 3."]);
+    }
+    public images(): string[] {
+        return [];
     }
     public actions(): Action[] {
-        return [new ExamineAction(), new TalkAction(), new CustomAction("endroom","End Room",false)];
+        return [new ExamineAction(), new TalkAction(), new CustomAction("room4","Room 4",false)];
     }
-
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
 
         return [this, ...inventoryItems];
     }
-    
-    public examine(): ActionResult | undefined {
-        return new TextActionResult(["room5test"]);
-    }
-    public images(): string[] {
-        return ["kamer5"];
-    }
-    
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
-        if (alias === "endroom") {
-            const room: EndRoom = new EndRoom();
+        if (alias === "room4") {
+            const room: Room4 = new Room4();
 
             //Set the current room to the example room
             getPlayerSession().currentRoom = room.alias;

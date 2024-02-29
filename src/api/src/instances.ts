@@ -5,8 +5,13 @@ import { ExampleCharacter, ExampleCharacterAlias } from "./characters/ExampleCha
 import { ExampleItem, ExampleItemAlias } from "./items/ExampleItem";
 import { ExampleRoom, ExampleRoomAlias } from "./rooms/ExampleRoom";
 import { StartupRoom, StartupRoomAlias } from "./rooms/StartupRoom";
-import { Room5, Room5Alias } from "./rooms/room5";
 import { PlayerSession } from "./types";
+import { Room1, Room1Alias } from "./rooms/Room1";
+import { Room2, Room2Alias } from "./rooms/Room2";
+import { Room3, Room3Alias } from "./rooms/Room3";
+import { Room4, Room4Alias } from "./rooms/Room4";
+import { Room5, Room5Alias } from "./rooms/Room5";
+import { EndRoom, EndRoomAlias } from "./rooms/EndRoom";
 
 /**
  * Create a new player session object
@@ -50,9 +55,24 @@ export function getRoomByAlias(alias: string): Room | undefined {
 
         case ExampleRoomAlias:
             return new ExampleRoom();
+        
+        case Room1Alias:
+            return new Room1();
+
+        case Room2Alias:
+            return new Room2();
+
+        case Room3Alias:
+            return new Room3();
+
+        case Room4Alias:
+            return new Room4();
 
         case Room5Alias:
             return new Room5();
+        
+        case EndRoomAlias:
+            return new EndRoom();
     }
 
     return undefined;

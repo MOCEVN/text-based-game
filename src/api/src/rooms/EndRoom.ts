@@ -6,50 +6,36 @@ import { ExamineAction } from "../base/actions/ExamineAction";
 import { TalkAction } from "../base/actions/TalkAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
-import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
-import { EndRoom } from "./EndRoom";
+import { getGameObjectsFromInventory, resetPlayerSession } from "../instances";
 
-export const Room5Alias: string = "room5";
+export const EndRoomAlias: string = "endroom";
 
-export class Room5 extends Room {
+export class EndRoom extends Room {
     public constructor() {
-        super(Room5Alias);
+        super(EndRoomAlias);
     }
-<<<<<<< HEAD
-    
-=======
-    public examine(): ActionResult | undefined {
-        return new TextActionResult(["This is room 5"]);
-    }
->>>>>>> origin/main
+
     public name(): string {
-        return "Room 5";
+        return "End room";
+    }
+    public examine(): ActionResult | undefined {
+        return new TextActionResult(["This the end room."]);
+    }
+    public images(): string[] {
+        return [];
     }
     public actions(): Action[] {
-        return [new ExamineAction(), new TalkAction(), new CustomAction("endroom","End Room",false)];
+        return [new ExamineAction(), new TalkAction(), new CustomAction("end","GAME OVER",false)];
     }
-
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
 
         return [this, ...inventoryItems];
     }
-    
-    public examine(): ActionResult | undefined {
-        return new TextActionResult(["room5test"]);
-    }
-    public images(): string[] {
-        return ["kamer5"];
-    }
-    
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
-        if (alias === "endroom") {
-            const room: EndRoom = new EndRoom();
-
-            //Set the current room to the example room
-            getPlayerSession().currentRoom = room.alias;
-
-            return room.examine();
+        if (alias === "end") {
+            resetPlayerSession();
+            return new TextActionResult(["GAME OVER"]);
         }
 
         return undefined;
