@@ -15,13 +15,7 @@ export class Room5 extends Room {
     public constructor() {
         super(Room5Alias);
     }
-<<<<<<< HEAD
     
-=======
-    public examine(): ActionResult | undefined {
-        return new TextActionResult(["This is room 5"]);
-    }
->>>>>>> origin/main
     public name(): string {
         return "Room 5";
     }
