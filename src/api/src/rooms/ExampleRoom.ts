@@ -28,7 +28,12 @@ export class ExampleRoom extends Room implements Example {
     }
 
     public actions(): Action[] {
-        return [new ExamineAction(), new TalkAction(), new ExampleAction(), new CustomAction("room5","Room 5",false)];
+        return [
+            new ExamineAction(),
+            new TalkAction(),
+            new ExampleAction(),
+            new CustomAction("room5", "Room 5", false),
+        ];
     }
 
     public objects(): GameObject[] {

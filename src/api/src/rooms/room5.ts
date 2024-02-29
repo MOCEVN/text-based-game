@@ -15,7 +15,7 @@ export class Room5 extends Room {
     public constructor() {
         super(Room5Alias);
     }
-    
+
     public name(): string {
         return "Room 5";
     }
@@ -30,7 +30,7 @@ export class Room5 extends Room {
     }
     
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["room5test"]);
+        return new TextActionResult(["examine is geklikt"]);
     }
     public images(): string[] {
         return ["kamer5"];
