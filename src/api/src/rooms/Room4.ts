@@ -1,4 +1,3 @@
-import { Example, ExampleAction, ExampleActionAlias } from "../actions/ExampleAction";
 import { ActionResult } from "../base/actionResults/ActionResult";
 import { TextActionResult } from "../base/actionResults/TextActionResult";
 import { Action } from "../base/actions/Action";
@@ -7,42 +6,32 @@ import { ExamineAction } from "../base/actions/ExamineAction";
 import { TalkAction } from "../base/actions/TalkAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
-import { ExampleCharacter } from "../characters/ExampleCharacter";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
-import { ExampleItem } from "../items/ExampleItem";
 import { Room5 } from "./Room5";
 
-export const ExampleRoomAlias: string = "example-room";
+export const Room4Alias: string = "room4";
 
-export class ExampleRoom extends Room implements Example {
+export class Room4 extends Room {
     public constructor() {
-        super(ExampleRoomAlias, ExampleActionAlias);
+        super(Room4Alias);
     }
 
     public name(): string {
-        return "Example Room";
+        return "Room 4";
     }
-
+    public examine(): ActionResult | undefined {
+        return new TextActionResult(["This is room 4."]);
+    }
     public images(): string[] {
-        return ["example"];
+        return [];
     }
-
     public actions(): Action[] {
-        return [new ExamineAction(), new TalkAction(), new ExampleAction(), new CustomAction("room5","Room 5",false)];
+        return [new ExamineAction(), new TalkAction(), new CustomAction("room5","Room 5",false)];
     }
-
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
 
-        return [this, ...inventoryItems, new ExampleItem(), new ExampleCharacter()];
-    }
-
-    public examine(): ActionResult | undefined {
-        return new TextActionResult(["This is an example room."]);
-    }
-
-    public example(): ActionResult | undefined {
-        return new TextActionResult(["This is an example action executed on a room."]);
+        return [this, ...inventoryItems];
     }
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
         if (alias === "room5") {

@@ -1,4 +1,3 @@
-import { Example, ExampleAction, ExampleActionAlias } from "../actions/ExampleAction";
 import { ActionResult } from "../base/actionResults/ActionResult";
 import { TextActionResult } from "../base/actionResults/TextActionResult";
 import { Action } from "../base/actions/Action";
@@ -7,46 +6,36 @@ import { ExamineAction } from "../base/actions/ExamineAction";
 import { TalkAction } from "../base/actions/TalkAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
-import { ExampleCharacter } from "../characters/ExampleCharacter";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
-import { ExampleItem } from "../items/ExampleItem";
-import { Room5 } from "./Room5";
+import { Room4 } from "./Room4";
 
-export const ExampleRoomAlias: string = "example-room";
+export const Room3Alias: string = "room3";
 
-export class ExampleRoom extends Room implements Example {
+export class Room3 extends Room {
     public constructor() {
-        super(ExampleRoomAlias, ExampleActionAlias);
+        super(Room3Alias);
     }
 
     public name(): string {
-        return "Example Room";
+        return "Room 3";
     }
-
+    public examine(): ActionResult | undefined {
+        return new TextActionResult(["This is room 3."]);
+    }
     public images(): string[] {
-        return ["example"];
+        return [];
     }
-
     public actions(): Action[] {
-        return [new ExamineAction(), new TalkAction(), new ExampleAction(), new CustomAction("room5","Room 5",false)];
+        return [new ExamineAction(), new TalkAction(), new CustomAction("room4","Room 4",false)];
     }
-
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
 
-        return [this, ...inventoryItems, new ExampleItem(), new ExampleCharacter()];
-    }
-
-    public examine(): ActionResult | undefined {
-        return new TextActionResult(["This is an example room."]);
-    }
-
-    public example(): ActionResult | undefined {
-        return new TextActionResult(["This is an example action executed on a room."]);
+        return [this, ...inventoryItems];
     }
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
-        if (alias === "room5") {
-            const room: Room5 = new Room5();
+        if (alias === "room4") {
+            const room: Room4 = new Room4();
 
             //Set the current room to the example room
             getPlayerSession().currentRoom = room.alias;
