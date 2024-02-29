@@ -19,7 +19,7 @@ export class StartupRoom extends Room {
     }
 
     public images(): string[] {
-        return ["startup"];
+        return ["startroom"];
     }
 
     public actions(): Action[] {
