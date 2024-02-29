@@ -9,7 +9,7 @@ export class GameCanvas extends LitElement {
         .game {
             height: 100%;
             display: grid;
-            grid-template-columns: 5fr 3fr 2fr;
+            grid-template-columns: 4fr 4fr 2fr;
             grid-template-rows: auto 1fr;
             grid-column-gap: 0px;
             grid-row-gap: 0px;
@@ -18,8 +18,7 @@ export class GameCanvas extends LitElement {
         .title {
             text-align: center;
             margin-top: 10px;
-            grid-column-start: 1;
-            grid-column-end: 4;
+            grid-column: 1 / 4;
         }
 
         .header {
@@ -27,14 +26,17 @@ export class GameCanvas extends LitElement {
             flex-direction: column;
             align-items: center;
             flex-grow: 1;
-            position: relative;
-            margin: 10px;
+            margin: 10px 0 0 0;
+            grid-column: 1/3;
+            grid-row: 2/3;
+            z-index: 1;
+            overflow: hidden;
         }
 
         .header img {
+            object-fit: cover;
             width: 100%;
-            height: auto;
-            image-rendering: pixelated;
+            height: 100%;
         }
 
         .header img:nth-child(n + 2) {
@@ -42,12 +44,15 @@ export class GameCanvas extends LitElement {
         }
 
         .content {
-            flex-grow: 1;
-            overflow: auto;
             margin-top: 10px;
             padding: 10px;
-            background-color: #101010;
-            border-radius: 10px 10px 0 0;
+            padding-left: 30%;
+            background-color: #202020e0;
+            background: linear-gradient(to right, #00000000, #202020f0 30% 90%, #202020ff);
+            box-shadow: #202020ff 10px 0;
+            grid-column: 2/3;
+            grid-row: 2/3;
+            z-index: 2;
         }
 
         .content p {
@@ -60,10 +65,12 @@ export class GameCanvas extends LitElement {
 
         .footer {
             border-radius: 10px 0 0 0;
-            background-color: #52478b;
-            border: 1px solid #332c57;
+            background-color: #352e57;
+            border: 5px solid #211d31;
             margin-top: 10px;
             display: flex;
+            grid-column: 3/4;
+            z-index: 2;
         }
 
         .footer .buttons {
@@ -75,7 +82,8 @@ export class GameCanvas extends LitElement {
 
         .footer .button {
             background-color: #7f6ed7;
-            border: 1px solid #332c57;
+            border: 3px solid #332c57;
+            border-radius: 5px;
             padding: 5px 10px;
             margin: 0 0 10px 10px;
             text-transform: uppercase;
