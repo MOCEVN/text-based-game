@@ -11,9 +11,7 @@ export class Room5 extends Room {
     public constructor() {
         super(Room5Alias);
     }
-    public examine(): ActionResult | undefined {
-        return new TextActionResult(["room5test"]);
-    }
+    
     public name(): string {
         return "Room5";
     }
@@ -24,10 +22,11 @@ export class Room5 extends Room {
     public objects(): GameObject[] {
         return [this];
     }
-
+    
+    public examine(): ActionResult | undefined {
+        return new TextActionResult(["room5test"]);
+    }
     public images(): string[] {
-        return [
-            "kamer5"
-        ];
+        return ["kamer5"];
     }
 }
