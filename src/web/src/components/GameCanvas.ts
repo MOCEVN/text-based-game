@@ -48,7 +48,7 @@ export class GameCanvas extends LitElement {
             padding: 10px;
             padding-left: 30%;
             background-color: #202020e0;
-            background: linear-gradient(to right, #00000000, #202020f0 30% 90%, #202020ff);
+            background: linear-gradient(to right, #00000000, #141410f0 30% 90%, #141410ff);
             box-shadow: #202020ff 10px 0;
             grid-column: 2/3;
             grid-row: 2/3;
