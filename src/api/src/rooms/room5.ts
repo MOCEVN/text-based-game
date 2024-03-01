@@ -7,6 +7,7 @@ import { TalkAction } from "../base/actions/TalkAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
+import { ZaagItem } from "../items/ZaagItem";
 import { EndRoom } from "./EndRoom";
 
 export const Room5Alias: string = "room5";
@@ -19,21 +20,23 @@ export class Room5 extends Room {
     public name(): string {
         return "Room 5";
     }
+    public images(): string[] {
+        return ["kamer5"];
+    }
     public actions(): Action[] {
-        return [new ExamineAction(), new TalkAction(), new CustomAction("endroom","End Room",false)];
+        return [new ExamineAction(), new TalkAction(), new CustomAction("endroom","End Room",false),
+         new CustomAction("oppakken","oppakken",false)
+        ];
     }
 
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
 
-        return [this, ...inventoryItems];
+        return [this, ...inventoryItems, new ZaagItem()];
     }
     
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["examine is geklikt"]);
-    }
-    public images(): string[] {
-        return ["kamer5"];
+        return new TextActionResult(["room5 is geklikt"]);
     }
     
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
@@ -48,4 +51,6 @@ export class Room5 extends Room {
 
         return undefined;
     }
+
+    
 }
