@@ -23,7 +23,7 @@ export class Room2 extends Room {
         return new TextActionResult(["This is room 2."]);
     }
     public images(): string[] {
-        return [];
+        return ["room2"];
     }
     public actions(): Action[] {
         return [new ExamineAction(), new TalkAction(), new CustomAction("room3","Room 3",false)];
