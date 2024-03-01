@@ -37,6 +37,7 @@ export class GameCanvas extends LitElement {
             object-fit: cover;
             width: 100%;
             height: 100%;
+            object-position: left;
         }
 
         .header img:nth-child(n + 2) {

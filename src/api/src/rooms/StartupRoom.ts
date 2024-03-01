@@ -15,7 +15,7 @@ export class StartupRoom extends Room {
     }
 
     public name(): string {
-        return "Example Game";
+        return "Terror Trial";
     }
 
     public images(): string[] {
