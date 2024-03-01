@@ -1,3 +1,4 @@
+import { Gebruiken, GebruikAlias } from "../actions/gebruikRoom5";
 import { ActionResult } from "../base/actionResults/ActionResult";
 import { TextActionResult } from "../base/actionResults/TextActionResult";
 import { Action } from "../base/actions/Action";
@@ -9,9 +10,9 @@ import { Item } from "../base/gameObjects/Item";
 
 export const ZaagItemAlias: string = "zaag";
 
-export class ZaagItem extends Item implements Examine {
+export class ZaagItem extends Item implements Examine, Gebruiken {
     public constructor() {
-        super(ZaagItemAlias, ExamineActionAlias);
+        super(ZaagItemAlias, ExamineActionAlias, GebruikAlias);
     }
 
     public name(): string {
@@ -24,7 +25,6 @@ export class ZaagItem extends Item implements Examine {
     public actions(): Action[] {
         return [new CustomAction("Gebruiken", "Gebruiken", false)];
     }
-    
 
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
         if (alias === "Gebruiken") {
@@ -32,5 +32,9 @@ export class ZaagItem extends Item implements Examine {
         }
 
         return undefined;
+    }
+
+    public Gebruiken(): ActionResult | undefined {
+        return new TextActionResult(["je hebt de zaag gebruikt"]);
     }
 }

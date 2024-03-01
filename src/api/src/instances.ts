@@ -56,7 +56,7 @@ export function getRoomByAlias(alias: string): Room | undefined {
 
         case ExampleRoomAlias:
             return new ExampleRoom();
-        
+
         case Room1Alias:
             return new Room1();
 
@@ -71,7 +71,7 @@ export function getRoomByAlias(alias: string): Room | undefined {
 
         case Room5Alias:
             return new Room5();
-        
+
         case EndRoomAlias:
             return new EndRoom();
     }
@@ -94,8 +94,8 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case ExampleCharacterAlias:
             return new ExampleCharacter();
 
-            case ZaagItemAlias:
-                return new ZaagItem();
+        case ZaagItemAlias:
+            return new ZaagItem();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:

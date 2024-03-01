@@ -1,3 +1,5 @@
+
+import { Gebruik } from "../actions/gebruikRoom5";
 import { ActionResult } from "../base/actionResults/ActionResult";
 import { TextActionResult } from "../base/actionResults/TextActionResult";
 import { Action } from "../base/actions/Action";
@@ -24,8 +26,12 @@ export class Room5 extends Room {
         return ["kamer5"];
     }
     public actions(): Action[] {
-        return [new ExamineAction(), new TalkAction(), new CustomAction("endroom","End Room",false),
-         new CustomAction("oppakken","oppakken",false)
+        return [
+            new ExamineAction(),
+            new TalkAction(),
+            new CustomAction("endroom", "End Room", false),
+            //  new CustomAction()
+            new Gebruik(),
         ];
     }
 
@@ -34,11 +40,11 @@ export class Room5 extends Room {
 
         return [this, ...inventoryItems, new ZaagItem()];
     }
-    
+
     public examine(): ActionResult | undefined {
         return new TextActionResult(["room5 is geklikt"]);
     }
-    
+
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
         if (alias === "endroom") {
             const room: EndRoom = new EndRoom();
@@ -51,6 +57,4 @@ export class Room5 extends Room {
 
         return undefined;
     }
-
-    
 }
