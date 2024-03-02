@@ -13,6 +13,7 @@ import { Room4, Room4Alias } from "./rooms/Room4";
 import { Room5, Room5Alias } from "./rooms/room5";
 import { EndRoom, EndRoomAlias } from "./rooms/EndRoom";
 import { ZaagItem, ZaagItemAlias } from "./items/ZaagItem";
+import { HeksCharacter, HeksCharacterAlias } from "./characters/HeksCharacter";
 
 /**
  * Create a new player session object
@@ -97,6 +98,8 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case ZaagItemAlias:
             return new ZaagItem();
 
+        case HeksCharacterAlias:
+            return new HeksCharacter();    
         //NOTE: Fall back to rooms, since those are game objects too.
         default:
             return getRoomByAlias(alias);

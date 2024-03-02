@@ -7,7 +7,6 @@ export const GebruikAlias: string = "GebruikenRoom5";
 
 export interface Gebruiken {
     Gebruiken(): ActionResult | undefined;
-    // gameObject: GameObject
 }
 
 export class Gebruik extends Action {

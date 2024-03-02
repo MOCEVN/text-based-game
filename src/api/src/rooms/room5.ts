@@ -8,6 +8,7 @@ import { ExamineAction } from "../base/actions/ExamineAction";
 import { TalkAction } from "../base/actions/TalkAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
+import { HeksCharacter } from "../characters/HeksCharacter";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
 import { ZaagItem } from "../items/ZaagItem";
 import { EndRoom } from "./EndRoom";
@@ -38,7 +39,7 @@ export class Room5 extends Room {
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
 
-        return [this, ...inventoryItems, new ZaagItem()];
+        return [this, ...inventoryItems, new ZaagItem(), new HeksCharacter()];
     }
 
     public examine(): ActionResult | undefined {
