@@ -13,6 +13,9 @@ import { Room4, Room4Alias } from "./rooms/Room4";
 import { Room5, Room5Alias } from "./rooms/room5";
 import { EndRoom, EndRoomAlias } from "./rooms/EndRoom";
 import { ThreeNumberItem, ThreeNumberItemALias } from "./items/ThreeNumberItem";
+import { ZaagItem, ZaagItemAlias } from "./items/ZaagItem";
+import { HeksCharacter, HeksCharacterAlias } from "./characters/HeksCharacter";
+
 
 /**
  * Create a new player session object
@@ -56,7 +59,7 @@ export function getRoomByAlias(alias: string): Room | undefined {
 
         case ExampleRoomAlias:
             return new ExampleRoom();
-        
+
         case Room1Alias:
             return new Room1();
 
@@ -71,7 +74,7 @@ export function getRoomByAlias(alias: string): Room | undefined {
 
         case Room5Alias:
             return new Room5();
-        
+
         case EndRoomAlias:
             return new EndRoom();
     }
@@ -94,9 +97,16 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case ExampleCharacterAlias:
             return new ExampleCharacter();
 
+
         // Item van kamer 3 - Megan
         case ThreeNumberItemALias:
             return new ThreeNumberItem();   
+
+        case ZaagItemAlias:
+            return new ZaagItem();
+
+        case HeksCharacterAlias:
+            return new HeksCharacter();    
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:

@@ -7,7 +7,7 @@ import { TalkAction } from "../base/actions/TalkAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
-import { Room5 } from "./Room5";
+import { Room5 } from "./room5";
 
 export const Room4Alias: string = "room4";
 
