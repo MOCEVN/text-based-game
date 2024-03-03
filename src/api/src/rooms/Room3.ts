@@ -8,6 +8,7 @@ import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
 import { Room4 } from "./Room4";
+import { ThreeNumberItem } from "../items/ThreeNumberItem";
 
 export const Room3Alias: string = "room3";
 
@@ -32,7 +33,9 @@ export class Room3 extends Room {
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
 
-        return [this, ...inventoryItems];
+        return [this, ...inventoryItems, new ThreeNumberItem()];
+
+        // return [this, ...inventoryItems];
     }
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
         if (alias === "room4") {
