@@ -7,6 +7,7 @@ import { TalkAction } from "../base/actions/TalkAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
+import { ThreeNumberItem } from "../items/ThreeNumberItem";
 import { EndRoom } from "./EndRoom";
 
 export const Room5Alias: string = "room5";
@@ -26,7 +27,7 @@ export class Room5 extends Room {
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
 
-        return [this, ...inventoryItems];
+        return [this, ...inventoryItems, new ThreeNumberItem()];
     }
     
     public examine(): ActionResult | undefined {

@@ -27,6 +27,7 @@ export class Room3 extends Room {
     }
     public actions(): Action[] {
         return [new ExamineAction(), new TalkAction(), new CustomAction("room4","Room 4",false)];
+        // return [new ExamineAction(), new CustomAction("talk-to", "Talk to the skeleton", false)];
     }
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
@@ -45,4 +46,5 @@ export class Room3 extends Room {
 
         return undefined;
     }
+    
 }

@@ -10,8 +10,9 @@ import { Room1, Room1Alias } from "./rooms/Room1";
 import { Room2, Room2Alias } from "./rooms/Room2";
 import { Room3, Room3Alias } from "./rooms/Room3";
 import { Room4, Room4Alias } from "./rooms/Room4";
-import { Room5, Room5Alias } from "./rooms/Room5";
+import { Room5, Room5Alias } from "./rooms/room5";
 import { EndRoom, EndRoomAlias } from "./rooms/EndRoom";
+import { ThreeNumberItem, ThreeNumberItemALias } from "./items/ThreeNumberItem";
 
 /**
  * Create a new player session object
@@ -92,6 +93,10 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case ExampleCharacterAlias:
             return new ExampleCharacter();
+
+        // Item van kamer 3 - Megan
+        case ThreeNumberItemALias:
+            return new ThreeNumberItem();   
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:

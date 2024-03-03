@@ -10,7 +10,7 @@ import { Room } from "../base/gameObjects/Room";
 import { ExampleCharacter } from "../characters/ExampleCharacter";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
 import { ExampleItem } from "../items/ExampleItem";
-import { Room5 } from "./Room5";
+import { Room5 } from "./room5";
 
 export const ExampleRoomAlias: string = "example-room";
 
