@@ -13,6 +13,7 @@ import { Room4, Room4Alias } from "./rooms/Room4";
 import { Room5, Room5Alias } from "./rooms/room5";
 import { EndRoom, EndRoomAlias } from "./rooms/EndRoom";
 import { ThreeNumberItem, ThreeNumberItemALias } from "./items/ThreeNumberItem";
+import { SkeletonCharacter, SkeletonCharacterAlias } from "./characters/SkeletonCharacter";
 import { ZaagItem, ZaagItemAlias } from "./items/ZaagItem";
 import { HeksCharacter, HeksCharacterAlias } from "./characters/HeksCharacter";
 import { Painting1CharacterAlias, Painting1Character } from "./characters/paintings/painting1";
@@ -121,6 +122,10 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         // Item van kamer 3 - Megan
         case ThreeNumberItemALias:
             return new ThreeNumberItem();   
+
+        // Skeleton Character van kamer 3 - Megan
+        case SkeletonCharacterAlias:
+            return new SkeletonCharacter(); 
 
         case ZaagItemAlias:
             return new ZaagItem();
