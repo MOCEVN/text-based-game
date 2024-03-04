@@ -15,6 +15,11 @@ import { EndRoom, EndRoomAlias } from "./rooms/EndRoom";
 import { ThreeNumberItem, ThreeNumberItemALias } from "./items/ThreeNumberItem";
 import { ZaagItem, ZaagItemAlias } from "./items/ZaagItem";
 import { HeksCharacter, HeksCharacterAlias } from "./characters/HeksCharacter";
+import { Painting1CharacterAlias, Painting1Character } from "./characters/paintings/painting1";
+import { Painting2CharacterAlias, Painting2Character } from "./characters/paintings/painting2";
+import { Painting3CharacterAlias, Painting3Character } from "./characters/paintings/painting3";
+import { Painting4CharacterAlias, Painting4Character } from "./characters/paintings/painting4";
+import { Painting5CharacterAlias, Painting5Character } from "./characters/paintings/painting5";
 
 
 /**
@@ -96,6 +101,21 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case ExampleCharacterAlias:
             return new ExampleCharacter();
+        
+        case Painting1CharacterAlias:
+            return new Painting1Character();
+
+        case Painting2CharacterAlias:
+            return new Painting2Character();
+
+        case Painting3CharacterAlias:
+            return new Painting3Character();
+
+        case Painting4CharacterAlias:
+            return new Painting4Character();
+
+        case Painting5CharacterAlias:
+            return new Painting5Character();
 
 
         // Item van kamer 3 - Megan
