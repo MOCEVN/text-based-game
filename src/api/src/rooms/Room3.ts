@@ -10,6 +10,7 @@ import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
 import { Room4 } from "./Room4";
 import { ThreeNumberItem } from "../items/ThreeNumberItem";
 import { SkeletonCharacter } from "../characters/SkeletonCharacter";
+import { CollectAction } from "../actions/CollectRoom3";
 
 export const Room3Alias: string = "room3";
 
@@ -28,8 +29,14 @@ export class Room3 extends Room {
         return ["room3"];
     }
     public actions(): Action[] {
-        return [new ExamineAction(), new TalkAction(), new CustomAction("room4","Room 4",false)];
+        return [
+            new ExamineAction(), 
+            new TalkAction(), 
+            new CollectAction(),
+            new CustomAction("room4","Room 4",false),
+        ];
     }
+    
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
 

@@ -2,12 +2,14 @@ import { Item } from "../base/gameObjects/Item";
 import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
 import { ActionResult } from "../base/actionResults/ActionResult";
 import { TextActionResult } from "../base/actionResults/TextActionResult";
+import { Collect, CollectActionAlias } from "../actions/CollectRoom3";
 
-export const ThreeNumberItemALias: string = "three-number-item";
 
-export class ThreeNumberItem extends Item implements Examine {
+export const ThreeNumberItemAlias: string = "three-number-item";
+
+export class ThreeNumberItem extends Item implements Examine, Collect {
   public constructor() {
-    super(ThreeNumberItemALias, ExamineActionAlias);
+    super(ThreeNumberItemAlias, ExamineActionAlias, CollectActionAlias);
   }
 
   public name(): string {
@@ -15,6 +17,13 @@ export class ThreeNumberItem extends Item implements Examine {
   }
 
   public examine(): ActionResult | undefined {
-    return new TextActionResult(["It's a three number code for the next room door"]);
+    return new TextActionResult(["It's a three-number code for the next room door"]);
   }
+
+  public CollectAction(): ActionResult | undefined {
+    return new TextActionResult(["You've collected the three number code"]);
+  }
+
+
 }
+

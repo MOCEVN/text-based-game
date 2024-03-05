@@ -17,11 +17,19 @@ export class SkeletonCharacter extends Character implements Examine {
   }
 
   public examine(): ActionResult | undefined {
-    return new TextActionResult(["This is a skeleton"]);
+    return new TextActionResult(["You've met the skeleton"]);
   }
-  public talk(_choiceId?: number | undefined): ActionResult | undefined {
-    return new TalkActionResult(this, ["Hello, I am a skeleton"], [
-      new TalkChoiceAction(1, "Touch the skeleton")
+
+  public talk(choiceId?: number | undefined): ActionResult | undefined {
+    if(choiceId === 1) {
+      return new TextActionResult(["Skeleton: What do we have here...a brave candidate. To keep your pretty face you first have to solve the riddle."]);
+    } else if(choiceId === 2) {
+      return new TextActionResult(["You chickened out."]);
+    }
+
+    return new TalkActionResult(this, ["Hello, welcome to your nightmare."], [
+      new TalkChoiceAction(1, "Talk to the skeleton"),
+      new TalkChoiceAction(2, "Runaway from the skeleton"),
     ]);
   }
 
