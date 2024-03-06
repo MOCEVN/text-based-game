@@ -3,20 +3,20 @@ import { Action } from "../base/actions/Action";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { castTo, implementsInterface } from "../base/helpers";
 
-export const GebruikAlias: string = "GebruikenRoom5";
+export const UseAlias: string = "UseRoom5";
 
-export interface Gebruiken {
-    Gebruiken(): ActionResult | undefined;
+export interface UseRoom5 {
+    Use(): ActionResult | undefined;
 }
 
-export class Gebruik extends Action {
+export class Use extends Action {
     public constructor() {
-        super(GebruikAlias, "Gebruiken", true);
+        super(UseAlias, "Use", true);
     }
 
     public static handle(gameObject: GameObject): ActionResult | undefined {
-        if (implementsInterface(gameObject, GebruikAlias)) {
-            return castTo<Gebruiken>(gameObject).Gebruiken();
+        if (implementsInterface(gameObject, UseAlias)) {
+            return castTo<UseRoom5>(gameObject).Use();
             // return (gameObject as unknown as Gebruiken).Gebruiken();
         }
 
