@@ -5,11 +5,11 @@ import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
 import { Item } from "../base/gameObjects/Item";
 // import { EndRoom } from "../rooms/EndRoom";
 
-export const ZaagItemAlias: string = "zaag";
+export const SawItemAlias: string = "zaag";
 
-export class ZaagItem extends Item implements Examine, Gebruiken {
+export class SawItem extends Item implements Examine, Gebruiken {
     public constructor() {
-        super(ZaagItemAlias, ExamineActionAlias, GebruikAlias);
+        super(SawItemAlias, ExamineActionAlias, GebruikAlias);
     }
 
     public name(): string {
