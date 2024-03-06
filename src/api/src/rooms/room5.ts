@@ -1,4 +1,4 @@
-import { Gebruik } from "../actions/gebruikRoom5";
+import { Use } from "../actions/UseRoom5";
 import { ActionResult } from "../base/actionResults/ActionResult";
 import { TextActionResult } from "../base/actionResults/TextActionResult";
 import { Action } from "../base/actions/Action";
@@ -32,7 +32,7 @@ export class Room5 extends Room {
             new TalkAction(),
             new CustomAction("endroom", "End Room", false),
             //  new CustomAction()
-            new Gebruik(),
+            new Use(),
         ];
     }
 
@@ -43,7 +43,7 @@ export class Room5 extends Room {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["room5 is geklikt"]);
+        return new TextActionResult(["room5 was Chosen"]);
     }
 
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {

@@ -1,4 +1,4 @@
-import { Gebruiken, GebruikAlias } from "../actions/gebruikRoom5";
+import { UseAlias, UseRoom5 } from "../actions/UseRoom5";
 import { ActionResult } from "../base/actionResults/ActionResult";
 import { TextActionResult } from "../base/actionResults/TextActionResult";
 import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
@@ -7,19 +7,19 @@ import { Item } from "../base/gameObjects/Item";
 
 export const SawItemAlias: string = "zaag";
 
-export class SawItem extends Item implements Examine, Gebruiken {
+export class SawItem extends Item implements Examine, UseRoom5 {
     public constructor() {
-        super(SawItemAlias, ExamineActionAlias, GebruikAlias);
+        super(SawItemAlias, ExamineActionAlias, UseAlias);
     }
 
     public name(): string {
-        return "Zaag";
+        return "Saw";
     }
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["Zaag"]);
+        return new TextActionResult(["Saw"]);
     }
 
-    public Gebruiken(): ActionResult | undefined {
-        return new TextActionResult(["Je hebt de zaag gebruikt"]);
+    public Use(): ActionResult | undefined {
+        return new TextActionResult(["You used the Saw"]);
     }
 }

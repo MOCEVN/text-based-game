@@ -19,14 +19,17 @@ export class WitchCharacter extends Character implements Examine {
     }
     public talk(choiceId?: number | undefined): ActionResult | undefined {
         if(choiceId === 1){
-            return new TalkChoiceAction(3, "Vraag wat de puzzel is van deze kamer");
+            return new TalkActionResult(this, ["What is it you're looking for here?"], [
+                new TalkChoiceAction(3, "Ask what the puzzel of this room is"),
+                new TalkChoiceAction(2, "Leave the conversation")
+            ]);
             
         } else if(choiceId === 2){
-            return "Je hebt de heks met rust gelaten";
+            return "You left the wich alone";
         }
-        return new TalkActionResult(this, ["Hallo"], [
-            new TalkChoiceAction(1, "Groet de heks"),
-            new TalkChoiceAction(2, "Verlaat het gesprek")
+        return new TalkActionResult(this, ["Hello"], [
+            new TalkChoiceAction(1, "Greet the witch"),
+            new TalkChoiceAction(2, "Leave the conversation")
         ]);
     }
 }
