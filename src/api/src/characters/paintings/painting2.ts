@@ -5,6 +5,7 @@ import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { TalkChoiceAction } from "../../base/actions/TalkAction";
 import { Character } from "../../base/gameObjects/Character";
 import { getPlayerSession } from "../../instances";
+import { SawItemAlias } from "../../items/SawItem";
 import { PlayerSession } from "../../types";
 
 export const Painting2CharacterAlias: string = "painting2";
@@ -27,7 +28,8 @@ export class Painting2Character extends Character implements Examine{
             case 2: // <Leave> (before puzzle)
                 return new TextActionResult(["You contemplate speaking to the painting but ultimately dismiss the idea, convinced it won't reply. You move on, leaving the silent artwork undisturbed."]);
             case 3: // choose painting (correct)
-                playerSession.paintingPuzzleState = 3;
+                playerSession.paintingPuzzleState = 2;
+                playerSession.inventory.push(SawItemAlias);
                 return new TextActionResult(["\"You have chosen wisely, mortal,\"", 
                 "the chosen painting speaks, its voice resonating with approval.", 
                 "\"Behold, your reward awaits.\"", 
@@ -37,7 +39,7 @@ export class Painting2Character extends Character implements Examine{
             case 4: // <Leave> (during puzzle)
                 return new TextActionResult([]);
         }
-        if (playerSession.paintingPuzzleState === 2) {
+        if (playerSession.paintingPuzzleState === 1) {
             return new TalkActionResult(this,["\"The treasure lies with me, and I assure you, I speak the truth.\""],[
                 new TalkChoiceAction(3, "I believe you hold the answer to my quest. Please reveal the treasure hidden within your frame."),
                 new TalkChoiceAction(4,"<Leave>")

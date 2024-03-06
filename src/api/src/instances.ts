@@ -21,6 +21,7 @@ import { Painting2CharacterAlias, Painting2Character } from "./characters/painti
 import { Painting3CharacterAlias, Painting3Character } from "./characters/paintings/painting3";
 import { Painting4CharacterAlias, Painting4Character } from "./characters/paintings/painting4";
 import { Painting5CharacterAlias, Painting5Character } from "./characters/paintings/painting5";
+import { Room4DoorItem, Room4DoorItemAlias } from "./items/Room4DoorItem";
 
 /**
  * Create a new player session object
@@ -117,6 +118,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case Painting5CharacterAlias:
             return new Painting5Character();
+
+        case Room4DoorItemAlias:
+            return new Room4DoorItem();
 
         // Item van kamer 3 - Megan
         case ThreeNumberItemAlias:

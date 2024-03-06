@@ -33,7 +33,7 @@ export class Painting3Character extends Character implements Examine{
             case 4:
                 return new TextActionResult([]);
         }
-        if (playerSession.paintingPuzzleState === 2) {
+        if (playerSession.paintingPuzzleState === 1) {
             return new TalkActionResult(this,["\"The treasure lies with me, and I assure you, I speak the truth.\""],[
                 new TalkChoiceAction(3, "I believe you hold the answer to my quest. Please reveal the treasure hidden within your frame."),
                 new TalkChoiceAction(4,"<Leave>")
