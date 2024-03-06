@@ -32,6 +32,7 @@ export function createNewPlayerSession(): PlayerSession {
     return {
         currentRoom: "startup",
         inventory: [],
+        paintingPuzzleState: 0,
     };
 }
 
