@@ -22,12 +22,12 @@ export class SkeletonCharacter extends Character implements Examine {
 
   public talk(choiceId?: number | undefined): ActionResult | undefined {
     if(choiceId === 1) {
-      return new TextActionResult(["Skeleton: What do we have here...a brave candidate. To keep your pretty face you first have to solve the riddle."]);
+      return new TextActionResult(["Skeleton: What do we have here...I never thought I would see a living soul again. A very brave candidate..To keep your pretty face you first have to solve the riddle."]);
     } else if(choiceId === 2) {
       return new TextActionResult(["You chickened out."]);
     }
 
-    return new TalkActionResult(this, ["Hello, welcome to your nightmare."], [
+    return new TalkActionResult(this, ["You've noticed a couple moving bones"], [
       new TalkChoiceAction(1, "Talk to the skeleton"),
       new TalkChoiceAction(2, "Runaway from the skeleton"),
     ]);

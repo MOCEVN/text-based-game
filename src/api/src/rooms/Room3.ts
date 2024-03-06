@@ -23,7 +23,7 @@ export class Room3 extends Room {
         return "Room 3";
     }
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["This is room 3."]);
+        return new TextActionResult(["When you open the door, there a couple candles burning....slowly some are burning out. suddenly you see bones floating past you, there you suddenly hear "]);
     }
     public images(): string[] {
         return ["room3"];
