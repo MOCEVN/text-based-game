@@ -20,7 +20,7 @@ export class Room2 extends Room {
         return "Room 2";
     }
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["This is room 2."]);
+        return new TextActionResult(["Upon entering the second room, you see a table at the center of the room with some objects on top.", "It also looks like there's something floating around the room which looks a bit like a ghost."]);
     }
     public images(): string[] {
         return ["room2"];
