@@ -22,6 +22,9 @@ import { Painting3CharacterAlias, Painting3Character } from "./characters/painti
 import { Painting4CharacterAlias, Painting4Character } from "./characters/paintings/painting4";
 import { Painting5CharacterAlias, Painting5Character } from "./characters/paintings/painting5";
 import { Room4DoorItem, Room4DoorItemAlias } from "./items/Room4DoorItem";
+import { KeyItem1, KeyItem1Alias } from "./items/keys/KeyItem1";
+import { KeyItem2, KeyItem2Alias } from "./items/keys/KeyItem2";
+import { KeyItem3, KeyItem3Alias } from "./items/keys/KeyItem3";
 
 /**
  * Create a new player session object
@@ -135,6 +138,19 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case WitchCharacterAlias:
             return new WitchCharacter();
+
+        // Items room 2 - Giorgio
+        case KeyItem1Alias:
+            return new KeyItem1();
+
+        case KeyItem2Alias:
+            return new KeyItem2();
+
+        case KeyItem3Alias:
+            return new KeyItem3();
+        
+        // Ghost character room 2 - Giorgio
+
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:

@@ -7,6 +7,9 @@ import { TalkAction } from "../base/actions/TalkAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
+import { KeyItem1 } from "../items/keys/KeyItem1";
+import { KeyItem2 } from "../items/keys/KeyItem2";
+import { KeyItem3 } from "../items/keys/KeyItem3";
 import { Room3 } from "./Room3";
 
 export const Room2Alias: string = "room2";
@@ -20,7 +23,8 @@ export class Room2 extends Room {
         return "Room 2";
     }
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["Upon entering the second room, you see a table at the center of the room with some objects on top.", "It also looks like there's something floating around the room which looks a bit like a ghost."]);
+        return new TextActionResult([
+            "As you cautiously step into the second room, a cold gust of air makes you shiver, and the whole place feels eerie. The weak light flickers, casting eerie shadows on the walls.", "In the middle of the room, there's an old table with a strange glow, holding three keys.", "Suddenly, a ghostly figure appears, surrounded by swirling, transparent energy. Its hollow eyes fixate on you as it whispers, 'You shouldn't have come, Intruder.'"]);
     }
     public images(): string[] {
         return ["room2"];
@@ -31,7 +35,7 @@ export class Room2 extends Room {
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
 
-        return [this, ...inventoryItems];
+        return [this, new KeyItem1(), new KeyItem2(), new KeyItem3(),...inventoryItems];
     }
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
         if (alias === "room3") {
