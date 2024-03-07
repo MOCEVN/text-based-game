@@ -22,7 +22,8 @@ export class SkeletonCharacter extends Character implements Examine {
 
   public talk(choiceId?: number | undefined): ActionResult | undefined {
     if(choiceId === 1) {
-      return new TextActionResult(["Skeleton: What do we have here...I never thought I would see a living soul again. A very brave candidate..To keep your pretty face you first have to solve the riddle."]);
+      return new TextActionResult(["Skeleton: What do we have here...I never thought I would see a living soul again.",
+                                  "A very brave candidate..To keep your pretty face you first have to solve the riddle."]);
     } else if(choiceId === 2) {
       return new TextActionResult(["You chickened out."]);
     }

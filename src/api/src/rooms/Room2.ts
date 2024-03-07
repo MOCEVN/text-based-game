@@ -6,6 +6,7 @@ import { ExamineAction } from "../base/actions/ExamineAction";
 import { TalkAction } from "../base/actions/TalkAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
+import { GhostCharacter } from "../characters/GhostCharacter";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
 import { KeyItem1 } from "../items/keys/KeyItem1";
 import { KeyItem2 } from "../items/keys/KeyItem2";
@@ -35,7 +36,7 @@ export class Room2 extends Room {
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
 
-        return [this, new KeyItem1(), new KeyItem2(), new KeyItem3(),...inventoryItems];
+        return [this, new KeyItem1(), new KeyItem2(), new KeyItem3(), new GhostCharacter(),...inventoryItems];
     }
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
         if (alias === "room3") {
