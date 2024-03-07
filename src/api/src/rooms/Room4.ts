@@ -31,9 +31,9 @@ export class Room4 extends Room implements Talk{
 
     public examine(): ActionResult | undefined {
         return new TextActionResult([
-            "Inside this room, ornate frames line the walls, showcasing vivid scenes from serene landscapes to eerie portraits.", 
-            "The room is dimly lit, casting shadows across the floor.", 
-            "You notice a slight movement from the corner of your eye, but dismiss it as a trick of the light."
+            "The room is dimly lit, with shadows dancing across the walls, creating an eerie atmosphere. Five ornate paintings hang on the walls, their subjects ranging from serene landscapes to stoic portraits. Though the room appears ordinary at first glance, there's an underlying sense of unease, as if something is not quite right.", 
+            "In the center of the room, three of the five paintings stand out, their frames more ornate than the others. Despite their stillness, there's a subtle energy emanating from them, giving the impression that they hold some hidden significance.", 
+            "At the far end of the room, a wooden door stands, its surface weathered and worn. Unlike the other doors, this one lacks any visible handle or mechanism for opening, adding to the mystery of the room."
         ]);
     }
 
@@ -44,7 +44,8 @@ export class Room4 extends Room implements Talk{
     public actions(): Action[] {
         const actions: Action[] = [new ExamineAction(), new TalkAction(),
             // test
-            new CustomAction("reset","Reset (temp)",false)
+            new CustomAction("reset","Reset (temp)",false),
+            new CustomAction("skip","Skip(temp)",false)
         ];
         const playerSession: PlayerSession = getPlayerSession();
         if (playerSession.paintingPuzzleState >= 2) {
@@ -127,6 +128,13 @@ export class Room4 extends Room implements Talk{
                 playerSession.paintingPuzzleState = 3;
                 return new TextActionResult(["With a determined effort, you wield the saw, cutting through the door and clearing the way forward."]);
             }
+        } else if (alias === "skip"){
+            if (playerSession.inventory.indexOf(SawItemAlias) < 0){
+                playerSession.inventory.push(SawItemAlias);
+            }
+            const room: Room5 = new Room5();
+            playerSession.currentRoom = room.alias;
+            return room.examine();
         }
 
         return undefined;

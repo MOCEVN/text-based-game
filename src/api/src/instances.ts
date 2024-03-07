@@ -22,6 +22,7 @@ import { Painting3CharacterAlias, Painting3Character } from "./characters/painti
 import { Painting4CharacterAlias, Painting4Character } from "./characters/paintings/painting4";
 import { Painting5CharacterAlias, Painting5Character } from "./characters/paintings/painting5";
 import { Room4DoorItem, Room4DoorItemAlias } from "./items/Room4DoorItem";
+import { PotionItem, PotionItemAlias } from "./items/PotionItem";
 import { KeyItem1, KeyItem1Alias } from "./items/keys/KeyItem1";
 import { KeyItem2, KeyItem2Alias } from "./items/keys/KeyItem2";
 import { KeyItem3, KeyItem3Alias } from "./items/keys/KeyItem3";
@@ -152,6 +153,8 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         // Ghost character room 2 - Giorgio
 
 
+        case PotionItemAlias:
+            return new PotionItem();
         //NOTE: Fall back to rooms, since those are game objects too.
         default:
             return getRoomByAlias(alias);
