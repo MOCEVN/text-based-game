@@ -26,6 +26,7 @@ import { PotionItem, PotionItemAlias } from "./items/PotionItem";
 import { KeyItem1, KeyItem1Alias } from "./items/keys/KeyItem1";
 import { KeyItem2, KeyItem2Alias } from "./items/keys/KeyItem2";
 import { KeyItem3, KeyItem3Alias } from "./items/keys/KeyItem3";
+import { GhostCharacter, GhostCharacterAlias } from "./characters/GhostCharacter";
 
 /**
  * Create a new player session object
@@ -140,6 +141,10 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case WitchCharacterAlias:
             return new WitchCharacter();
 
+        // Ghost character room 2 - Giorgio
+        case GhostCharacterAlias:
+            return new GhostCharacter();
+
         // Items room 2 - Giorgio
         case KeyItem1Alias:
             return new KeyItem1();
@@ -150,8 +155,6 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case KeyItem3Alias:
             return new KeyItem3();
         
-        // Ghost character room 2 - Giorgio
-
 
         case PotionItemAlias:
             return new PotionItem();
