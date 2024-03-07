@@ -9,7 +9,7 @@ import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
 import { WitchCharacter } from "../characters/WitchCharacter";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
-import { SawItem } from "../items/SawItem";
+import { PotionItem } from "../items/PotionItem";
 
 import { EndRoom } from "./EndRoom";
 
@@ -30,20 +30,19 @@ export class Room5 extends Room {
         return [
             new ExamineAction(),
             new TalkAction(),
-            new CustomAction("endroom", "End Room", false),
-            //  new CustomAction()
             new Use(),
+            new CustomAction("endroom", "End Game", false),
         ];
     }
 
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
 
-        return [this, ...inventoryItems, new SawItem(), new WitchCharacter()];
+        return [this, ...inventoryItems, new PotionItem(), new WitchCharacter()];
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["room5 was Chosen"]);
+        return new TextActionResult(["Upon entering the room, you are met with an eerie stillness broken only by the crackling of fire and the witch's cackling. Large cauldrons bubble in the corners, emitting strange odors. With each step, the room pulses with unsettling energy, but you steel yourself for the challenges ahead."]);
     }
 
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
