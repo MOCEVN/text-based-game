@@ -20,6 +20,6 @@ export class SawItem extends Item implements Examine, UseRoom5 {
     }
 
     public Use(): ActionResult | undefined {
-        return new TextActionResult(["You used the Saw"]);
+        return new TextActionResult(["The Saw doesn't work properly"]);
     }
 }

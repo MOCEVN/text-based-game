@@ -22,6 +22,7 @@ import { Painting3CharacterAlias, Painting3Character } from "./characters/painti
 import { Painting4CharacterAlias, Painting4Character } from "./characters/paintings/painting4";
 import { Painting5CharacterAlias, Painting5Character } from "./characters/paintings/painting5";
 import { Room4DoorItem, Room4DoorItemAlias } from "./items/Room4DoorItem";
+import { PotionItem, PotionItemAlias } from "./items/PotionItem";
 
 /**
  * Create a new player session object
@@ -136,6 +137,8 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case WitchCharacterAlias:
             return new WitchCharacter();
 
+        case PotionItemAlias:
+            return new PotionItem();
         //NOTE: Fall back to rooms, since those are game objects too.
         default:
             return getRoomByAlias(alias);
