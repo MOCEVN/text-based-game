@@ -115,18 +115,45 @@ export class Room4 extends Room implements Talk{
             return room.examine();
         } else if (alias === "reset") {
             playerSession.paintingPuzzleState = 0;
+            playerSession.paintingsTalkedTo = 0;
             const idx: number = playerSession.inventory.indexOf(SawItemAlias); 
             if (idx > -1) {
                 playerSession.inventory.splice(idx,1);
             }
             return this.examine();
         } else if (alias === "saw"){
-            if (gameObjects && gameObjects.length > 0 && gameObjects[0].alias === Room4DoorItemAlias){
-                if (playerSession.paintingPuzzleState === 3) {
+            if (gameObjects && gameObjects.length > 0){
+                if (gameObjects[0].alias === Room4DoorItemAlias){
+                    if (playerSession.paintingPuzzleState === 3) {
                     return new TextActionResult(["The door is already open."]);
-                }
+                    }
                 playerSession.paintingPuzzleState = 3;
                 return new TextActionResult(["With a determined effort, you wield the saw, cutting through the door and clearing the way forward."]);
+                }
+                if (gameObjects[0].alias === SawItemAlias){
+                    return new TextActionResult(["You attempt to use the saw on itself, a futile and nonsensical action. Perhaps you should reconsider your approach."]);
+                }
+                if (gameObjects[0].alias.slice(0,-1) === "painting") {
+                    switch(gameObjects[0].alias.slice(-1)){
+                        case "1":
+                            return new TextActionResult(["\"What do you think you are doing, mortal? Put down that saw this instant!\""]);
+                        case "2":
+                            return new TextActionResult(["\"What in the realms do you think you're doing? Cease this reckless action at once!\""]);
+                        case "3":
+                            return new TextActionResult(["\"What do you believe you are doing, foolish mortal? Put down that tool immediately!\""]);
+                        case "4":
+                            return new TextActionResult(["\"What do you think you're doing, challenging me with that tool? Put it down now!\""]);
+                        case "5":
+                            return new TextActionResult(["\"What madness drives you to wield that tool against me? Cease this action now!\""]);
+                    }
+                }
+            }
+            if (gameObjects && gameObjects.length === 0) {
+                if (playerSession.paintingPuzzleState === 2){
+                    return new TextActionResult(["You start running around swinging the saw around the room. Your saw touches nothing but air, achieving nothing."]);
+                } else {
+                    return new TextActionResult(["You start running around swinging the saw around the room, flinging sawdust everywhere. Your saw touches nothing but air, achieving nothing."]);
+                }
             }
         } else if (alias === "skip"){
             if (playerSession.inventory.indexOf(SawItemAlias) < 0){
