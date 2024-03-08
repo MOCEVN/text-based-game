@@ -22,7 +22,7 @@ export class EndRoom extends Room {
         return new TextActionResult(["This the end room."]);
     }
     public images(): string[] {
-        return [];
+        return ["endroom"];
     }
     public actions(): Action[] {
         return [new ExamineAction(), new TalkAction(), new CustomAction("end","GAME OVER",false)];
