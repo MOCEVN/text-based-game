@@ -4,4 +4,7 @@ export type PlayerSession = {
     // room 4
     paintingPuzzleState: number;
     paintingsTalkedTo: number;
+    //room5
+    witchRightChoise: boolean;
+    pickedUpPotion: boolean;
 };

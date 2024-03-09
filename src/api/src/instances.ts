@@ -27,6 +27,7 @@ import { KeyItem1, KeyItem1Alias } from "./items/keys/KeyItem1";
 import { KeyItem2, KeyItem2Alias } from "./items/keys/KeyItem2";
 import { KeyItem3, KeyItem3Alias } from "./items/keys/KeyItem3";
 import { GhostCharacter, GhostCharacterAlias } from "./characters/GhostCharacter";
+import { FirstPot, FirstPotAlias } from "./characters/pots/FirstPotItem";
 
 /**
  * Create a new player session object
@@ -40,6 +41,8 @@ export function createNewPlayerSession(): PlayerSession {
         // room 4
         paintingPuzzleState: 0,
         paintingsTalkedTo: 0,
+        witchRightChoise: false,
+        pickedUpPotion: false,
     };
 }
 
@@ -142,6 +145,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case WitchCharacterAlias:
             return new WitchCharacter();
+
+        case FirstPotAlias:
+            return new FirstPot();
 
         // Ghost character room 2 - Giorgio
         case GhostCharacterAlias:

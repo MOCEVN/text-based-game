@@ -5,6 +5,7 @@ import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
 import { Item } from "../base/gameObjects/Item";
 import { getPlayerSession } from "../instances";
 import { EndRoom } from "../rooms/EndRoom";
+import { PlayerSession } from "../types";
 // import { EndRoom } from "../rooms/EndRoom";
 
 export const PotionItemAlias: string = "potion";
@@ -22,6 +23,8 @@ export class PotionItem extends Item implements Examine, UseRoom5 {
     }
 
     public Use(): ActionResult | undefined {
+        const PlayerSession: PlayerSession = getPlayerSession();
+        if(PlayerSession.inventory.includes(PotionItemAlias)){
         const room: EndRoom = new EndRoom();
 
         //Set the current room to the example room
@@ -35,6 +38,9 @@ export class PotionItem extends Item implements Examine, UseRoom5 {
         Pushing himself up, he reflected on his strange journey. Though uncertain if it was real, he felt victorious, ready to face whatever lay ahead.
         
         With newfound strength, he left the haunted house behind, knowing he could conquer any challenge that came his way.`]);
-    }
+    }else{
+            return undefined;
+        }
+       
     
-}
+}}

@@ -9,7 +9,8 @@ import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
 import { WitchCharacter } from "../characters/WitchCharacter";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
-import { PotionItem } from "../items/PotionItem";
+import { PotionItem, PotionItemAlias } from "../items/PotionItem";
+import { PlayerSession } from "../types";
 
 import { EndRoom } from "./EndRoom";
 
@@ -37,8 +38,16 @@ export class Room5 extends Room {
 
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
+        const PlayerSession: PlayerSession = getPlayerSession();
+        // if(){
 
-        return [this, ...inventoryItems, new PotionItem(), new WitchCharacter()];
+        // }
+        if(PlayerSession.inventory.includes(PotionItemAlias)){
+            return [this, ...inventoryItems, new PotionItem(), new WitchCharacter()];
+        }else{
+            return [this, ...inventoryItems, new WitchCharacter()];
+        }
+        
     }
 
     public examine(): ActionResult | undefined {
