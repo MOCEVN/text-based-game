@@ -45,7 +45,7 @@ export class Room3 extends Room {
 
         const objects: GameObject[] = [this, ...getGameObjectsFromInventory()];
 
-        if(playerSession.inventory.includes(ThreeNumberItemAlias)) {
+        if(!playerSession.inventory.includes(ThreeNumberItemAlias)) {
             objects.push(new ThreeNumberItem());
         }
 
