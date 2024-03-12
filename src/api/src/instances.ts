@@ -13,7 +13,6 @@ import { Room4, Room4Alias } from "./rooms/Room4";
 import { Room5, Room5Alias } from "./rooms/room5";
 import { EndRoom, EndRoomAlias } from "./rooms/EndRoom";
 import { ThreeNumberItem, ThreeNumberItemAlias } from "./items/ThreeNumberItem";
-import { SkeletonCharacter, SkeletonCharacterAlias } from "./characters/SkeletonCharacter";
 import { SawItem, SawItemAlias } from "./items/SawItem";
 import { WitchCharacter, WitchCharacterAlias } from "./characters/WitchCharacter";
 import { Painting1CharacterAlias, Painting1Character } from "./characters/paintings/painting1";
@@ -28,6 +27,9 @@ import { KeyItem2, KeyItem2Alias } from "./items/keys/KeyItem2";
 import { KeyItem3, KeyItem3Alias } from "./items/keys/KeyItem3";
 import { GhostCharacter, GhostCharacterAlias } from "./characters/GhostCharacter";
 import { FirstPot, FirstPotAlias } from "./characters/pots/FirstPotItem";
+import { SkeletonCharacter1, SkeletonCharacter1Alias } from "./characters/Skeleton Characters/Skeleton1";
+import { SkeletonCharacter2, SkeletonCharacter2Alias } from "./characters/Skeleton Characters/Skeleton2";
+import { SkeletonCharacter3, SkeletonCharacter3Alias } from "./characters/Skeleton Characters/Skeleton3";
 
 /**
  * Create a new player session object
@@ -133,13 +135,19 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case Room4DoorItemAlias:
             return new Room4DoorItem();
 
-        // Item van kamer 3 - Megan
+        // Item kamer 3 - Megan
         case ThreeNumberItemAlias:
             return new ThreeNumberItem();
 
-        // Skeleton Character van kamer 3 - Megan
-        case SkeletonCharacterAlias:
-            return new SkeletonCharacter();
+        // Skeleton Characters kamer 3 - Megan
+        case SkeletonCharacter1Alias:
+            return new SkeletonCharacter1();
+
+        case SkeletonCharacter2Alias:
+            return new SkeletonCharacter2();
+
+        case SkeletonCharacter3Alias:
+            return new SkeletonCharacter3();
 
         case SawItemAlias:
             return new SawItem();
