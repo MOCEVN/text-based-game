@@ -68,6 +68,10 @@ export function resetPlayerSession(): void {
     resetPlayerSessionInContext(createNewPlayerSession);
 }
 
+/**
+ * Sends the player to the game over room
+ * @returns Examine text from the game over room
+ */
 export function sendToGameOver(): ActionResult | undefined {
     const room: GameOverRoom = new GameOverRoom();
     getPlayerSession().currentRoom = room.alias;
