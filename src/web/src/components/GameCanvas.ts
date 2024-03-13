@@ -81,6 +81,13 @@ export class GameCanvas extends LitElement {
             padding: 10px 10px 0 10px;
         }
 
+        .footer .buttons div:first-child {
+            border-bottom: 2px solid #837aa8;
+        }
+        .footer .buttons div:last-child {
+            margin-top: 10px;
+        }
+
         .footer .button {
             background-color: #7f6ed7;
             border: 3px solid #332c57;
