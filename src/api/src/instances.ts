@@ -33,6 +33,7 @@ import { SkeletonCharacter3, SkeletonCharacter3Alias } from "./characters/Skelet
 import { flashlightitem, FlashlightitemAlias } from "./items/flashlightitem";
 import { GameOverRoom, GameOverRoomAlias } from "./rooms/GameOverRoom";
 import { ActionResult } from "./base/actionResults/ActionResult";
+import { clownvoice, clownvoicealias } from "./characters/ClownCharacter/Clownvoice";
 
 /**
  * Create a new player session object
@@ -167,9 +168,6 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case SawItemAlias:
             return new SawItem();
 
-        case FlashlightitemAlias:
-            return new flashlightitem();
-
         case WitchCharacterAlias:
             return new WitchCharacter();
 
@@ -192,6 +190,15 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case PotionItemAlias:
             return new PotionItem();
+
+        // i/3 items you can use to find the clown in room 1 - Omar
+        case FlashlightitemAlias:
+            return new flashlightitem();
+
+        // Clownvoice in the distance for room 1 - Omar
+        case clownvoicealias:
+            return new clownvoice();
+
         //NOTE: Fall back to rooms, since those are game objects too.
         default:
             return getRoomByAlias(alias);

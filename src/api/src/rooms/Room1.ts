@@ -9,6 +9,7 @@ import { Room } from "../base/gameObjects/Room";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
 import { Room2 } from "./Room2";
 import { flashlightitem } from "../items/flashlightitem";
+import { clownvoice } from "../characters/ClownCharacter/Clownvoice";
 
 export const Room1Alias: string = "room1";
 
@@ -32,7 +33,7 @@ export class Room1 extends Room {
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
 
-        return [this, ...inventoryItems, new flashlightitem()];
+        return [this, ...inventoryItems, new flashlightitem(), new clownvoice()];
     }
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
         if (alias === "room2") {

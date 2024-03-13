@@ -1,8 +1,0 @@
-import { Character } from "../../base/gameObjects/Character";
-
-export const clownvoicealias: string = "swan";
-export class clownvoice extends Character {
-    public constructor() {
-        super(clownvoicealias);
-    }
-}
