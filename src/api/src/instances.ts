@@ -43,6 +43,7 @@ export function createNewPlayerSession(): PlayerSession {
         paintingsTalkedTo: 0,
         witchRightChoise: false,
         pickedUpPotion: false,
+        playertrys: 0,
     };
 }
 
