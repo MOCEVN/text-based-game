@@ -31,6 +31,8 @@ import { SkeletonCharacter1, SkeletonCharacter1Alias } from "./characters/Skelet
 import { SkeletonCharacter2, SkeletonCharacter2Alias } from "./characters/Skeleton Characters/Skeleton2";
 import { SkeletonCharacter3, SkeletonCharacter3Alias } from "./characters/Skeleton Characters/Skeleton3";
 import { flashlightitem, FlashlightitemAlias } from "./items/flashlightitem";
+import { GameOverRoom, GameOverRoomAlias } from "./rooms/GameOverRoom";
+import { ActionResult } from "./base/actionResults/ActionResult";
 
 /**
  * Create a new player session object
@@ -67,6 +69,16 @@ export function resetPlayerSession(): void {
 }
 
 /**
+ * Sends the player to the game over room
+ * @returns Examine text from the game over room
+ */
+export function sendToGameOver(): ActionResult | undefined {
+    const room: GameOverRoom = new GameOverRoom();
+    getPlayerSession().currentRoom = room.alias;
+    return room.examine();
+}
+
+/**
  * Get the instance of a room by its alias
  *
  * @param alias Alias of the room
@@ -98,6 +110,8 @@ export function getRoomByAlias(alias: string): Room | undefined {
 
         case EndRoomAlias:
             return new EndRoom();
+        case GameOverRoomAlias:
+            return new GameOverRoom();
     }
 
     return undefined;
