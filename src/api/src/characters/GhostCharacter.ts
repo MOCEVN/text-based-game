@@ -4,6 +4,9 @@ import { TextActionResult } from "../base/actionResults/TextActionResult";
 import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
 import { TalkChoiceAction } from "../base/actions/TalkAction";
 import { Character } from "../base/gameObjects/Character";
+import { getPlayerSession } from "../instances";
+import { KeyItem1Alias } from "../items/keys/KeyItem1";
+import { PlayerSession } from "../types";
 
 export const GhostCharacterAlias: string = "ghost";
 
@@ -21,6 +24,8 @@ export class GhostCharacter extends Character implements Examine {
     }
 
     public talk(choiceId?: number | undefined): ActionResult | undefined {
+        const playerSession: PlayerSession = getPlayerSession();
+
         if (choiceId === 1) {
             return new TalkActionResult(
                 this,
@@ -38,13 +43,24 @@ export class GhostCharacter extends Character implements Examine {
                 return new TextActionResult(["correct."]);
             } else if (choiceId === 7) {
                 return new TextActionResult(["wrong."]);
+            } else if (choiceId === 8) {
+                playerSession.inventory = [];
+                return new TextActionResult(["He puts the key back on the table."]);
             }
         
-    
-        return new TalkActionResult(
-            this,
-            ["As you tentatively approach the ghostly figure, its gaze fixes upon you with intensity.", "‎ ", "The air around you grows colder as it whispers:", "'Mortal intruder, before you may claim the keys, you must first prove your wit.", "I present to you a riddle, and your answer shall guide your choice.'"],
-            [new TalkChoiceAction(1, "\"...\""), new TalkChoiceAction(2, "\"I don't have time for this.\"")]);
-    }
-    
+            const choiceActions: TalkChoiceAction[] = [
+                new TalkChoiceAction(1, "\"...\""), new TalkChoiceAction(2, "\"I don't have time for this.\"")
+            ];
+            
+
+            if(playerSession.inventory.includes(KeyItem1Alias)) {
+                choiceActions.push(new TalkChoiceAction(8, "Give the key to the ghost"));
+            }
+            
+            return new TalkActionResult(
+                this,
+                ["As you tentatively approach the ghostly figure, its gaze fixes upon you with intensity.", "‎ ", "The air around you grows colder as it whispers:", "'Mortal intruder, before you may claim the keys, you must first prove your wit.", "I present to you a riddle, and your answer shall guide your choice.'"],
+                choiceActions
+            );
+        }    
 }
