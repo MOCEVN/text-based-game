@@ -8,4 +8,5 @@ export type PlayerSession = {
     witchRightChoise: boolean;
     pickedUpPotion: boolean;
     collectedCode: boolean;
+    playertrys: number;
 };

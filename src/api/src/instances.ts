@@ -50,6 +50,7 @@ export function createNewPlayerSession(): PlayerSession {
         witchRightChoise: false,
         pickedUpPotion: false,
         collectedCode: false,
+        playertrys: 0,
     };
 }
 
