@@ -30,6 +30,7 @@ import { FirstPot, FirstPotAlias } from "./characters/pots/FirstPotItem";
 import { SkeletonCharacter1, SkeletonCharacter1Alias } from "./characters/Skeleton Characters/Skeleton1";
 import { SkeletonCharacter2, SkeletonCharacter2Alias } from "./characters/Skeleton Characters/Skeleton2";
 import { SkeletonCharacter3, SkeletonCharacter3Alias } from "./characters/Skeleton Characters/Skeleton3";
+import { flashlightitem, FlashlightitemAlias } from "./items/flashlightitem";
 import { GameOverRoom, GameOverRoomAlias } from "./rooms/GameOverRoom";
 import { ActionResult } from "./base/actionResults/ActionResult";
 
@@ -162,6 +163,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case SawItemAlias:
             return new SawItem();
 
+        case FlashlightitemAlias:
+            return new flashlightitem();
+
         case WitchCharacterAlias:
             return new WitchCharacter();
 
@@ -181,7 +185,6 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case KeyItem3Alias:
             return new KeyItem3();
-        
 
         case PotionItemAlias:
             return new PotionItem();
