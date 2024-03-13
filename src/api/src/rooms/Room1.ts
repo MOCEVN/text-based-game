@@ -7,8 +7,8 @@ import { TalkAction } from "../base/actions/TalkAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
-import { Zaklampitem } from "../items/flashlightitem";
 import { Room2 } from "./Room2";
+import { flashlightitem } from "../items/flashlightitem";
 
 export const Room1Alias: string = "room1";
 
@@ -32,7 +32,7 @@ export class Room1 extends Room {
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
 
-        return [this, ...inventoryItems, new Zaklampitem()];
+        return [this, ...inventoryItems, new flashlightitem()];
     }
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
         if (alias === "room2") {
