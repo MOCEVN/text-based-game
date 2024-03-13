@@ -21,17 +21,21 @@ export class ThreeNumberItem extends Item implements Examine, Collect {
   public examine(): ActionResult | undefined {
     return new TextActionResult(["It's a three-number code for the next room door"]);
   }
-
+  
   public CollectAction(): ActionResult | undefined {
     // Put the item in the inventory
     const playerSession: PlayerSession = getPlayerSession();
 
-    if(playerSession.inventory.includes(ThreeNumberItemAlias)) {
+    if(!playerSession.collectedCode) {
+        playerSession.collectedCode = true;
         playerSession.inventory.push(ThreeNumberItemAlias);
+
+        // The item is now collected
+    return new TextActionResult(["You've collected the three number code"]);
     }
 
-    // The item is now collected
-    return new TextActionResult(["You've collected the three number code"]);
+    return undefined;
+    
   }
 
 

@@ -13,7 +13,6 @@ import { Room4, Room4Alias } from "./rooms/Room4";
 import { Room5, Room5Alias } from "./rooms/room5";
 import { EndRoom, EndRoomAlias } from "./rooms/EndRoom";
 import { ThreeNumberItem, ThreeNumberItemAlias } from "./items/ThreeNumberItem";
-import { SkeletonCharacter, SkeletonCharacterAlias } from "./characters/SkeletonCharacter";
 import { SawItem, SawItemAlias } from "./items/SawItem";
 import { WitchCharacter, WitchCharacterAlias } from "./characters/WitchCharacter";
 import { Painting1CharacterAlias, Painting1Character } from "./characters/paintings/painting1";
@@ -28,6 +27,12 @@ import { KeyItem2, KeyItem2Alias } from "./items/keys/KeyItem2";
 import { KeyItem3, KeyItem3Alias } from "./items/keys/KeyItem3";
 import { GhostCharacter, GhostCharacterAlias } from "./characters/GhostCharacter";
 import { FirstPot, FirstPotAlias } from "./characters/pots/FirstPotItem";
+import { SkeletonCharacter1, SkeletonCharacter1Alias } from "./characters/Skeleton Characters/Skeleton1";
+import { SkeletonCharacter2, SkeletonCharacter2Alias } from "./characters/Skeleton Characters/Skeleton2";
+import { SkeletonCharacter3, SkeletonCharacter3Alias } from "./characters/Skeleton Characters/Skeleton3";
+import { flashlightitem, FlashlightitemAlias } from "./items/flashlightitem";
+import { GameOverRoom, GameOverRoomAlias } from "./rooms/GameOverRoom";
+import { ActionResult } from "./base/actionResults/ActionResult";
 
 /**
  * Create a new player session object
@@ -43,6 +48,7 @@ export function createNewPlayerSession(): PlayerSession {
         paintingsTalkedTo: 0,
         witchRightChoise: false,
         pickedUpPotion: false,
+        collectedCode: false,
         playertrys: 0,
     };
 }
@@ -61,6 +67,16 @@ export function getPlayerSession(): PlayerSession {
  */
 export function resetPlayerSession(): void {
     resetPlayerSessionInContext(createNewPlayerSession);
+}
+
+/**
+ * Sends the player to the game over room
+ * @returns Examine text from the game over room
+ */
+export function sendToGameOver(): ActionResult | undefined {
+    const room: GameOverRoom = new GameOverRoom();
+    getPlayerSession().currentRoom = room.alias;
+    return room.examine();
 }
 
 /**
@@ -95,6 +111,8 @@ export function getRoomByAlias(alias: string): Room | undefined {
 
         case EndRoomAlias:
             return new EndRoom();
+        case GameOverRoomAlias:
+            return new GameOverRoom();
     }
 
     return undefined;
@@ -133,16 +151,25 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case Room4DoorItemAlias:
             return new Room4DoorItem();
 
-        // Item van kamer 3 - Megan
+        // Item kamer 3 - Megan
         case ThreeNumberItemAlias:
             return new ThreeNumberItem();
 
-        // Skeleton Character van kamer 3 - Megan
-        case SkeletonCharacterAlias:
-            return new SkeletonCharacter();
+        // Skeleton Characters kamer 3 - Megan
+        case SkeletonCharacter1Alias:
+            return new SkeletonCharacter1();
+
+        case SkeletonCharacter2Alias:
+            return new SkeletonCharacter2();
+
+        case SkeletonCharacter3Alias:
+            return new SkeletonCharacter3();
 
         case SawItemAlias:
             return new SawItem();
+
+        case FlashlightitemAlias:
+            return new flashlightitem();
 
         case WitchCharacterAlias:
             return new WitchCharacter();
@@ -163,7 +190,6 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case KeyItem3Alias:
             return new KeyItem3();
-        
 
         case PotionItemAlias:
             return new PotionItem();

@@ -7,5 +7,6 @@ export type PlayerSession = {
     //room5
     witchRightChoise: boolean;
     pickedUpPotion: boolean;
+    collectedCode: boolean;
     playertrys: number;
 };
