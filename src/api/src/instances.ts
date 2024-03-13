@@ -30,6 +30,7 @@ import { FirstPot, FirstPotAlias } from "./characters/pots/FirstPotItem";
 import { SkeletonCharacter1, SkeletonCharacter1Alias } from "./characters/Skeleton Characters/Skeleton1";
 import { SkeletonCharacter2, SkeletonCharacter2Alias } from "./characters/Skeleton Characters/Skeleton2";
 import { SkeletonCharacter3, SkeletonCharacter3Alias } from "./characters/Skeleton Characters/Skeleton3";
+import { Zaklampitem, ZaklampitemAlias } from "./items/ZaklampItem";
 
 /**
  * Create a new player session object
@@ -151,6 +152,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         case SawItemAlias:
             return new SawItem();
+
+        case ZaklampitemAlias:
+                return new Zaklampitem();
 
         case WitchCharacterAlias:
             return new WitchCharacter();
