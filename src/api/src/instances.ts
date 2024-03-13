@@ -30,6 +30,8 @@ import { FirstPot, FirstPotAlias } from "./characters/pots/FirstPotItem";
 import { SkeletonCharacter1, SkeletonCharacter1Alias } from "./characters/Skeleton Characters/Skeleton1";
 import { SkeletonCharacter2, SkeletonCharacter2Alias } from "./characters/Skeleton Characters/Skeleton2";
 import { SkeletonCharacter3, SkeletonCharacter3Alias } from "./characters/Skeleton Characters/Skeleton3";
+import { GameOverRoom, GameOverRoomAlias } from "./rooms/GameOverRoom";
+import { ActionResult } from "./base/actionResults/ActionResult";
 
 /**
  * Create a new player session object
@@ -65,6 +67,12 @@ export function resetPlayerSession(): void {
     resetPlayerSessionInContext(createNewPlayerSession);
 }
 
+export function sendToGameOver(): ActionResult | undefined {
+    const room: GameOverRoom = new GameOverRoom();
+    getPlayerSession().currentRoom = room.alias;
+    return room.examine();
+}
+
 /**
  * Get the instance of a room by its alias
  *
@@ -97,6 +105,8 @@ export function getRoomByAlias(alias: string): Room | undefined {
 
         case EndRoomAlias:
             return new EndRoom();
+        case GameOverRoomAlias:
+            return new GameOverRoom();
     }
 
     return undefined;
