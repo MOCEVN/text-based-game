@@ -1,7 +1,6 @@
 import { GameState, PerformActionRequest, ActionReference } from "@shared/types";
 import { Router } from "express";
 import { ActionResult } from "./base/actionResults/ActionResult";
-import { TalkActionResult } from "./base/actionResults/TalkActionResult";
 import { TextActionResult } from "./base/actionResults/TextActionResult";
 import { CustomAction } from "./base/actions/CustomAction";
 import { ExamineAction, ExamineActionAlias } from "./base/actions/ExamineAction";
@@ -21,6 +20,8 @@ import { ExampleAction, ExampleActionAlias } from "./actions/ExampleAction";
 import { Use, UseAlias } from "./actions/UseRoom5";
 import { CollectAction, CollectActionAlias } from "./actions/CollectRoom3";
 import { PickupAction, PickupActionAlias } from "./base/actions/PickupAction";
+import { TalkActionResult } from "./base/actionResults/TalkActionResult";
+import { Searchaction, SearchactionAlias } from "./actions/SearchRoom1";
 
 export const router: Router = Router();
 
@@ -130,6 +131,8 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
 
         case PickupActionAlias:
             return PickupAction.handle(gameObjects[0]);
+        case SearchactionAlias:
+            return Searchaction.handle(gameObjects[0]);
     }
 
     return CustomAction.handle(alias, gameObjects);

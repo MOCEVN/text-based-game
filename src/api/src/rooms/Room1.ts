@@ -10,6 +10,7 @@ import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
 import { Room2 } from "./Room2";
 import { flashlightitem } from "../items/flashlightitem";
 import { clownvoice } from "../characters/ClownCharacter/Clownvoice";
+import { Searchaction } from "../actions/SearchRoom1";
 
 export const Room1Alias: string = "room1";
 
@@ -23,15 +24,20 @@ export class Room1 extends Room {
     }
     public examine(): ActionResult | undefined {
         return new TextActionResult([
-            "Binnen in kamer 1 snijdt de kou als een mes door de lucht, terwijl duisternis heerst, slechts doorbroken door een flauwe maanstraal. Dit lijkt de perfecte schuilplaats voor een killer clown, wiens spottend gelach vanuit de schaduwen klinkt. Onzeker of het echt een clown is, voel je een dreiging die je kippenvel bezorgt",
-            "In plaats van te zoeken naar een clown die meer schim dan werkelijkheid lijkt, focus je op ontsnapping. Tevergeefs worstel je met ramen en stoelen, totdat iets onverwachts je aandacht trekt onder de boekenkast: mogelijk je kans op vrijheid. Met hernieuwde hoop, keer je je tot deze vondst, mogelijk de sleutel tot ontsnapping uit deze kille duisternis.",
+            "Inside room 1, the cold cuts through the air like a knife, while darkness reigns, only broken by a faint moonbeam. This seems the perfect hiding spot for a killer clown, whose mocking laughter echoes from the shadows. Unsure if it's really a clown, you feel a threat that gives you goosebumps.",
+            "Instead of searching for a clown who seems more shadow than reality, you focus on escape. In vain, you struggle with windows and chairs, until something unexpected catches your attention under the bookcase: possibly your chance at freedom. With renewed hope, you turn to this discovery, possibly the key to escaping this chilly darkness.",
         ]);
     }
     public images(): string[] {
         return ["room1"];
     }
     public actions(): Action[] {
-        return [new ExamineAction(), new TalkAction(), new CustomAction("room2", "Room 2", false)];
+        return [
+            new ExamineAction(),
+            new TalkAction(),
+            new Searchaction(),
+            new CustomAction("room2", "Room 2", false),
+        ];
     }
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
