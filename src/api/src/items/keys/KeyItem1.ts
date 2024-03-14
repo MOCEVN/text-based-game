@@ -24,13 +24,18 @@ export class KeyItem1 extends Item implements Examine, Pickup {
     public pickup(): ActionResult | undefined {
         const playerSession: PlayerSession = getPlayerSession();
 
-        if(!playerSession.inventory.includes(KeyItem1Alias)) {
-        (playerSession.inventory.push(KeyItem1Alias));
+        if (!playerSession.answeredRiddle === false) {
+            if (!playerSession.pickedUpKey1) {
+                playerSession.pickedUpKey1 = true;
+                playerSession.inventory.push(KeyItem1Alias);
 
-            return new TextActionResult(["You pick up the left key."]);
+                return new TextActionResult(["You pick up the left key."]);
 
+            } else {
+                return undefined;
+            }
         } else {
-            return undefined;
+            return new TextActionResult(["<I should talk to that scary ghost first...>"]);
         }
     }
 }

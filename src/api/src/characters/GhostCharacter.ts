@@ -6,6 +6,8 @@ import { TalkChoiceAction } from "../base/actions/TalkAction";
 import { Character } from "../base/gameObjects/Character";
 import { getPlayerSession } from "../instances";
 import { KeyItem1Alias } from "../items/keys/KeyItem1";
+import { KeyItem2Alias } from "../items/keys/KeyItem2";
+import { KeyItem3Alias } from "../items/keys/KeyItem3";
 import { PlayerSession } from "../types";
 
 export const GhostCharacterAlias: string = "ghost";
@@ -34,18 +36,34 @@ export class GhostCharacter extends Character implements Examine {
             } else if (choiceId === 2) {
                 return new TextActionResult(["You walk away from the ghost."]);
             } else if (choiceId === 3) {
-                return new TextActionResult(["wrong."]);
+                return new TextActionResult(["wrong, try again"]);
             } else if (choiceId === 4) {
-                return new TextActionResult(["wrong."]);
+                return new TextActionResult(["wrong, try again"]);
             } else if (choiceId === 5) {
-                return new TextActionResult(["wrong."]);
+                return new TextActionResult(["wrong, try again"]);
             } else if (choiceId === 6) {
-                return new TextActionResult(["correct."]);
+                playerSession.answeredRiddle = true;
+                return new TextActionResult(["\"Ah, astute mortal! Your wit shines brightly amidst the shadows of this realm.\"", "\"Indeed, the answer you have provided is correct,\" the ghost intones, its ethereal form pulsating with a faint glow of approval.", "\"As promised, the key you seek lies within your grasp. The rightmost key upon the table holds the answer to your quest.", "Choose wisely, for it is the gateway to your destiny.\""]);
             } else if (choiceId === 7) {
-                return new TextActionResult(["wrong."]);
+                return new TextActionResult(["wrong, try again"]);
             } else if (choiceId === 8) {
-                playerSession.inventory = [];
-                return new TextActionResult(["He puts the key back on the table."]);
+                const removeKey1Item: number = playerSession.inventory.indexOf(KeyItem1Alias);
+                if (removeKey1Item !== -1) {
+                    playerSession.inventory.splice(removeKey1Item);
+                }
+                return new TextActionResult(["He puts the left key back on the table."]);
+            } else if (choiceId === 9) {
+                const removeKey2Item: number = playerSession.inventory.indexOf(KeyItem2Alias);
+                if (removeKey2Item !== -1) {
+                    playerSession.inventory.splice(removeKey2Item, 1);
+                }
+                return new TextActionResult(["He puts the middle key back on the table."]);            
+            } else if (choiceId === 10) {
+                const removeKey3Item: number = playerSession.inventory.indexOf(KeyItem3Alias);
+                if (removeKey3Item !== -1) {
+                    playerSession.inventory.splice(removeKey3Item, 1);
+                }
+                return new TextActionResult(["He puts the right key back on the table."]);
             }
         
             const choiceActions: TalkChoiceAction[] = [
@@ -54,7 +72,15 @@ export class GhostCharacter extends Character implements Examine {
             
 
             if(playerSession.inventory.includes(KeyItem1Alias)) {
-                choiceActions.push(new TalkChoiceAction(8, "Give the key to the ghost"));
+                choiceActions.push(new TalkChoiceAction(8, "Give the left key to the ghost"));
+            }
+            
+            if(playerSession.inventory.includes(KeyItem2Alias)) {
+                choiceActions.push(new TalkChoiceAction(9, "Give the middle key to the ghost"));
+            }
+            
+            if(playerSession.inventory.includes(KeyItem3Alias)) {
+                choiceActions.push(new TalkChoiceAction(10, "Give the right key to the ghost"));
             }
             
             return new TalkActionResult(
