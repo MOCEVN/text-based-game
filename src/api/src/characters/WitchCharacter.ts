@@ -1,18 +1,25 @@
+import { UseAlias, UseRoom5 } from "../actions/UseRoom5";
 import { ActionResult } from "../base/actionResults/ActionResult";
 import { TalkActionResult } from "../base/actionResults/TalkActionResult";
 import { TextActionResult } from "../base/actionResults/TextActionResult";
 import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
 import { TalkChoiceAction } from "../base/actions/TalkAction";
 import { Character } from "../base/gameObjects/Character";
-import { getPlayerSession, resetPlayerSession } from "../instances";
+import { getPlayerSession, sendToGameOver } from "../instances";
 import { PlayerSession } from "../types";
 
 export const WitchCharacterAlias: string = "Witch";
 
-export class WitchCharacter extends Character implements Examine {
+export class WitchCharacter extends Character implements Examine, UseRoom5 {
     public constructor() {
-        super(WitchCharacterAlias, ExamineActionAlias);
+        super(WitchCharacterAlias, ExamineActionAlias, UseAlias);
     }
+
+    public Use(): ActionResult | undefined {
+        sendToGameOver();
+        return new TextActionResult(["The Witch slapped you"]);
+    }
+
     public name(): string {
         return "Witch";
     }
@@ -27,8 +34,8 @@ export class WitchCharacter extends Character implements Examine {
         if (PlayerSession.witchRightChoise === true) {
             const trys: number = PlayerSession.playertrys;
             if (trys === 0) {
-                resetPlayerSession();
-                return new TextActionResult(["Game Over"]);
+                sendToGameOver();
+                return new TextActionResult(["Game Over, you used up all your tries"]);
             }
             if (choiceId === 2) {
                 return "You left the wich alone";
@@ -125,7 +132,6 @@ export class WitchCharacter extends Character implements Examine {
                     ]
                 );
             } else if (choiceId === 8) {
-
                 return new TalkActionResult(
                     this,
                     [
@@ -134,7 +140,6 @@ export class WitchCharacter extends Character implements Examine {
                     [new TalkChoiceAction(2, "Leave the conversation")]
                 );
             } else if (choiceId === 9) {
-
                 return new TalkActionResult(
                     this,
                     [
