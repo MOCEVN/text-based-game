@@ -22,7 +22,7 @@ export class GameOverRoom extends Room implements Custom{
         }else if(PlayerSession.gameOverKamer5 === 2){
             return ["kamer5"];
         }
-       return ["kamer5"];
+       return ["startroom"];
     }
 
     public examine(): ActionResult | undefined {
