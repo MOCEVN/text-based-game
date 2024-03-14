@@ -5,7 +5,7 @@ import { TextActionResult } from "../base/actionResults/TextActionResult";
 import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
 import { TalkChoiceAction } from "../base/actions/TalkAction";
 import { Character } from "../base/gameObjects/Character";
-import { getPlayerSession, sendToGameOver } from "../instances";
+import { damagePlayer, getPlayerSession, sendToGameOver } from "../instances";
 import { PlayerSession } from "../types";
 
 export const WitchCharacterAlias: string = "Witch";
@@ -16,8 +16,10 @@ export class WitchCharacter extends Character implements Examine, UseRoom5 {
     }
 
     public Use(): ActionResult | undefined {
+        const PlayerSession: PlayerSession = getPlayerSession();
+        PlayerSession.gameOverKamer5 = 1;
         sendToGameOver();
-        return new TextActionResult(["The Witch slapped you"]);
+        return new TextActionResult(["As the foolish adventurer reached out to touch the witch, the witch evaporated them."]);
     }
 
     public name(): string {
@@ -34,8 +36,11 @@ export class WitchCharacter extends Character implements Examine, UseRoom5 {
         if (PlayerSession.witchRightChoise === true) {
             const trys: number = PlayerSession.playertrys;
             if (trys === 0) {
-                sendToGameOver();
-                return new TextActionResult(["Game Over, you used up all your tries"]);
+                const PlayerSession: PlayerSession = getPlayerSession();
+            PlayerSession.gameOverKamer5 = 2;
+                damagePlayer(5);
+
+                return new TextActionResult(["Game Over, you ran out of tries and the witch cursed you"]);
             }
             if (choiceId === 2) {
                 return "You left the wich alone";
@@ -89,6 +94,7 @@ export class WitchCharacter extends Character implements Examine, UseRoom5 {
             } else if (choiceId === 7) {
                 const trys: number = PlayerSession.playertrys;
                 const remainingTrys: number = 5 - trys;
+                // damagePlayer(1);
                 PlayerSession.playertrys++;
                 console.log(trys);
                 return new TalkActionResult(

@@ -52,6 +52,7 @@ export function createNewPlayerSession(): PlayerSession {
         pickedUpPotion: false,
         collectedCode: false,
         playertrys: 0,
+        gameOverKamer5: 0,
     };
 }
 
