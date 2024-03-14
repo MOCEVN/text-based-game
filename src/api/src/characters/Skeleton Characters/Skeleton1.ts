@@ -27,10 +27,14 @@ export class SkeletonCharacter1 extends Character implements Examine {
     const playerSession: PlayerSession = getPlayerSession();
 
     if(choiceId === 1) {
-      return new TextActionResult(["Skeleton: What do we have here...I never thought I would see a living soul again.",
-                                "But unfortunately, you're not quite there yet."]);
+      return new TextActionResult([
+        "Skeleton: 'Hey there, pal! The name's Boney McRibcage.",
+        "Yep, I used to be a regular Joe until this ol' haunted house got the best of me.",
+        "Now I'm just hangin' around, quite literally. Heh, get it? Hangin' around?",
+        "Anyway, watch your step in this joint, friend. Things can get pretty spooky around here.",
+        "So, what's your deal? Looking for treasure? Trying to break the curse? Or just lost your way to the local sandwich shop?",]);
     } else if(choiceId === 2) {
-      return new TextActionResult(["You need to investigate the room."]);
+      return new TextActionResult(["You need to investigate the room further."]);
     }
      else if(choiceId === 3) {
       playerSession.inventory = [];
@@ -39,7 +43,7 @@ export class SkeletonCharacter1 extends Character implements Examine {
     } 
 
     const choiceActions: TalkChoiceAction[] = [
-      new TalkChoiceAction(1, "Talk to the first skeleton"),
+      new TalkChoiceAction(1, "Talk to the skeleton"),
       new TalkChoiceAction(2, "Continue the quest"),
     ];
 
@@ -48,7 +52,10 @@ export class SkeletonCharacter1 extends Character implements Examine {
     }
     
     return new TalkActionResult(this, 
-      ["You've noticed a couple moving bones"], 
+      [ "As you approach the skeletal figure, you notice its weathered bones glistening faintly in the dim light of the room.",
+      "The skeleton is propped up against a crumbling pillar, its empty eye sockets seeming to watch your every move.",
+      "Despite its appearance, there's a playful aura about it, as if it's waiting for someone to engage in conversation.",
+      "Perhaps talking to the skeleton could reveal more about this haunted place and the secrets it holds."], 
       choiceActions
       );
   }

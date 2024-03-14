@@ -48,7 +48,7 @@ export class SkeletonCharacter3 extends Character implements Examine {
     }
 
     const choiceActions: TalkChoiceAction[] = [
-      new TalkChoiceAction(1, "Talk to the third skeleton"),
+      new TalkChoiceAction(1, "Talk to the skeleton"),
       new TalkChoiceAction(4, "Grab the amulet"),
       new TalkChoiceAction(2, "Continue the quest"),
     ];

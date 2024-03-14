@@ -40,7 +40,7 @@ export class SkeletonCharacter2 extends Character implements Examine {
     } 
 
     const choiceActions: TalkChoiceAction[] = [
-      new TalkChoiceAction(1, "Talk to the second skeleton"),
+      new TalkChoiceAction(1, "Talk to the skeleton"),
       new TalkChoiceAction(2, "Runaway from the skeleton"),
     ];
 

@@ -35,7 +35,7 @@ export class Room3 extends Room {
     
             return new TextActionResult([
                 "As you step into the dimly lit room, your eyes adjust to the darkness, revealing a multitude of mysterious objects scattered about.",
-                "Your curiosity piqued, you start exploring the room, carefully examining each object in search of clues.",
+                "Your curiosity piqued, you start exploring the room, carefully examining the room in search of clues.",
             ]);
         } else {
             // If the player has already searched the room
