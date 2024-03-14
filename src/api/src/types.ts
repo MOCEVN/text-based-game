@@ -1,6 +1,7 @@
 export type PlayerSession = {
     currentRoom: string;
     inventory: string[];
+    hp: number;
     // room 4
     paintingPuzzleState: number;
     paintingsTalkedTo: number;
