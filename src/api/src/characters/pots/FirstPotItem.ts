@@ -1,4 +1,4 @@
-import { UseRoom5 } from "../../actions/UseRoom5";
+import { UseAlias, UseRoom5 } from "../../actions/UseRoom5";
 import { ActionResult } from "../../base/actionResults/ActionResult";
 import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
@@ -11,22 +11,21 @@ export const FirstPotAlias: string = "Pot1";
 
 export class FirstPot extends Item implements Examine, UseRoom5 {
     public constructor() {
-        super(FirstPotAlias, ExamineActionAlias);
+        super(FirstPotAlias, ExamineActionAlias, UseAlias);
     }
     public Use(): ActionResult | undefined {
         const PlayerSession: PlayerSession = getPlayerSession();
 
-        if ((PlayerSession.witchRightChoise === true)) {
+        if (PlayerSession.witchRightChoise === true) {
             PlayerSession.inventory.push(PotionItemAlias);
-            return new TextActionResult([
-                "You obtained the potion",
-            ]);
-        }else{
-            return undefined;
+            return new TextActionResult(["You obtained the potion"]);
+        } else {
+            // eslint-disable-next-line quotes
+            return new TextActionResult([`The pot remains unmoved, its contents still hidden. Witch: "Before you can benefit from its secrets, you must first accept my challenge, traveler."`]);
         }
     }
     public name(): string {
-        return "First Pot";
+        return "Pot";
     }
     public examine(): ActionResult | undefined {
         return new TextActionResult([
