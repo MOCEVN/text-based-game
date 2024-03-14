@@ -2,6 +2,11 @@ export type PlayerSession = {
     currentRoom: string;
     inventory: string[];
     hp: number;
+    // room 2
+    pickedUpKey1: boolean;
+    pickedUpKey2: boolean;
+    pickedUpKey3: boolean;
+    answeredRiddle: boolean;
     // room 4
     paintingPuzzleState: number;
     paintingsTalkedTo: number;

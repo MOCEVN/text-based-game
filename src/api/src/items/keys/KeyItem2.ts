@@ -3,6 +3,8 @@ import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { Pickup, PickupActionAlias } from "../../base/actions/PickupAction";
 import { Item } from "../../base/gameObjects/Item";
+import { getPlayerSession } from "../../instances";
+import { PlayerSession } from "../../types";
 
 export const KeyItem2Alias: string = "key-item-2";
 
@@ -20,6 +22,20 @@ export class KeyItem2 extends Item implements Examine, Pickup {
     }
 
     public pickup(): ActionResult | undefined {
-        return new TextActionResult(["You pick up the middle key."]);
+        const playerSession: PlayerSession = getPlayerSession();
+
+        if (!playerSession.answeredRiddle === false) {
+            if(!playerSession.pickedUpKey2) {
+                playerSession.pickedUpKey2 = true;
+                (playerSession.inventory.push(KeyItem2Alias));
+
+                return new TextActionResult(["You pick up the middle key."]);
+
+            } else {
+                return undefined;
+            }
+        } else {
+            return new TextActionResult(["<I should talk to that scary ghost first...>"]);
+        }
     }
 }
