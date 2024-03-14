@@ -44,6 +44,7 @@ export function createNewPlayerSession(): PlayerSession {
     return {
         currentRoom: "startup",
         inventory: [],
+        hp: 5,
         // room 4
         paintingPuzzleState: 0,
         paintingsTalkedTo: 0,
@@ -79,7 +80,20 @@ export function sendToGameOver(): ActionResult | undefined {
     getPlayerSession().currentRoom = room.alias;
     return room.examine();
 }
-
+/**
+ * Lowers the players hp, also checks if the players hp is 0 or lower and if it is, sends the player to game over.
+ * @param damageAmount Amount to lower the hp by
+ * @returns Whether the player died or not: true if the player is dead, false if the player lives
+ */
+export function damagePlayer(damageAmount:number): boolean {
+    const playerSession: PlayerSession = getPlayerSession();
+    playerSession.hp -= damageAmount;
+    if (playerSession.hp <= 0) {
+        sendToGameOver();
+        return true;
+    }
+    return false;
+}
 /**
  * Get the instance of a room by its alias
  *
