@@ -23,7 +23,7 @@ export class Room5 extends Room {
     }
 
     public name(): string {
-        return "Room 5";
+        return "The Witch's Haven";
     }
     public images(): string[] {
         return ["kamer5"];
