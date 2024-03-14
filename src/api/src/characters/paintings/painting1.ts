@@ -35,7 +35,7 @@ export class Painting1Character extends Character implements Examine,Custom{
         }
         switch(choiceId){
             case 1: // "Hello?"
-                if (playerSession.paintingsTalkedTo < 4) {
+                if (playerSession.paintingsTalkedTo < 2) {
                     ++playerSession.paintingsTalkedTo;
                     return new TextActionResult(["\"...\""]);
                 } else {

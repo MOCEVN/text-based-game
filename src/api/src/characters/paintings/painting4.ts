@@ -29,7 +29,7 @@ export class Painting4Character extends Character implements Examine,Custom{
         const playerSession: PlayerSession = getPlayerSession();
         switch(choiceId){
             case 1: // "Hello?"
-                if (playerSession.paintingsTalkedTo < 4) {
+                if (playerSession.paintingsTalkedTo < 2) {
                     ++playerSession.paintingsTalkedTo;
                     return new TextActionResult(["\"...\""]);
                 } else {

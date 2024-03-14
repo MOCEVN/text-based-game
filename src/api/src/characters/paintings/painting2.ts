@@ -30,7 +30,7 @@ export class Painting2Character extends Character implements Examine,Custom{
         const playerSession: PlayerSession = getPlayerSession();
         switch(choiceId){
             case 1: // "Hello?"
-                if (playerSession.paintingsTalkedTo < 4) {
+                if (playerSession.paintingsTalkedTo < 2) {
                     ++playerSession.paintingsTalkedTo;
                     return new TextActionResult(["\"...\""]);
                 } else {
@@ -41,6 +41,13 @@ export class Painting2Character extends Character implements Examine,Custom{
             case 3: // choose painting (correct)
                 playerSession.paintingPuzzleState = 2;
                 playerSession.inventory.push(SawItemAlias);
+                return new TextActionResult(["\"You've chosen wisely\"", 
+                "the painting speaks, its voice resonating with approval.", 
+                "\"Behold, your reward.\"", 
+                "The scene depicted in the painting shifts, directing your gaze to a previously unnoticed object: a sturdy saw nestled among the brushstrokes.", 
+                "As you reach for it, the saw materializes in your hand, solid and real. With the tool now in your possession, you feel empowered, ready to face whatever challenges lie ahead."]);
+
+
                 return new TextActionResult(["\"You have chosen wisely, mortal,\"", 
                 "the chosen painting speaks, its voice resonating with approval.", 
                 "\"Behold, your reward awaits.\"", 
