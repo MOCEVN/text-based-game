@@ -8,6 +8,7 @@ import { TalkAction } from "../base/actions/TalkAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
 import { WitchCharacter } from "../characters/WitchCharacter";
+import { FirstPot } from "../characters/pots/FirstPotItem";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
 import { PotionItem, PotionItemAlias } from "../items/PotionItem";
 import { PlayerSession } from "../types";
@@ -22,7 +23,7 @@ export class Room5 extends Room {
     }
 
     public name(): string {
-        return "Room 5";
+        return "The Witch's Haven";
     }
     public images(): string[] {
         return ["kamer5"];
@@ -43,9 +44,9 @@ export class Room5 extends Room {
 
         // }
         if(PlayerSession.inventory.includes(PotionItemAlias)){
-            return [this, ...inventoryItems, new PotionItem(), new WitchCharacter()];
+            return [this, ...inventoryItems, new PotionItem(), new WitchCharacter(), new FirstPot()];
         }else{
-            return [this, ...inventoryItems, new WitchCharacter()];
+            return [this, ...inventoryItems, new WitchCharacter(), new FirstPot()];
         }
         
     }

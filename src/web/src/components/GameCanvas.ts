@@ -79,6 +79,7 @@ export class GameCanvas extends LitElement {
             flex-direction: column;
             overflow: auto;
             padding: 10px 10px 0 10px;
+            width: 100%;
         }
 
         .footer .buttons div:first-child {

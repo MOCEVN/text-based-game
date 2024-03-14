@@ -32,15 +32,15 @@ export class Room4 extends Room implements Talk{
     public examine(): ActionResult | undefined {
         if (getPlayerSession().paintingPuzzleState === 3){
             return new TextActionResult([
-                "The room is dimly lit, with shadows dancing across the walls, creating an eerie atmosphere. Five ornate paintings hang on the walls, their subjects ranging from serene landscapes to stoic portraits. Though the room appears ordinary at first glance, there's an underlying sense of unease, as if something is not quite right.", 
-                "In the center of the room, three of the five paintings stand out, their frames more ornate than the others. Despite their stillness, there's a subtle energy emanating from them, giving the impression that they hold some hidden significance.", 
+                "The room is dimly lit, with shadows dancing across the walls. Five ornate paintings hang on the walls. Though the room appears ordinary at first glance, there's an underlying sense of unease, as if something is not quite right.", 
+                "In the center of the room, three of the five paintings stand out, their frames more ornate than the others.", 
                 "At the far end of the room, a wooden door stands, now broken and splintered, lies on the ground, its frame stripped of its former solidity."
             ]);
         } else {
             return new TextActionResult([
-                "The room is dimly lit, with shadows dancing across the walls, creating an eerie atmosphere. Five ornate paintings hang on the walls, their subjects ranging from serene landscapes to stoic portraits. Though the room appears ordinary at first glance, there's an underlying sense of unease, as if something is not quite right.", 
-                "In the center of the room, three of the five paintings stand out, their frames more ornate than the others. Despite their stillness, there's a subtle energy emanating from them, giving the impression that they hold some hidden significance.", 
-                "At the far end of the room, a wooden door stands, its surface weathered and worn. Unlike the other doors, this one lacks any visible handle or mechanism for opening, adding to the mystery of the room."
+                "The room is dimly lit, with shadows dancing across the walls. Five ornate paintings hang on the walls. Though the room appears ordinary at first glance, there's an underlying sense of unease, as if something is not quite right.", 
+                "In the center of the room, three of the five paintings stand out, their frames more ornate than the others.", 
+                "At the far end of the room, a wooden door stands, its surface weathered and worn. Unlike the other doors, this one lacks any visible handle or mechanism for opening."
             ]);
         }
     }
@@ -53,7 +53,7 @@ export class Room4 extends Room implements Talk{
         const actions: Action[] = [new ExamineAction(), new TalkAction(),
             // test
             new CustomAction("reset","Reset (temp)",false),
-            new CustomAction("skip","Skip(temp)",false)
+            new CustomAction("skip","Skip (temp)",false)
         ];
         const playerSession: PlayerSession = getPlayerSession();
         if (playerSession.paintingPuzzleState >= 2) {

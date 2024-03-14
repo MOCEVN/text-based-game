@@ -4,13 +4,25 @@ import { Action } from "../base/actions/Action";
 import { Custom, CustomAction, CustomActionAlias } from "../base/actions/CustomAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
-import { resetPlayerSession } from "../instances";
+import { getPlayerSession, resetPlayerSession } from "../instances";
+import { PlayerSession } from "../types";
 
 export const GameOverRoomAlias: string = "game-over-room";
 
 export class GameOverRoom extends Room implements Custom{
     public constructor(){
         super(GameOverRoomAlias,CustomActionAlias);
+    }
+
+    public images(): string[] {
+        const PlayerSession: PlayerSession = getPlayerSession();
+
+        if(PlayerSession.gameOverKamer5 === 1){
+            return ["kamer5"];
+        }else if(PlayerSession.gameOverKamer5 === 2){
+            return ["kamer5"];
+        }
+       return ["startroom"];
     }
 
     public examine(): ActionResult | undefined {

@@ -6,7 +6,7 @@ import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { TalkChoiceAction } from "../../base/actions/TalkAction";
 import { Character } from "../../base/gameObjects/Character";
 import { GameObject } from "../../base/gameObjects/GameObject";
-import { getPlayerSession } from "../../instances";
+import { damagePlayer, getPlayerSession } from "../../instances";
 import { Room4 } from "../../rooms/Room4";
 import { PlayerSession } from "../../types";
 
@@ -29,7 +29,7 @@ export class Painting3Character extends Character implements Examine,Custom{
         const playerSession: PlayerSession = getPlayerSession();
         switch(choiceId){
             case 1: // "Hello?"
-                if (playerSession.paintingsTalkedTo < 4) {
+                if (playerSession.paintingsTalkedTo < 2) {
                     ++playerSession.paintingsTalkedTo;
                     return new TextActionResult(["\"...\""]);
                 } else {
@@ -38,9 +38,12 @@ export class Painting3Character extends Character implements Examine,Custom{
             case 2: // <Leave>
                 return new TextActionResult(["You briefly think about talking to the painting but decide against it, assuming it won't respond. You continue exploring, leaving the silent artwork alone."]);
             case 3:
-                return new TextActionResult(["\"Alas, you have been deceived,\"", 
-                "the chosen painting laments, its voice dripping with disappointment.", 
-                "\"Return to the puzzle and choose more wisely.\""]);
+                if (damagePlayer(1)){
+                    return new TextActionResult(["GAME OVER", "The painting killed you."]);
+                }
+                return new TextActionResult(["\"Wrong!\"", 
+                "the painting snaps.", 
+                "You feel a surge of malevolent energy engulving you, you feel a sharp, searing sensation coursing through your body, leaving you drained and disoriented."]);
             case 4:
                 return new TextActionResult([]);
             case 5:
