@@ -22,7 +22,10 @@ export class Room1 extends Room {
         return "Room 1";
     }
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["This is room 1."]);
+        return new TextActionResult([
+            "Binnen in kamer 1 snijdt de kou als een mes door de lucht, terwijl duisternis heerst, slechts doorbroken door een flauwe maanstraal. Dit lijkt de perfecte schuilplaats voor een killer clown, wiens spottend gelach vanuit de schaduwen klinkt. Onzeker of het echt een clown is, voel je een dreiging die je kippenvel bezorgt",
+            "In plaats van te zoeken naar een clown die meer schim dan werkelijkheid lijkt, focus je op ontsnapping. Tevergeefs worstel je met ramen en stoelen, totdat iets onverwachts je aandacht trekt onder de boekenkast: mogelijk je kans op vrijheid. Met hernieuwde hoop, keer je je tot deze vondst, mogelijk de sleutel tot ontsnapping uit deze kille duisternis.",
+        ]);
     }
     public images(): string[] {
         return ["room1"];

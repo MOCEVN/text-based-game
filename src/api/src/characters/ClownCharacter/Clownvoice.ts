@@ -22,11 +22,24 @@ export class clownvoice extends Character {
 
     public talk(choiceId?: number | undefined): ActionResult | undefined {
         if (choiceId === 1) {
-            return new TextActionResult([
-                "<you see a clown like shadow being cast on the wal it starts speaking: you seek to leave my colerful room?",
-            ]);
-        } else if (choiceId === 2) {
+            // return new TextActionResult(this, ["<you see a clown like shadow being cast on the wal it starts speaking: you seek to leave my colerful room?"],
+            // [new TalkChoiceAction(3, "Who is there?")]);
+            return new TalkActionResult(
+                this,
+                [
+                    "you see a clown like shadow being cast on the wal it starts speaking: you seek to leave my colerful room?",
+                ],
+                [new TalkChoiceAction(3, "keuze1"), new TalkChoiceAction(4, "keuze2")]
+            );
+        }
+        if (choiceId === 2) {
             return new TextActionResult(["<You pee your pants and stain the floor>"]);
+        }
+        if (choiceId === 3) {
+            return new TextActionResult(["<antwoord op keuze 1>"]);
+        }
+        if (choiceId === 4) {
+            return new TextActionResult(["<antwoord op keuze 2>"]);
         }
         return new TalkActionResult(
             this,
