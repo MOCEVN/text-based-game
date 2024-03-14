@@ -125,7 +125,15 @@ export class WitchCharacter extends Character implements Examine {
                     ]
                 );
             } else if (choiceId === 8) {
-                PlayerSession.witchRightChoise = true;
+
+                return new TalkActionResult(
+                    this,
+                    [
+                        "Witch: You have bested me. The potion you seek lies within the third pot from the left. With it you earn your freedom!",
+                    ],
+                    [new TalkChoiceAction(2, "Leave the conversation")]
+                );
+            } else if (choiceId === 9) {
 
                 return new TalkActionResult(
                     this,
