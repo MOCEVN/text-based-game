@@ -27,7 +27,10 @@ export class StartupRoom extends Room {
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["This is an example."]);
+        return new TextActionResult([
+            "Welcome, courageous soul, to the foreboding world of Terror Trial.", 
+            "Inside this mansion, you'll traverse through five unsettling rooms, each shrouded in mystery and filled with its own cryptic puzzle or riddle to solve. With only your wits and resolve to guide you, you must navigate the treacherous trials that lie ahead."
+        ]);
     }
 
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
