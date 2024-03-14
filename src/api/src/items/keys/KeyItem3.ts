@@ -1,3 +1,4 @@
+import { UseRoom2, UseRoom2ActionAlias } from "../../actions/UseRoom2";
 import { ActionResult } from "../../base/actionResults/ActionResult";
 import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
@@ -10,9 +11,9 @@ import { PlayerSession } from "../../types";
 
 export const KeyItem3Alias: string = "key-item-3";
 
-export class KeyItem3 extends Item implements Examine, Pickup {
+export class KeyItem3 extends Item implements Examine, Pickup, UseRoom2 {
     public constructor() {
-        super(KeyItem3Alias, ExamineActionAlias, PickupActionAlias);
+        super(KeyItem3Alias, ExamineActionAlias, PickupActionAlias, UseRoom2ActionAlias);
     }
 
     // TODO: check of dit werkt voor de opgepakte key!!
@@ -29,6 +30,9 @@ export class KeyItem3 extends Item implements Examine, Pickup {
     }
 
     // TODO: zorg ervoor dat de user de juiste key kan gebruiken op de deur!!
+    public useroom2(_gameObject: GameObject): ActionResult | undefined {
+        return new TextActionResult(["You used the key"]);
+    }
     
     public pickup(): ActionResult | undefined {
         const playerSession: PlayerSession = getPlayerSession();
@@ -38,7 +42,7 @@ export class KeyItem3 extends Item implements Examine, Pickup {
                 playerSession.pickedUpKey3 = true;
                 (playerSession.inventory.push(KeyItem3Alias));
 
-                return new TextActionResult(["You pick up the left key."]);
+                return new TextActionResult(["You pick up the right key."]);
 
             } else {
                 return undefined;

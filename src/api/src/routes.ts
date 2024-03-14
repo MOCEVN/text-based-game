@@ -22,6 +22,7 @@ import { CollectAction, CollectActionAlias } from "./actions/CollectRoom3";
 import { PickupAction, PickupActionAlias } from "./base/actions/PickupAction";
 import { TalkActionResult } from "./base/actionResults/TalkActionResult";
 import { Searchaction, SearchactionAlias } from "./actions/SearchRoom1";
+import { UseRoom2Action, UseRoom2ActionAlias } from "./actions/UseRoom2";
 
 export const router: Router = Router();
 
@@ -133,6 +134,8 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
             return PickupAction.handle(gameObjects[0]);
         case SearchactionAlias:
             return Searchaction.handle(gameObjects[0]);
+        case UseRoom2ActionAlias:
+            return UseRoom2Action.handle(gameObjects[0]);
     }
 
     return CustomAction.handle(alias, gameObjects);

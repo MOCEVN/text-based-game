@@ -1,3 +1,4 @@
+import { UseRoom2Action } from "../actions/UseRoom2";
 import { ActionResult } from "../base/actionResults/ActionResult";
 import { TextActionResult } from "../base/actionResults/TextActionResult";
 import { Action } from "../base/actions/Action";
@@ -33,7 +34,7 @@ export class Room2 extends Room {
         return ["room2"];
     }
     public actions(): Action[] {
-        return [new ExamineAction(), new PickupAction(), new TalkAction(), new CustomAction("room3","Room 3<Temp>",false)];
+        return [new ExamineAction(), new PickupAction(), new TalkAction(), new CustomAction("room3","Room 3<Temp>",false), new UseRoom2Action()];
     }
     public objects(): GameObject[] {
         const playerSession: PlayerSession = getPlayerSession();
