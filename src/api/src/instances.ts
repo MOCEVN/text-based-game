@@ -34,6 +34,7 @@ import { flashlightitem, FlashlightitemAlias } from "./items/flashlightitem";
 import { GameOverRoom, GameOverRoomAlias } from "./rooms/GameOverRoom";
 import { ActionResult } from "./base/actionResults/ActionResult";
 import { clownvoice, clownvoicealias } from "./characters/ClownCharacter/Clownvoice";
+import { TreasuryObject, TreasuryObjectAlias } from "./items/objects-room3/treasuryObject";
 
 /**
  * Create a new player session object
@@ -50,12 +51,14 @@ export function createNewPlayerSession(): PlayerSession {
         pickedUpKey2: false,
         pickedUpKey3: false,
         answeredRiddle: false,
+        // room 3
+        roomSearched: false, 
+        collectedCode: false,
         // room 4
         paintingPuzzleState: 0,
         paintingsTalkedTo: 0,
         witchRightChoise: false,
         pickedUpPotion: false,
-        collectedCode: false,
         playertrys: 0,
         gameOverKamer5: 0,
     };
@@ -175,6 +178,9 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         // Item kamer 3 - Megan
         case ThreeNumberItemAlias:
             return new ThreeNumberItem();
+
+        case TreasuryObjectAlias:
+            return new TreasuryObject();
 
         // Skeleton Characters kamer 3 - Megan
         case SkeletonCharacter1Alias:

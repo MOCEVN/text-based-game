@@ -14,6 +14,7 @@ import { PlayerSession } from "../types";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
 import { SkeletonCharacter2 } from "../characters/Skeleton Characters/Skeleton2";
 import { SkeletonCharacter3 } from "../characters/Skeleton Characters/Skeleton3";
+import { TreasuryObject } from "../items/objects-room3/treasuryObject";
 
 export const Room3Alias: string = "room3";
 
@@ -26,14 +27,26 @@ export class Room3 extends Room {
         return "Room 3";
     }
     public examine(): ActionResult | undefined {
-        return new TextActionResult([
-            "Upon opening the door, a dimly lit room reveals skeletal figures intertwined in an otherworldly dance.",
-            "Flickering candles cast eerie shadows, struggling against encroaching darkness. Soft whispers echo tales of sorrow.",
-            "Three well-preserved skeletons stand out—one holding a faded parchment, another a weathered book, and the third, a mysterious amulet.",
-            "Investigate carefully; one may hold the riddle unlocking the mystery of this room."
-        ]);
-    }
+        const playerSession: PlayerSession = getPlayerSession();
+
+        if (!playerSession.roomSearched) {
+            // If the player hasn't searched the room yet
+            playerSession.roomSearched = true; // Mark the room as searched
     
+            return new TextActionResult([
+                "As you step into the dimly lit room, your eyes adjust to the darkness, revealing a multitude of mysterious objects scattered about.",
+                "Your curiosity piqued, you start exploring the room, carefully examining each object in search of clues.",
+            ]);
+        } else {
+            // If the player has already searched the room
+            return new TextActionResult([
+                "You find yourself in the dimly lit room once again, surrounded by the same mysterious objects you've already explored.",
+                "Despite your prior efforts, the enigmatic atmosphere of the room leaves you feeling as though there's still much to uncover.",
+                "Amidst the shadows, your attention is drawn to a peculiar object tucked away in a corner.",
+                "It appears to be an old treasury partially obscured by fallen debris. Perhaps investigating it further will yield valuable insights."
+            ]);
+        }
+    }
     
     public images(): string[] {
         return ["room3"];
@@ -52,11 +65,11 @@ export class Room3 extends Room {
 
         const objects: GameObject[] = [this, ...getGameObjectsFromInventory()];
 
+        objects.push(new TreasuryObject(), new SkeletonCharacter1(), new SkeletonCharacter2(), new SkeletonCharacter3());
+
         if(!playerSession.inventory.includes(ThreeNumberItemAlias)) {
             objects.push(new ThreeNumberItem());
         }
-
-        objects.push(new SkeletonCharacter1(), new SkeletonCharacter2(), new SkeletonCharacter3());
 
         return objects;
         
@@ -75,3 +88,6 @@ export class Room3 extends Room {
     }
     
 }
+
+
+

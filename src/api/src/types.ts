@@ -7,13 +7,15 @@ export type PlayerSession = {
     pickedUpKey2: boolean;
     pickedUpKey3: boolean;
     answeredRiddle: boolean;
+    // room 3
+    collectedCode: boolean;
+    roomSearched: boolean;
     // room 4
     paintingPuzzleState: number;
     paintingsTalkedTo: number;
     //room5
     witchRightChoise: boolean;
     pickedUpPotion: boolean;
-    collectedCode: boolean;
     playertrys: number;
     gameOverKamer5: number;
 };
