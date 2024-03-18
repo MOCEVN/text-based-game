@@ -18,7 +18,6 @@ export class TreasuryObject extends GameObject implements Examine {
     return new TextActionResult([ 
       "After thoroughly searching the treasury, you notice the candles start flickering",
       "Pulling it aside, you reveal a hidden passage leading deeper into the room.",
-      "As you cautiously venture forth, the air grows cooler, and the sound of echoing footsteps fills your ears.",
       "You sense you're approaching something significant, and as you step further, the dim light reveals the silhouettes of skeletons.",
      "Three well-preserved skeletons stand out—one holding a faded parchment, another a weathered book, and the third, a mysterious amulet.",
        "Investigate carefully; one may hold the riddle unlocking the mystery of this room."

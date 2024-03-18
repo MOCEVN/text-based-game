@@ -41,7 +41,7 @@ export class Room3 extends Room {
             // If the player has already searched the room
             return new TextActionResult([
                 "You find yourself in the dimly lit room once again, surrounded by the same mysterious objects you've already explored.",
-                "Despite your prior efforts, the enigmatic atmosphere of the room leaves you feeling as though there's still much to uncover.",
+                "Despite your prior efforts, there's still much to uncover.",
                 "Amidst the shadows, your attention is drawn to a peculiar object tucked away in a corner.",
                 "It appears to be an old treasury partially obscured by fallen debris. Perhaps investigating it further will yield valuable insights."
             ]);
@@ -56,6 +56,7 @@ export class Room3 extends Room {
             new ExamineAction(), 
             new TalkAction(), 
             new CollectAction(),
+            new CustomAction("reset","Reset room",false),
             new CustomAction("room4","Room 4",false),
         ];
     }
