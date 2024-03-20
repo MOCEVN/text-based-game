@@ -1,4 +1,5 @@
 export type PlayerSession = {
+    [x: string]: any;
     currentRoom: string;
     inventory: string[];
     hp: number;
