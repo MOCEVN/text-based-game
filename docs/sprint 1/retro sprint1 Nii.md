@@ -21,3 +21,4 @@ Ik heb veel geleerd over hoe je als groep beter samenwerkt en elkaar vooruit hel
 ## persoonlijke ontwikkeling
 
 ik heb mijn skills met de game engine deze sprint verbeterd en heb daardoor ook mijn kamer verrijkt. Ook kan ik nu beter met mijn team communiseren, hierdoor is iedereen op de hoogte van waar ik me bezig ben.
+Om ervoor te zorgen dat mijn valkuilen en allergieën de projectvoortgang niet belemmerde, heb ik actief gewerkt aan het vinden van een balans in het verdelen van mijn tijd. Mijn valkuil was te lang aan de vormgeving zitten om het perfect te maken. Ik heb geleerd om deadlines te stellen en te focussen op de functionaliteit in plaats van te veel op formgeving. Mijn allergie was het gebrek aan inzet van teamgenoten en hun afwezigheid bij de les. Ik heb dit aangepakt door open communicatie via trello of de groepsapp aan te moedigen en duidelijke verwachtingen te stellen. Hierdoor werd de samenwerking verbeterd.
