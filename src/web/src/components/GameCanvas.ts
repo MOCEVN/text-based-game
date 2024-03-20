@@ -2,7 +2,8 @@ import { ActionReference, GameObjectReference, GameState } from "@shared/types";
 import { LitElement, TemplateResult, css, html, nothing } from "lit";
 import { customElement } from "lit/decorators.js";
 import { getState, performAction } from "../services/routeService";
-
+import { map } from "lit/directives/map.js";
+import { range } from "lit/directives/range.js";
 @customElement("game-canvas")
 export class GameCanvas extends LitElement {
     public static styles = css`
@@ -105,6 +106,22 @@ export class GameCanvas extends LitElement {
         .footer .button:hover {
             background-color: #332c57;
         }
+        .object-buttons {
+            flex-grow: 1;
+        }
+        .hp {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 10px;
+        }
+        .hp img {
+            height: 2.3em;
+            width: 2.3em;
+            margin-right: 5px;
+        }
+        .hp img:last-of-type{
+            margin-right:0;
+        }
     `;
 
     private roomTitle?: string;
@@ -112,6 +129,7 @@ export class GameCanvas extends LitElement {
     private contentText?: string[];
     private actionButtons?: ActionReference[];
     private gameObjectButtons?: GameObjectReference[];
+    private hp?: number;
 
     private selectedActionButton?: ActionReference;
     private selectedGameObjectButtons: Set<GameObjectReference> = new Set<GameObjectReference>();
@@ -135,6 +153,7 @@ export class GameCanvas extends LitElement {
         this.contentText = state.text;
         this.actionButtons = state.actions;
         this.gameObjectButtons = state.objects;
+        this.hp = state.hp;
 
         this.selectedActionButton = undefined;
         this.selectedGameObjectButtons.clear();
@@ -230,7 +249,7 @@ export class GameCanvas extends LitElement {
                             >`
                         )}
                     </div>
-                    <div>
+                    <div class="object-buttons">
                         ${this.selectedActionButton
                             ? this.gameObjectButtons?.map(
                                   (button) => html`<a
@@ -242,6 +261,10 @@ export class GameCanvas extends LitElement {
                                   >`
                               )
                             : nothing}
+                    </div>
+                    <div class="hp">
+                        <!-- TODO change image to heart image -->
+                        ${map(range(this.hp ?? 0), () => html`<img src="/assets/img/rooms/room1.png" draggable="false">`)}
                     </div>
                 </div>
             </div>
