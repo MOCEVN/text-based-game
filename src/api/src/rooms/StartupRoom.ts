@@ -7,6 +7,12 @@ import { Room } from "../base/gameObjects/Room";
 import { getPlayerSession } from "../instances";
 import { Room1 } from "./Room1";
 
+// imports for testing
+import { Room2 } from "./Room2";
+import { Room3 } from "./Room3";
+import { Room4 } from "./Room4";
+import { Room5 } from "./room5";
+
 export const StartupRoomAlias: string = "startup";
 
 export class StartupRoom extends Room {
@@ -23,7 +29,14 @@ export class StartupRoom extends Room {
     }
 
     public actions(): Action[] {
-        return [new CustomAction("start-game", "Start Game", false)];
+        return [new CustomAction("start-game", "Start Game", false)
+            ,// actions for testing
+            new CustomAction("r1","Room 1 (temp)",false),
+            new CustomAction("r2","Room 2 (temp)",false),
+            new CustomAction("r3","Room 3 (temp)",false),
+            new CustomAction("r4","Room 4 (temp)",false),
+            new CustomAction("r5","Room 5 (temp)",false)
+        ];
     }
 
     public examine(): ActionResult | undefined {
@@ -40,6 +53,30 @@ export class StartupRoom extends Room {
             //Set the current room to the example room
             getPlayerSession().currentRoom = room.alias;
 
+            return room.examine();
+        }
+
+        // actions for testing
+        let room: Room | undefined;
+        switch (alias){
+            case "r1":
+                room = new Room1;
+                break;
+            case "r2":
+                room = new Room2;
+                break;
+            case "r3":
+                room = new Room3;
+                break;
+            case "r4":
+                room = new Room4;
+                break;
+            case "r5":
+                room = new Room5;
+                break;
+        }
+        if (room) {
+            getPlayerSession().currentRoom = room.alias;
             return room.examine();
         }
 
