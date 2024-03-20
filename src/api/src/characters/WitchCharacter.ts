@@ -90,6 +90,7 @@ export class WitchCharacter extends Character implements Examine, UseRoom5 {
                 
 
                 if (damagePlayer(1)) {
+                    PlayerSession.gameOverKamer5 = 1;
                     return new TextActionResult(["The witch killed you."]);
                 };
                 return new TalkActionResult(
@@ -104,6 +105,7 @@ export class WitchCharacter extends Character implements Examine, UseRoom5 {
                 );
             } else if (choiceId === 5) {
                 if (damagePlayer(1)) {
+                    PlayerSession.gameOverKamer5 = 1;
                     return new TextActionResult(["The witch killed you."]);
                 };
                 return new TalkActionResult(
@@ -143,6 +145,7 @@ export class WitchCharacter extends Character implements Examine, UseRoom5 {
                 );
             } else if (choiceId === 9) {
                 if (damagePlayer(1)) {
+                    PlayerSession.gameOverKamer5 = 1;
                     return new TextActionResult(["The witch killed you."]);
                 };
                 return new TalkActionResult(
@@ -157,6 +160,7 @@ export class WitchCharacter extends Character implements Examine, UseRoom5 {
                 );
             } else if (choiceId === 10) {
                 if (damagePlayer(1)) {
+                    PlayerSession.gameOverKamer5 = 1;
                     return new TextActionResult(["The witch killed you."]);
                 };
                 return new TalkActionResult(
