@@ -8,10 +8,11 @@ import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
 import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
 import { Room2 } from "./Room2";
-import { flashlightitem } from "../items/flashlightitem";
 import { clownvoice } from "../characters/ClownCharacter/Clownvoice";
 import { Searchaction } from "../actions/SearchRoom1";
-
+import { flashlight } from "../characters/room1-3items/flashlight";
+import { Use } from "../actions/UseRoom5";
+import { gebruikaction } from "../base/actions/useitem";
 export const Room1Alias: string = "room1";
 
 export class Room1 extends Room {
@@ -34,6 +35,8 @@ export class Room1 extends Room {
     public actions(): Action[] {
         return [
             new ExamineAction(),
+            new Use(),
+            new gebruikaction(),
             new TalkAction(),
             new Searchaction(),
             new CustomAction("room2", "Room 2", false),
@@ -42,7 +45,7 @@ export class Room1 extends Room {
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
 
-        return [this, ...inventoryItems, new flashlightitem(), new clownvoice()];
+        return [this, ...inventoryItems, new flashlight(), new clownvoice()];
     }
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
         if (alias === "room2") {

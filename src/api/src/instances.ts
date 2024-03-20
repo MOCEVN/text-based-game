@@ -30,11 +30,11 @@ import { FirstPot, FirstPotAlias } from "./characters/pots/FirstPotItem";
 import { SkeletonCharacter1, SkeletonCharacter1Alias } from "./characters/Skeleton Characters/Skeleton1";
 import { SkeletonCharacter2, SkeletonCharacter2Alias } from "./characters/Skeleton Characters/Skeleton2";
 import { SkeletonCharacter3, SkeletonCharacter3Alias } from "./characters/Skeleton Characters/Skeleton3";
-import { flashlightitem, FlashlightitemAlias } from "./items/flashlightitem";
 import { GameOverRoom, GameOverRoomAlias } from "./rooms/GameOverRoom";
 import { ActionResult } from "./base/actionResults/ActionResult";
 import { clownvoice, clownvoicealias } from "./characters/ClownCharacter/Clownvoice";
 import { TreasuryObject, TreasuryObjectAlias } from "./items/objects-room3/treasuryObject";
+import { flashlight, FlashlightitemAlias } from "./characters/room1-3items/flashlight";
 
 /**
  * Create a new player session object
@@ -52,7 +52,7 @@ export function createNewPlayerSession(): PlayerSession {
         pickedUpKey3: false,
         answeredRiddle: false,
         // room 3
-        roomSearched: false, 
+        roomSearched: false,
         collectedCode: false,
         // room 4
         paintingPuzzleState: 0,
@@ -94,7 +94,7 @@ export function sendToGameOver(): ActionResult | undefined {
  * @param damageAmount Amount to lower the hp by
  * @returns Whether the player died or not: true if the player is dead, false if the player lives
  */
-export function damagePlayer(damageAmount:number): boolean {
+export function damagePlayer(damageAmount: number): boolean {
     const playerSession: PlayerSession = getPlayerSession();
     playerSession.hp -= damageAmount;
     if (playerSession.hp <= 0) {
@@ -220,7 +220,7 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
 
         // i/3 items you can use to find the clown in room 1 - Omar
         case FlashlightitemAlias:
-            return new flashlightitem();
+            return new flashlight();
 
         // Clownvoice in the distance for room 1 - Omar
         case clownvoicealias:
