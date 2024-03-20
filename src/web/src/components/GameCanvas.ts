@@ -86,7 +86,7 @@ export class GameCanvas extends LitElement {
         .footer .buttons div:first-child {
             border-bottom: 2px solid #837aa8;
         }
-        .footer .buttons div:last-child {
+        .footer .buttons div:nth-child(2) {
             margin-top: 10px;
         }
 
@@ -119,6 +119,7 @@ export class GameCanvas extends LitElement {
             width: 2.3em;
             margin-top: 5px;
             margin-right: 5px;
+            image-rendering: pixelated;
         }
         .hp img:last-of-type{
             margin-right:0;
@@ -265,6 +266,7 @@ export class GameCanvas extends LitElement {
                     </div>
                     <div class="hp">
                         ${map(range(this.hp ?? 0), () => html`<img src="/assets/img/rooms/heart.png" draggable="false">`)}
+                        ${map(range(10 - (this.hp ?? 10)), () => html`<img src="/assets/img/rooms/heartempty.png" draggable="false">`)}
                     </div>
                 </div>
             </div>
