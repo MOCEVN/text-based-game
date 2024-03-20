@@ -47,7 +47,8 @@ export class WitchCharacter extends Character implements Examine, UseRoom5 {
             );
         } else {
             const trys: number = PlayerSession.playertrys;
-            if (trys === 5) {
+            const remainingTrys: number = 5 - trys;
+            if (remainingTrys === 0) {
                 const PlayerSession: PlayerSession = getPlayerSession();
             PlayerSession.gameOverKamer5 = 2;
                 damagePlayer(5);

@@ -17,3 +17,7 @@ het maken van een goede puzzel en goede dialoog was mijn grootste uitdaging, ik 
 ## Geleerde lessen
 
 Ik heb veel geleerd over hoe je als groep beter samenwerkt en elkaar vooruit helpt
+
+## persoonlijke ontwikkeling
+
+ik heb mijn skills met de game engine deze sprint verbeterd en heb daardoor ook mijn kamer verrijkt. Ook kan ik nu beter met mijn team communiseren, hierdoor is iedereen op de hoogte van waar ik me bezig ben.
