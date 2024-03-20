@@ -6,7 +6,7 @@ import { castTo, implementsInterface } from "../base/helpers";
 export const UseAlias: string = "UseRoom5";
 
 export interface UseRoom5 {
-    Use(): ActionResult | undefined;
+    Use(choiceId?: number): ActionResult | undefined;
 }
 
 export class Use extends Action {

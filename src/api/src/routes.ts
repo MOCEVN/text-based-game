@@ -166,5 +166,6 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
         text: (actionResult as TextActionResult)?.text || ["That doesn't make any sense."],
         actions: actions,
         objects: room.objects().map((e) => e.toReference()),
+        hp: playerSession.hp,
     };
 }

@@ -18,7 +18,7 @@ export class GameOverRoom extends Room implements Custom{
         const PlayerSession: PlayerSession = getPlayerSession();
 
         if(PlayerSession.gameOverKamer5 === 1){
-            return ["kamer5"];
+            return ["behekst"];
         }else if(PlayerSession.gameOverKamer5 === 2){
             return ["kamer5"];
         }
