@@ -45,7 +45,7 @@ export function createNewPlayerSession(): PlayerSession {
     return {
         currentRoom: "startup",
         inventory: [],
-        hp: 5,
+        hp: 10,
         // room 2
         pickedUpKey1: false,
         pickedUpKey2: false,

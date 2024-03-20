@@ -117,6 +117,7 @@ export class GameCanvas extends LitElement {
         .hp img {
             height: 2.3em;
             width: 2.3em;
+            margin-top: 5px;
             margin-right: 5px;
         }
         .hp img:last-of-type{
@@ -263,8 +264,7 @@ export class GameCanvas extends LitElement {
                             : nothing}
                     </div>
                     <div class="hp">
-                        <!-- TODO change image to heart image -->
-                        ${map(range(this.hp ?? 0), () => html`<img src="/assets/img/rooms/room1.png" draggable="false">`)}
+                        ${map(range(this.hp ?? 0), () => html`<img src="/assets/img/rooms/heart.png" draggable="false">`)}
                     </div>
                 </div>
             </div>
