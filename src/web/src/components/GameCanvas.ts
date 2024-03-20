@@ -18,8 +18,9 @@ export class GameCanvas extends LitElement {
 
         .title {
             text-align: center;
-            margin-top: 10px;
+            margin-top: 5px;
             grid-column: 1 / 4;
+            background-color: #241f3e;
         }
 
         .header {
@@ -27,7 +28,7 @@ export class GameCanvas extends LitElement {
             flex-direction: column;
             align-items: center;
             flex-grow: 1;
-            margin: 10px 0 0 0;
+            margin: 5px 0 0 0;
             grid-column: 1/3;
             grid-row: 2/3;
             z-index: 1;
@@ -46,7 +47,7 @@ export class GameCanvas extends LitElement {
         }
 
         .content {
-            margin-top: 10px;
+            margin-top: 5px;
             padding: 10px;
             padding-left: 30%;
             background-color: #202020e0;
@@ -66,9 +67,9 @@ export class GameCanvas extends LitElement {
         }
 
         .footer {
-            border-radius: 10px 0 0 0;
-            background-color: #352e57;
-            border: 5px solid #211d31;
+            border-radius: 5px 0 0 0;
+            background-color: #241f3e;
+            border: 5px solid #000000;
             margin-top: 10px;
             display: flex;
             grid-column: 3/4;
@@ -95,7 +96,7 @@ export class GameCanvas extends LitElement {
             border: 3px solid #332c57;
             border-radius: 5px;
             padding: 5px 10px;
-            margin: 0 0 10px 10px;
+            margin: 0 5px 10px 10px;
             text-transform: uppercase;
             cursor: pointer;
             display: inline-block;
@@ -121,8 +122,8 @@ export class GameCanvas extends LitElement {
             margin-right: 5px;
             image-rendering: pixelated;
         }
-        .hp img:last-of-type{
-            margin-right:0;
+        .hp img:last-of-type {
+            margin-right: 0;
         }
     `;
 
@@ -266,7 +267,6 @@ export class GameCanvas extends LitElement {
                     </div>
                     <div class="hp">
                         ${map(range(this.hp ?? 0), () => html`<img src="/assets/img/rooms/heart.png" draggable="false">`)}
-                        ${map(range(10 - (this.hp ?? 10)), () => html`<img src="/assets/img/rooms/heartempty.png" draggable="false">`)}
                     </div>
                 </div>
             </div>
