@@ -32,6 +32,7 @@ export class WitchCharacter extends Character implements Examine, UseRoom5 {
     }
     public talk(choiceId?: number | undefined): ActionResult | undefined {
         const PlayerSession: PlayerSession = getPlayerSession();
+        
         // PlayerSession.witchRightChoise = false;
         if (PlayerSession.witchRightChoise === true) {
             
@@ -45,16 +46,7 @@ export class WitchCharacter extends Character implements Examine, UseRoom5 {
                 ["Witch: You have completed my riddle!"],
                 [new TalkChoiceAction(2, "Leave the conversation")]
             );
-        } else {
-            const trys: number = PlayerSession.playertrys;
-            const remainingTrys: number = 5 - trys;
-            if (remainingTrys === 0) {
-                const PlayerSession: PlayerSession = getPlayerSession();
-            PlayerSession.gameOverKamer5 = 2;
-                damagePlayer(5);
-
-                return new TextActionResult(["Game Over, you ran out of tries and the witch cursed you"]);
-            }
+        }
             if (choiceId === 1) {
                 return new TalkActionResult(
                     this,
@@ -95,15 +87,14 @@ export class WitchCharacter extends Character implements Examine, UseRoom5 {
                     ]
                 );
             } else if (choiceId === 7) {
-                PlayerSession.playertrys++;
-                const trys: number = PlayerSession.playertrys;
-                const remainingTrys: number = 5 - trys;
-                // damagePlayer(1);
                 
-                console.log(trys);
+
+                if (damagePlayer(1)) {
+                    return new TextActionResult(["The witch killed you."]);
+                };
                 return new TalkActionResult(
                     this,
-                    [`Incorrect, traveler. Try again. Remember, you have ${remainingTrys} more try's.`],
+                    [`Incorrect, traveler. Try again. Remember, you have ${PlayerSession.hp} more try's.`],
                     [
                         new TalkChoiceAction(5, "Is it coal?"),
                         new TalkChoiceAction(6, "Could it be a pencil?"),
@@ -112,13 +103,12 @@ export class WitchCharacter extends Character implements Examine, UseRoom5 {
                     ]
                 );
             } else if (choiceId === 5) {
-                PlayerSession.playertrys++;
-                const trys: number = PlayerSession.playertrys;
-                const remainingTrys: number = 5 - trys;
-                console.log(trys);
+                if (damagePlayer(1)) {
+                    return new TextActionResult(["The witch killed you."]);
+                };
                 return new TalkActionResult(
                     this,
-                    [`Not quite, wanderer. Give it another shot. You have ${remainingTrys} more chances.`],
+                    [`Not quite, wanderer. Give it another shot. You have ${PlayerSession.hp} more chances.`],
                     [
                         new TalkChoiceAction(5, "Is it coal?"),
                         new TalkChoiceAction(6, "Could it be a pencil?"),
@@ -152,13 +142,12 @@ export class WitchCharacter extends Character implements Examine, UseRoom5 {
                     [new TalkChoiceAction(2, "Leave the conversation")]
                 );
             } else if (choiceId === 9) {
-                PlayerSession.playertrys++;
-                const trys: number = PlayerSession.playertrys;
-                const remainingTrys: number = 5 - trys;
-                console.log(trys);
+                if (damagePlayer(1)) {
+                    return new TextActionResult(["The witch killed you."]);
+                };
                 return new TalkActionResult(
                     this,
-                    [`Not quite, wanderer. Give it another shot. You have ${remainingTrys} more chancse.`],
+                    [`Not quite, wanderer. Give it another shot. You have ${PlayerSession.hp} more chancse.`],
                     [
                         new TalkChoiceAction(8, "Is it fear?"),
                         new TalkChoiceAction(9, "Could it be fire?"),
@@ -167,13 +156,12 @@ export class WitchCharacter extends Character implements Examine, UseRoom5 {
                     ]
                 );
             } else if (choiceId === 10) {
-                PlayerSession.playertrys++;
-                const trys: number = PlayerSession.playertrys;
-                const remainingTrys: number = 5 - trys;
-                console.log(trys);
+                if (damagePlayer(1)) {
+                    return new TextActionResult(["The witch killed you."]);
+                };
                 return new TalkActionResult(
                     this,
-                    [`Not quite, wanderer. Give it another shot. You have ${remainingTrys} more try's.`],
+                    [`Not quite, wanderer. Give it another shot. You have ${PlayerSession.hp} more try's.`],
                     [
                         new TalkChoiceAction(8, "Is it fear?"),
                         new TalkChoiceAction(9, "Could it be fire?"),
@@ -193,4 +181,4 @@ export class WitchCharacter extends Character implements Examine, UseRoom5 {
             // }
         }
     }
-}
+
