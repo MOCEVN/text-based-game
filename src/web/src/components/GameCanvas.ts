@@ -69,8 +69,8 @@ export class GameCanvas extends LitElement {
         .footer {
             border-radius: 5px 0 0 0;
             background-color: #241f3e;
-            border: 5px solid #000000;
-            margin-top: 10px;
+            border: 0 0 0 solid #141410;
+            margin-top: 5px;
             display: flex;
             grid-column: 3/4;
             z-index: 2;
@@ -118,6 +118,7 @@ export class GameCanvas extends LitElement {
         .hp img {
             height: 2.3em;
             width: 2.3em;
+            min-width: 18%;
             margin-top: 5px;
             margin-right: 5px;
             image-rendering: pixelated;
