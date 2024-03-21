@@ -36,8 +36,16 @@ export class Room3 extends Room {
     }
     
     public images(): string[] {
-        return ["room3"];
+        const playerSession: PlayerSession = getPlayerSession();
+
+        // If the code is collected, return an updated image array
+        if (playerSession.inventory.includes(ThreeNumberItemAlias)) {
+            return ["ThreeNumberItem"]; // Add the new image to be displayed
+        } else {
+            return ["room3"]; // Otherwise, return the default image array
+        }
     }
+    
     public actions(): Action[] {
         return [
             new ExamineAction(), 

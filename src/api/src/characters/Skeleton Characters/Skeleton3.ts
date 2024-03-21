@@ -5,7 +5,6 @@ import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { TalkChoiceAction } from "../../base/actions/TalkAction";
 import { Character } from "../../base/gameObjects/Character";
 import { getPlayerSession } from "../../instances";
-import { ThreeNumberItemAlias } from "../../items/ThreeNumberItem";
 import { PlayerSession } from "../../types";
 
 export const SkeletonCharacter3Alias: string = "skeleton-character-3";
@@ -20,8 +19,8 @@ export class SkeletonCharacter3 extends Character implements Examine {
   }
 
   public examine(): ActionResult | undefined {
-    return new TextActionResult(["The skeleton adorned with the mysterious amulet stands tall.",
-    "As you observe closely, you notice a faint, ethereal glow emanating from within the amulet, giving the skeletal figure an otherworldly aura."]);
+    return new TextActionResult(["The skeleton with the mysterious amulet stands tall.",
+    "As you observe closely, you notice a ethereal glow emanating from within the amulet, giving the skeleton an otherworldly aura."]);
   }
 
   public talk(choiceId?: number | undefined): ActionResult | undefined {
@@ -32,12 +31,7 @@ export class SkeletonCharacter3 extends Character implements Examine {
         new TalkChoiceAction(4, "Grab the amulet"),
         new TalkChoiceAction(2, "Continue the quest"),
       ];
-
-      if(playerSession.inventory.includes(ThreeNumberItemAlias)) {
-          choiceActions.push(new TalkChoiceAction(3, "Throw the code!"));
-      }
       
-
       return new TalkActionResult(this, 
         ["As you attempt to converse with the skeleton wearing the mysterious amulet",
         "It appears this skeletal guardian holds no answers for your quest to escape this mysterious room.",
@@ -55,7 +49,7 @@ export class SkeletonCharacter3 extends Character implements Examine {
     else if(choiceId === 4) {
       return new TextActionResult([
         "a message unfolds: 'Seek out the keeper of riddles, whose bones whisper secrets of the past. Only through conversation with this spectral sage shall the path to enlightenment be revealed' ",
-      "The second creature will help you out."]);
+      ]);
     }
 
     // Default action when no specific choice is selected
