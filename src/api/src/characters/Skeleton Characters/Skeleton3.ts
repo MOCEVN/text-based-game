@@ -46,7 +46,7 @@ export class SkeletonCharacter3 extends Character implements Examine {
       );
     } 
     else if(choiceId === 2) {
-      return new TextActionResult(["You chickened out."]);
+      return new TextActionResult(["No succes with this creature unfortunately"]);
     }
     else if(choiceId === 3) {
       playerSession.inventory = [];

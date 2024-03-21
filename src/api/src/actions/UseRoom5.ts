@@ -20,6 +20,7 @@ export class Use extends Action {
             // return (gameObject as unknown as Gebruiken).Gebruiken();
         }
 
+
         return undefined;
     }
 }

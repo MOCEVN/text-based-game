@@ -2,7 +2,8 @@ import { ActionReference, GameObjectReference, GameState } from "@shared/types";
 import { LitElement, TemplateResult, css, html, nothing } from "lit";
 import { customElement } from "lit/decorators.js";
 import { getState, performAction } from "../services/routeService";
-
+import { map } from "lit/directives/map.js";
+import { range } from "lit/directives/range.js";
 @customElement("game-canvas")
 export class GameCanvas extends LitElement {
     public static styles = css`
@@ -17,8 +18,9 @@ export class GameCanvas extends LitElement {
 
         .title {
             text-align: center;
-            margin-top: 10px;
+            margin-top: 5px;
             grid-column: 1 / 4;
+            background-color: #241f3e;
         }
 
         .header {
@@ -26,7 +28,7 @@ export class GameCanvas extends LitElement {
             flex-direction: column;
             align-items: center;
             flex-grow: 1;
-            margin: 10px 0 0 0;
+            margin: 5px 0 0 0;
             grid-column: 1/3;
             grid-row: 2/3;
             z-index: 1;
@@ -45,12 +47,11 @@ export class GameCanvas extends LitElement {
         }
 
         .content {
-            margin-top: 10px;
+            margin-top: 5px;
             padding: 10px;
             padding-left: 30%;
             background-color: #202020e0;
             background: linear-gradient(to right, #00000000, #141410f0 30% 90%, #141410ff);
-            box-shadow: #202020ff 10px 0;
             grid-column: 2/3;
             grid-row: 2/3;
             z-index: 2;
@@ -66,9 +67,9 @@ export class GameCanvas extends LitElement {
 
         .footer {
             border-radius: 10px 0 0 0;
-            background-color: #352e57;
-            border: 5px solid #211d31;
-            margin-top: 10px;
+            background-color: #241f3e;
+            border: 0 0 0 solid #141410;
+            margin-top: 5px;
             display: flex;
             grid-column: 3/4;
             z-index: 2;
@@ -85,7 +86,7 @@ export class GameCanvas extends LitElement {
         .footer .buttons div:first-child {
             border-bottom: 2px solid #837aa8;
         }
-        .footer .buttons div:last-child {
+        .footer .buttons div:nth-child(2) {
             margin-top: 10px;
         }
 
@@ -94,7 +95,7 @@ export class GameCanvas extends LitElement {
             border: 3px solid #332c57;
             border-radius: 5px;
             padding: 5px 10px;
-            margin: 0 0 10px 10px;
+            margin: 0 5px 10px 10px;
             text-transform: uppercase;
             cursor: pointer;
             display: inline-block;
@@ -105,6 +106,24 @@ export class GameCanvas extends LitElement {
         .footer .button:hover {
             background-color: #332c57;
         }
+        .object-buttons {
+            flex-grow: 1;
+        }
+        .hp {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        .hp img {
+            height: 2.3em;
+            width: 2.3em;
+            min-width: 18%;
+            margin-top: 5px;
+            margin-right: 5px;
+            image-rendering: pixelated;
+            object-fit: contain;
+            flex-grow: 1;
+        }
     `;
 
     private roomTitle?: string;
@@ -112,6 +131,7 @@ export class GameCanvas extends LitElement {
     private contentText?: string[];
     private actionButtons?: ActionReference[];
     private gameObjectButtons?: GameObjectReference[];
+    private hp?: number;
 
     private selectedActionButton?: ActionReference;
     private selectedGameObjectButtons: Set<GameObjectReference> = new Set<GameObjectReference>();
@@ -135,6 +155,7 @@ export class GameCanvas extends LitElement {
         this.contentText = state.text;
         this.actionButtons = state.actions;
         this.gameObjectButtons = state.objects;
+        this.hp = state.hp;
 
         this.selectedActionButton = undefined;
         this.selectedGameObjectButtons.clear();
@@ -230,7 +251,7 @@ export class GameCanvas extends LitElement {
                             >`
                         )}
                     </div>
-                    <div>
+                    <div class="object-buttons">
                         ${this.selectedActionButton
                             ? this.gameObjectButtons?.map(
                                   (button) => html`<a
@@ -242,6 +263,10 @@ export class GameCanvas extends LitElement {
                                   >`
                               )
                             : nothing}
+                    </div>
+                    <div class="hp">
+                        ${map(range(this.hp ?? 0), () => html`<img src="/assets/img/rooms/heart.png" draggable="false">`)}
+                        ${map(range(10 - (this.hp ?? 10)), () => html`<img src="/assets/img/rooms/heartempty.png" draggable="false">`)}
                     </div>
                 </div>
             </div>

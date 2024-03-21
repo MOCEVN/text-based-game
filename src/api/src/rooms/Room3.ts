@@ -24,28 +24,15 @@ export class Room3 extends Room {
     }
 
     public name(): string {
-        return "Room 3";
+        return "Mystical Chamber";
     }
-    public examine(): ActionResult | undefined {
-        const playerSession: PlayerSession = getPlayerSession();
-
-        if (!playerSession.roomSearched) {
-            // If the player hasn't searched the room yet
-            playerSession.roomSearched = true; // Mark the room as searched
-    
+    public examine(): ActionResult | undefined {    
             return new TextActionResult([
-                "As you step into the dimly lit room, your eyes adjust to the darkness, revealing a multitude of mysterious objects scattered about.",
+                "As you step into the dimly lit room, your eyes adjust to the darkness, revealing a multitude of mysterious objects.",
                 "Your curiosity piqued, you start exploring the room, carefully examining the room in search of clues.",
+                "It appears to be an old treasury partially obscured by fallen debris. Perhaps investigating it further will yield valuable insights.",
             ]);
-        } else {
-            // If the player has already searched the room
-            return new TextActionResult([
-                "You find yourself in the dimly lit room once again, surrounded by the same mysterious objects you've already explored.",
-                "Despite your prior efforts, there's still much to uncover.",
-                "Amidst the shadows, your attention is drawn to a peculiar object tucked away in a corner.",
-                "It appears to be an old treasury partially obscured by fallen debris. Perhaps investigating it further will yield valuable insights."
-            ]);
-        }
+        
     }
     
     public images(): string[] {
@@ -56,7 +43,7 @@ export class Room3 extends Room {
             new ExamineAction(), 
             new TalkAction(), 
             new CollectAction(),
-            new CustomAction("reset","Reset room",false),
+            // new CustomAction("reset","Reset room",false),
             new CustomAction("room4","Room 4",false),
         ];
     }

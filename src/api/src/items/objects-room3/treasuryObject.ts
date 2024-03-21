@@ -2,25 +2,43 @@ import { ActionResult } from "../../base/actionResults/ActionResult";
 import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { GameObject } from "../../base/gameObjects/GameObject";
+import { getPlayerSession } from "../../instances";
+import { PlayerSession } from "../../types";
 
 export const TreasuryObjectAlias: string = "treasury-object";
 
 export class TreasuryObject extends GameObject implements Examine {
-  public constructor() {
-    super(TreasuryObjectAlias, ExamineActionAlias);
-  }
+    public constructor() {
+        super(TreasuryObjectAlias, ExamineActionAlias);
+    }
 
-  public name(): string {
-    return "Treasury";
-  }
+    public name(): string {
+        return "Treasury";
+    }
 
-  public examine(): ActionResult | undefined {
-    return new TextActionResult([ 
-      "After thoroughly searching the treasury, you notice the candles start flickering",
-      "Pulling it aside, you reveal a hidden passage leading deeper into the room.",
-      "You sense you're approaching something significant, and as you step further, the dim light reveals the silhouettes of skeletons.",
-     "Three well-preserved skeletons stand out—one holding a faded parchment, another a weathered book, and the third, a mysterious amulet.",
-       "Investigate carefully; one may hold the riddle unlocking the mystery of this room."
-]);
-  }
+    public talk(): ActionResult | undefined {
+           return new TextActionResult(["You can't talk to a treasure object, or can you?"]);
+      
+    }
+
+    public examine(): ActionResult | undefined {
+        const playerSession: PlayerSession = getPlayerSession();
+
+        if (!playerSession.roomSearched) {
+            // If the player hasn't searched the room yet
+            playerSession.roomSearched = true; // Mark the room as searched
+
+            return new TextActionResult([
+              "As you enter the chamber, your eyes fall upon the ancient treasury",
+              "Despite your thorough examination, it yielded no clue or hint to aid your quest",
+              "The air hangs heavy with disappointment as you realize the mystery remains unsolved.",
+            ]);
+        } else {
+            // If the player has already searched the room
+            return new TextActionResult([
+                "You have already examined the treasury. Continue your search.",
+                
+            ]);
+        } 
+    }
 }

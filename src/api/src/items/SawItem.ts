@@ -24,9 +24,9 @@ export class SawItem extends Item implements Examine, UseRoom5, Custom {
     }
     public examine(): ActionResult | undefined {
         if (getPlayerSession().paintingPuzzleState === 3) {
-            return new TextActionResult(["The saw, once gleaming and sturdy, now bears the marks of its labor. Sawdust and wood pieces cling to its blade and handle, evidence of its successful efforts to cut through the door. Despite its now-worn appearance, the saw still retains its reliability and strength."]);
+            return new TextActionResult(["The saw, once gleaming and sturdy, now bears the marks of its labor. Sawdust and wood pieces cling to its blade and handle, evidence of its efforts to cut through the door. Now, the saw fails to yield any results, its reliability and strength proving futile in this instance."]);
         }
-        return new TextActionResult(["The saw is a sturdy tool with a sharp blade and a worn handle, indicating its history of use. Despite its simple appearance, it exudes reliability and strength, ready to assist the wielder on their journey."]);
+        return new TextActionResult(["The saw appears delicate and worn, its blade bearing signs of age and use. Despite its fragile appearance, it still retains a hint of sharpness, ready to fulfill its purpose with a single use."]);
     }
 
     public Use(): ActionResult | undefined {

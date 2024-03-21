@@ -167,6 +167,7 @@ export class Room4 extends Room implements Talk{
             if (playerSession.inventory.indexOf(SawItemAlias) < 0){
                 playerSession.inventory.push(SawItemAlias);
             }
+            playerSession.paintingPuzzleState = 3;
             const room: Room5 = new Room5();
             playerSession.currentRoom = room.alias;
             return room.examine();
