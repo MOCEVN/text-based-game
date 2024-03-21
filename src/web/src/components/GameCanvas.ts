@@ -267,6 +267,7 @@ export class GameCanvas extends LitElement {
                     </div>
                     <div class="hp">
                         ${map(range(this.hp ?? 0), () => html`<img src="/assets/img/rooms/heart.png" draggable="false">`)}
+                        ${map(range(10 - (this.hp ?? 10)), () => html`<img src="/assets/img/rooms/heartempty.png" draggable="false">`)}
                     </div>
                 </div>
             </div>
