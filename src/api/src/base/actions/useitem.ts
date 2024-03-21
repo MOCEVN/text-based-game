@@ -4,7 +4,6 @@ import { Character } from "../gameObjects/Character";
 import { Action } from "./Action";
 import { GameObject } from "../gameObjects/GameObject";
 import { castTo, implementsInterface } from "../helpers";
-import { TalkActionAlias } from "./TalkAction";
 
 /** Alias used to identity the Talk action and interface */
 export const gebruiktitemAlias: string = "use";
@@ -56,7 +55,7 @@ export class gebruikaction extends Action {
  *
  * @remarks This class does not extend `Action` since it's a subaction of Talk and works fundamentally different than normal actions
  */
-export class TalkChoiceAction {
+export class UseChoiceAction {
     private _id: number;
     private _text: string;
 
@@ -80,7 +79,7 @@ export class TalkChoiceAction {
      */
     public toReference(character: Character): ActionReference {
         return {
-            alias: `${TalkActionAlias}:${character.alias}:${this._id}`,
+            alias: `${gebruiktitemAlias}:${character.alias}:${this._id}`,
             label: this._text,
             needsObject: false,
         };
