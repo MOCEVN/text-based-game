@@ -52,7 +52,6 @@ export class GameCanvas extends LitElement {
             padding-left: 30%;
             background-color: #202020e0;
             background: linear-gradient(to right, #00000000, #141410f0 30% 90%, #141410ff);
-            box-shadow: #202020ff 10px 0;
             grid-column: 2/3;
             grid-row: 2/3;
             z-index: 2;
@@ -67,7 +66,7 @@ export class GameCanvas extends LitElement {
         }
 
         .footer {
-            border-radius: 5px 0 0 0;
+            border-radius: 10px 0 0 0;
             background-color: #241f3e;
             border: 0 0 0 solid #141410;
             margin-top: 5px;
