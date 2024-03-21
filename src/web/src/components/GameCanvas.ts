@@ -113,7 +113,7 @@ export class GameCanvas extends LitElement {
         .hp {
             display: flex;
             flex-wrap: wrap;
-            margin: 10px;
+            margin-bottom: 10px;
         }
         .hp img {
             height: 2.3em;
@@ -121,9 +121,8 @@ export class GameCanvas extends LitElement {
             margin-top: 5px;
             margin-right: 5px;
             image-rendering: pixelated;
-        }
-        .hp img:last-of-type {
-            margin-right: 0;
+            object-fit: contain;
+            flex-grow: 1;
         }
     `;
 
