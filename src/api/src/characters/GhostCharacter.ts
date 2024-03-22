@@ -48,54 +48,58 @@ export class GhostCharacter extends Character implements Examine {
         if (choiceId === 1) {
             return new TalkActionResult(
                 this,
-                ["It is green, hangs from a tree, and is deadly when it falls upon you. What is it?"],
-                [new TalkChoiceAction(3, "\"a leaf\""), new TalkChoiceAction(4, "\"a bird\""), new TalkChoiceAction(5, "\"a pickle\""), new TalkChoiceAction(6, "\"a pool table\""), new TalkChoiceAction(7, "\"a broccoli\"")]);
-            } else if (choiceId === 2) {
+                ["\"It is green, hangs from a tree, and is deadly when it falls upon you. What is it?\""],
+                [new TalkChoiceAction(3, "\"a leaf\""), new TalkChoiceAction(3, "\"a bird\""), new TalkChoiceAction(3, "\"a pickle\""), new TalkChoiceAction(4, "\"a pool table\""), new TalkChoiceAction(3, "\"a broccoli\"")]);
+            } 
+            
+            else if (choiceId === 2) {
                 return new TextActionResult(["You walk away from the ghost."]);
-            } else if (choiceId === 3) {
+            }
+
+            else if (choiceId === 9) {
+                return new TextActionResult(["You ran away like a little girl."]);
+            } 
+            
+            else if (choiceId === 3) {
                 if (damagePlayer(1)){
                     return new TextActionResult(["GAME OVER", "The ghost killed you."]);
                 }
-                return new TextActionResult(["wrong, try again"]);
-            } else if (choiceId === 4) {
-                if (damagePlayer(1)){
-                    return new TextActionResult(["GAME OVER", "The ghost killed you."]);
-                }
-                return new TextActionResult(["wrong, try again"]);
-            } else if (choiceId === 5) {
-                if (damagePlayer(1)){
-                    return new TextActionResult(["GAME OVER", "The ghost killed you."]);
-                }
-                return new TextActionResult(["wrong, try again"]);
-            } else if (choiceId === 6) {
+                return new TalkActionResult(this,
+                ["The ghost scares you!", "\"Mortal, your answer does not unlock the gate to understanding. You may try again... If you dare.\"", "\"It is green, hangs from a tree, and is deadly when it falls upon you. What is it?\""],
+                [new TalkChoiceAction(3, "\"a leaf\""), new TalkChoiceAction(3, "\"a bird\""), new TalkChoiceAction(3, "\"a pickle\""), new TalkChoiceAction(4, "\"a pool table\""), new TalkChoiceAction(3, "\"a broccoli\""), new TalkChoiceAction(9, "cry and run away")]);
+            }
+            
+            else if (choiceId === 4) {
                 playerSession.answeredRiddle = true;
                 return new TextActionResult(["\"Ah, astute mortal! Your wit shines brightly amidst the shadows of this realm.\"", "\"Indeed, the answer you have provided is correct,\" the ghost intones, its ethereal form pulsating with a faint glow of approval.", "\"As promised, the key you seek lies within your grasp. The rightmost key upon the table holds the answer to your quest.", "Choose wisely, for it is the gateway to your destiny.\""]);
-            } else if (choiceId === 7) {
-                if (damagePlayer(1)){
-                    return new TextActionResult(["GAME OVER", "The ghost killed you."]);
-                }
-                return new TextActionResult(["wrong, try again"]);
-            } else if (choiceId === 8) {
+            } 
+            
+            else if (choiceId === 5) {
                 const removeKey1Item: number = playerSession.inventory.indexOf(KeyItem1Alias);
                 if (removeKey1Item !== -1) {
                     playerSession.inventory.splice(removeKey1Item);
                     playerSession.pickedUpKey1 = false;
                 }
+
                 return new TextActionResult(["He puts the left key back on the table."]);
-            } else if (choiceId === 9) {
+
+            } else if (choiceId === 6) {
                 const removeKey2Item: number = playerSession.inventory.indexOf(KeyItem2Alias);
                 if (removeKey2Item !== -1) {
                     playerSession.inventory.splice(removeKey2Item, 1);
                     playerSession.pickedUpKey2 = false;
 
                 }
-                return new TextActionResult(["He puts the middle key back on the table."]);            
-            } else if (choiceId === 10) {
+
+                return new TextActionResult(["He puts the middle key back on the table."]);
+
+            } else if (choiceId === 7) {
                 const removeKey3Item: number = playerSession.inventory.indexOf(KeyItem3Alias);
                 if (removeKey3Item !== -1) {
                     playerSession.inventory.splice(removeKey3Item, 1);
                     playerSession.pickedUpKey3 = false;
                 }
+
                 return new TextActionResult(["He puts the right key back on the table."]);
             }
         
@@ -105,15 +109,15 @@ export class GhostCharacter extends Character implements Examine {
             
 
             if(playerSession.inventory.includes(KeyItem1Alias)) {
-                choiceActions.push(new TalkChoiceAction(8, "Give the left key to the ghost"));
+                choiceActions.push(new TalkChoiceAction(5, "Give the left key to the ghost"));
             }
             
             if(playerSession.inventory.includes(KeyItem2Alias)) {
-                choiceActions.push(new TalkChoiceAction(9, "Give the middle key to the ghost"));
+                choiceActions.push(new TalkChoiceAction(6, "Give the middle key to the ghost"));
             }
             
             if(playerSession.inventory.includes(KeyItem3Alias)) {
-                choiceActions.push(new TalkChoiceAction(10, "Give the right key to the ghost"));
+                choiceActions.push(new TalkChoiceAction(7, "Give the right key to the ghost"));
             }
             
             if (playerSession.answeredRiddle = true) {
