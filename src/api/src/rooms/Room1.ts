@@ -11,7 +11,6 @@ import { Room2 } from "./Room2";
 import { clownvoice } from "../characters/ClownCharacter/Clownvoice";
 import { Searchaction } from "../actions/SearchRoom1";
 import { flashlight } from "../characters/room1-3items/flashlight";
-import { Use } from "../actions/UseRoom5";
 import { gebruikaction } from "../base/actions/useitem";
 export const Room1Alias: string = "room1";
 
@@ -35,7 +34,6 @@ export class Room1 extends Room {
     public actions(): Action[] {
         return [
             new ExamineAction(),
-            new Use(),
             new gebruikaction(),
             new TalkAction(),
             new Searchaction(),

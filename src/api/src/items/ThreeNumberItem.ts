@@ -18,8 +18,9 @@ export class ThreeNumberItem extends Item implements Examine, Collect {
     return "Three Number code";
   }
 
+
   public examine(): ActionResult | undefined {
-    return new TextActionResult(["It's a three-number code for the next room door"]);
+    return new TextActionResult(["It's a three-number code to open the next door"]);
   }
   
   public CollectAction(): ActionResult | undefined {
@@ -30,14 +31,13 @@ export class ThreeNumberItem extends Item implements Examine, Collect {
         playerSession.collectedCode = true;
         playerSession.inventory.push(ThreeNumberItemAlias);
 
-        // The item is now collected
+    // The item is now collected
     return new TextActionResult(["You've collected the three number code"]);
     }
 
     return undefined;
     
   }
-
 
 }
 

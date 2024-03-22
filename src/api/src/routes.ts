@@ -23,6 +23,8 @@ import { PickupAction, PickupActionAlias } from "./base/actions/PickupAction";
 import { TalkActionResult } from "./base/actionResults/TalkActionResult";
 import { Searchaction, SearchactionAlias } from "./actions/SearchRoom1";
 import { UseRoom2Action, UseRoom2ActionAlias } from "./actions/UseRoom2";
+import { gebruikaction, gebruiktitemAlias } from "./base/actions/useitem";
+import { UseActionResult } from "./base/actionResults/UseactionResult";
 
 export const router: Router = Router();
 
@@ -136,6 +138,8 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
             return Searchaction.handle(gameObjects[0]);
         case UseRoom2ActionAlias:
             return UseRoom2Action.handle(gameObjects[0]);
+        case gebruiktitemAlias:
+            return gebruikaction.handle(gameObjects[0]);
     }
 
     return CustomAction.handle(alias, gameObjects);
@@ -152,13 +156,11 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
     }
 
     let actions: ActionReference[];
-
     if (actionResult instanceof TalkActionResult) {
         actions = actionResult.choices.map((e) => e.toReference(actionResult.character));
     } else {
         actions = room.actions().map((e) => e.toReference());
     }
-
     return {
         roomAlias: room.alias,
         roomTitle: room.name(),

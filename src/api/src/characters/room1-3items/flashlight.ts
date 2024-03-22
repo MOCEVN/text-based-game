@@ -1,20 +1,23 @@
 import { UseAlias } from "../../actions/UseRoom5";
 import { ActionResult } from "../../base/actionResults/ActionResult";
-import { TalkActionResult } from "../../base/actionResults/TalkActionResult";
 import { TextActionResult } from "../../base/actionResults/TextActionResult";
+import { UseActionResult } from "../../base/actionResults/UseactionResult";
 import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
-import { TalkActionAlias, TalkChoiceAction } from "../../base/actions/TalkAction";
-import { gebruikaction } from "../../base/actions/useitem";
+import { Talk, TalkActionAlias } from "../../base/actions/TalkAction";
+import { Gebruik, gebruiktitemAlias } from "../../base/actions/useitem";
+import { UseChoiceAction } from "../../base/actions/useitem";
+
 import { Character } from "../../base/gameObjects/Character";
 
 export const FlashlightitemAlias: string = "flashlight";
 
-export class flashlight extends Character implements Examine, gebruikaction {
-    public talk(): ActionResult | undefined {
-        throw new Error("Method not implemented.");
+export class flashlight extends Character implements Examine, Gebruik, Talk {
+    public talk(choiceId: number): ActionResult | undefined {
+        this.gebruik(choiceId);
+        return new TextActionResult(["you can't talk to a flashlight"]);
     }
     public constructor() {
-        super(FlashlightitemAlias, TalkActionAlias, ExamineActionAlias, UseAlias);
+        super(FlashlightitemAlias, TalkActionAlias, ExamineActionAlias, UseAlias, gebruiktitemAlias);
     }
     public name(): string {
         return "flashlight";
@@ -25,12 +28,12 @@ export class flashlight extends Character implements Examine, gebruikaction {
     }
     public gebruik(choiceId?: number | undefined): ActionResult | undefined {
         if (choiceId === 1) {
-            return new TalkActionResult(
+            return new UseActionResult(
                 this,
                 ["where will you point the flashlight?"],
                 [
-                    new TalkChoiceAction(3, "where the noise is coming from"),
-                    new TalkChoiceAction(4, "at the door"),
+                    new UseChoiceAction(3, "where the noise is coming from"),
+                    new UseChoiceAction(4, "at the door"),
                 ]
             );
         }
@@ -49,13 +52,10 @@ export class flashlight extends Character implements Examine, gebruikaction {
                 "you see the closed door and notice that it's stained red in blood.",
             ]);
         }
-        return new TalkActionResult(
+        return new UseActionResult(
             this,
-            ["What will you do with the charged flashliight"],
-            [
-                new TalkChoiceAction(1, "turn on the flashlight"),
-                new TalkChoiceAction(2, "swing the flashlight"),
-            ]
+            ["What will you do with the charged flashlight"],
+            [new UseChoiceAction(1, "turn on the flashlight"), new UseChoiceAction(2, "swing the flashlight")]
         );
     }
 }

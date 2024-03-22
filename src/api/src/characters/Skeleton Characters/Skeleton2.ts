@@ -23,19 +23,19 @@ public examine(): ActionResult | undefined {
     return new TextActionResult(["You see that the skeleton seems to be holding a book. Perhaps reading it could provide some insight?"]);
 }
 
+
 public talk(choiceId?: number | undefined): ActionResult | undefined {
     const playerSession: PlayerSession = getPlayerSession();
 
     if (choiceId === 1) {
         let choiceActions: TalkChoiceAction[] = [
-            new TalkChoiceAction(1, "Read the book"),
             new TalkChoiceAction(2, "Continue to read the book"),
-            new TalkChoiceAction(3, "Run for your life"),
+            new TalkChoiceAction(3, "Take a step back"),
         ];
 
-        if (playerSession.inventory.includes(ThreeNumberItemAlias)) {
-            choiceActions.push(new TalkChoiceAction(3, "Throw the code!"));
-        }
+    if (playerSession.inventory.includes(ThreeNumberItemAlias)) {
+        choiceActions.push(new TalkChoiceAction(9, "Throw the code!"));
+    }
 
         return new TalkActionResult(this, [
             "As you inspect the book, you decipher fragments of a forgotten tale, a tragic story of love and betrayal.",
@@ -44,7 +44,8 @@ public talk(choiceId?: number | undefined): ActionResult | undefined {
 
     } else if (choiceId === 2) {            
         let choiceActions: TalkChoiceAction[] = [
-            new TalkChoiceAction(4, "I'm ready for your challenge!")
+            new TalkChoiceAction(4, "I'm ready for your challenge!"),
+            new TalkChoiceAction(3, "*run silently away*"),
         ];
 
         return new TalkActionResult(this, [
@@ -53,15 +54,42 @@ public talk(choiceId?: number | undefined): ActionResult | undefined {
             choiceActions);
             
     } else if (choiceId === 3) {
-        return new TextActionResult(["You chickened out."]);
+        return new TextActionResult(["You chickened out...That wasn't a succes"]);
 
     } else if (choiceId === 4) {
-        return new TextActionResult([
-            "Ethel Baker: Well well, then here it comes brave soul."
+        return new TalkActionResult(this, [
+            "Ethel Baker: Well well, then here it comes brave soul.",
+            "What appears once in a minute, twice in a moment, but never in a thousand years?"
+        ],
+        [
+            new TalkChoiceAction(5, "Tarantula"),
+            new TalkChoiceAction(6, "A second?"),
+            new TalkChoiceAction(7, "The Letter M"),
+            new TalkChoiceAction(8, "Can I have a clue maybe?"),
         ]);
     }
+    else if (choiceId === 5) {
+        return new TextActionResult(["I think you're a little slow, did that even made sense?"]);
+       
+    }
+    else if (choiceId === 6) {
+        return new TextActionResult(["Wrong! Next time you maybe have a better chance."]);
+    }
+    else if (choiceId === 7) {
+        return new TextActionResult(["Correct...You've suprised me mortal.",
+        "I hope you make it out, my friend with the amulet didn't.",
+        "With this item you can continue your quest. Goodluck and I hope I'll never see you again."]);
+    }
+    
+    else if (choiceId === 8) {
+        return new TextActionResult(["Ethel Baker: Mortals aren't really that clever..What a waste of brains."]);
+    }
+    
+    else if (choiceId === 9) {
+        return new TextActionResult(["You've lost your only way out of here"]);
+    }
 
-    // Default action when no specific choice is selected
+    
     return new TalkActionResult(this,
         ["In her skeletal hands rests an tattered book, its pages whispering secrets of a bygone era, a silent testament to the knowledge she once held in life."],
         [
