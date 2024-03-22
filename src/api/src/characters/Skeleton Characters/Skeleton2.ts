@@ -4,7 +4,7 @@ import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { TalkChoiceAction } from "../../base/actions/TalkAction";
 import { Character } from "../../base/gameObjects/Character";
-import { getPlayerSession } from "../../instances";
+import { damagePlayer, getPlayerSession } from "../../instances";
 import { ThreeNumberItemAlias } from "../../items/ThreeNumberItem";
 import { PlayerSession } from "../../types";
 
@@ -22,7 +22,6 @@ public name(): string {
 public examine(): ActionResult | undefined {
     return new TextActionResult(["You see that the skeleton seems to be holding a book. Perhaps reading it could provide some insight?"]);
 }
-
 
 public talk(choiceId?: number | undefined): ActionResult | undefined {
     const playerSession: PlayerSession = getPlayerSession();
@@ -42,7 +41,8 @@ public talk(choiceId?: number | undefined): ActionResult | undefined {
             "The faded ink tells..."], 
             choiceActions);
 
-    } else if (choiceId === 2) {            
+    }
+    else if (choiceId === 2) {            
         let choiceActions: TalkChoiceAction[] = [
             new TalkChoiceAction(4, "I'm ready for your challenge!"),
             new TalkChoiceAction(3, "*run silently away*"),
@@ -69,11 +69,27 @@ public talk(choiceId?: number | undefined): ActionResult | undefined {
         ]);
     }
     else if (choiceId === 5) {
-        return new TextActionResult(["I think you're a little slow, did that even made sense?"]);
-       
+        // Level down when the player asnwers the question wrong
+        if (damagePlayer(1)){
+            return new TextActionResult(["The skeleton got you in chokehold"]);
+        }; 
+        return new TalkActionResult(this, 
+            ["I think youre a little slow, did that even made sense?"],
+        [
+            new TalkChoiceAction(4, "Try again"),
+            new TalkChoiceAction(3, "Run for your life"),
+        ]);
+        
     }
     else if (choiceId === 6) {
-        return new TextActionResult(["Wrong! Next time you maybe have a better chance."]);
+        if (damagePlayer(1)){
+            return new TextActionResult(["The skeleton got you in chokehold"]);
+        }; 
+        return new TalkActionResult(this, ["Wrong! Next time you maybe have a better chance."],
+        [
+            new TalkChoiceAction(4, "Try again"),
+            new TalkChoiceAction(3, "Run for your life"),
+        ]);
     }
     else if (choiceId === 7) {
         return new TextActionResult(["Correct...You've suprised me mortal.",
@@ -82,13 +98,16 @@ public talk(choiceId?: number | undefined): ActionResult | undefined {
     }
     
     else if (choiceId === 8) {
-        return new TextActionResult(["Ethel Baker: Mortals aren't really that clever..What a waste of brains."]);
+        return new TalkActionResult(this, ["Ethel Baker: Mortals aren't really that clever..What a waste of brains.",
+    "It's not an animal anyway."],
+    [       new TalkChoiceAction(4, "Try again"),
+            new TalkChoiceAction(3, "Run for your life")
+        ]);
     }
     
     else if (choiceId === 9) {
         return new TextActionResult(["You've lost your only way out of here"]);
     }
-
     
     return new TalkActionResult(this,
         ["In her skeletal hands rests an tattered book, its pages whispering secrets of a bygone era, a silent testament to the knowledge she once held in life."],

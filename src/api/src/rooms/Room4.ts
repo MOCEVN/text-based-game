@@ -46,6 +46,9 @@ export class Room4 extends Room implements Talk{
     }
 
     public images(): string[] {
+        if (getPlayerSession().paintingPuzzleState === 3) {
+            return ["room4dooropen"];
+        }
         return ["room4"];
     }
 
