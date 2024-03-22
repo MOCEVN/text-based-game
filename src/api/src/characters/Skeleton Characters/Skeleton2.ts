@@ -68,7 +68,7 @@ public talk(choiceId?: number | undefined): ActionResult | undefined {
             new TalkChoiceAction(8, "Can I have a clue maybe?"),
         ]);
     }
-    else if (choiceId === 5) {
+    else if (choiceId === 5 || choiceId === 6) {
         // Level down when the player asnwers the question wrong
         if (damagePlayer(1)){
             return new TextActionResult(["The skeleton got you in chokehold"]);
@@ -77,35 +77,36 @@ public talk(choiceId?: number | undefined): ActionResult | undefined {
             ["I think youre a little slow, did that even made sense?"],
         [
             new TalkChoiceAction(4, "Try again"),
-            new TalkChoiceAction(3, "Run for your life"),
+            new TalkChoiceAction(3, "*run silently away*"),
         ]);
         
     }
-    else if (choiceId === 6) {
-        if (damagePlayer(1)){
-            return new TextActionResult(["The skeleton got you in chokehold"]);
-        }; 
-        return new TalkActionResult(this, ["Wrong! Next time you maybe have a better chance."],
-        [
-            new TalkChoiceAction(4, "Try again"),
-            new TalkChoiceAction(3, "Run for your life"),
-        ]);
-    }
+    // Correct answer with the item
     else if (choiceId === 7) {
-        return new TextActionResult(["Correct...You've suprised me mortal.",
-        "I hope you make it out, my friend with the amulet didn't.",
-        "With this item you can continue your quest. Goodluck and I hope I'll never see you again."]);
+        if(playerSession.correctAnswer) {
+            if (!playerSession.collectedCode) {
+                playerSession.collectedCode = true;
+                playerSession.inventory.push(ThreeNumberItemAlias);
+                return new TextActionResult(["Correct...You've surprised me mortal.",
+                    "I hope you make it out, my friend with the amulet didn't.",
+                    "With this item you can continue your quest. Good luck and I hope I'll never see you again."]);
+            } else {
+                return new TextActionResult(["You already have the code"]);
+            }
+        } else {
+            return new TextActionResult(["You haven't answered correctly"]);
+        }
     }
     
     else if (choiceId === 8) {
         return new TalkActionResult(this, ["Ethel Baker: Mortals aren't really that clever..What a waste of brains.",
     "It's not an animal anyway."],
     [       new TalkChoiceAction(4, "Try again"),
-            new TalkChoiceAction(3, "Run for your life")
+            new TalkChoiceAction(3, "*run silently away*")
         ]);
     }
     
-    else if (choiceId === 9) {
+    if(choiceId === 9) {
         return new TextActionResult(["You've lost your only way out of here"]);
     }
     
@@ -113,7 +114,7 @@ public talk(choiceId?: number | undefined): ActionResult | undefined {
         ["In her skeletal hands rests an tattered book, its pages whispering secrets of a bygone era, a silent testament to the knowledge she once held in life."],
         [
             new TalkChoiceAction(1, "Read the book"),
-            new TalkChoiceAction(3, "Run for your life"),
+            new TalkChoiceAction(3, "Take a step back"),
         ]
     );
 }

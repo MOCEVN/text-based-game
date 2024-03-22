@@ -27,6 +27,13 @@ export class ThreeNumberItem extends Item implements Examine, Collect {
     // Put the item in the inventory
     const playerSession: PlayerSession = getPlayerSession();
 
+    if(!playerSession.correctAnswer){
+      playerSession.correctAnswer = true;
+      playerSession.inventory.push(ThreeNumberItemAlias);
+
+      return new TextActionResult(["You've collected the three number code! Time to escape this room."]);
+    }
+
     if(!playerSession.collectedCode) {
         playerSession.collectedCode = true;
         playerSession.inventory.push(ThreeNumberItemAlias);
