@@ -26,7 +26,11 @@ public examine(): ActionResult | undefined {
 public talk(choiceId?: number | undefined): ActionResult | undefined {
     const playerSession: PlayerSession = getPlayerSession();
 
-    if (choiceId === 1) {
+    if (!playerSession.roomSearched) {
+        return new TextActionResult(["Examine the treasury first."]);
+    }
+
+    else if (choiceId === 1) {
         let choiceActions: TalkChoiceAction[] = [
             new TalkChoiceAction(2, "Continue to read the book"),
             new TalkChoiceAction(3, "Take a step back"),
@@ -82,21 +86,27 @@ public talk(choiceId?: number | undefined): ActionResult | undefined {
         
     }
     // Correct answer with the item
-    else if (choiceId === 7) {
-        if(playerSession.correctAnswer) {
-            if (!playerSession.collectedCode) {
-                playerSession.collectedCode = true;
-                playerSession.inventory.push(ThreeNumberItemAlias);
-                return new TextActionResult(["Correct...You've surprised me mortal.",
-                    "I hope you make it out, my friend with the amulet didn't.",
-                    "With this item you can continue your quest. Good luck and I hope I'll never see you again."]);
-            } else {
-                return new TextActionResult(["You already have the code"]);
-            }
+else if (choiceId === 7) {
+    // Check if the player has answered the riddle correctly
+    if (playerSession.correctAnswer) {
+        // Check if the player has already collected the code
+        if (!playerSession.collectedCode) {
+            // If not, collect the code and provide a success message
+            playerSession.collectedCode = true;
+            return new TextActionResult([
+                "Correct...You've surprised me mortal.",
+                "I hope you make it out, my friend with the amulet didn't.",
+                "With this item, you can continue your quest. Good luck, and I hope I'll never see you again."
+            ]);
         } else {
-            return new TextActionResult(["You haven't answered correctly"]);
+            // If the player has already collected the code, inform them
+            return new TextActionResult(["You already have the code"]);
         }
+    } else {
+        // If the player hasn't answered correctly, inform them
+        return new TextActionResult(["You haven't answered correctly"]);
     }
+}
     
     else if (choiceId === 8) {
         return new TalkActionResult(this, ["Ethel Baker: Mortals aren't really that clever..What a waste of brains.",

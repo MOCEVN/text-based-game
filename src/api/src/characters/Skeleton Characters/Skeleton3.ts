@@ -26,6 +26,10 @@ export class SkeletonCharacter3 extends Character implements Examine {
   public talk(choiceId?: number | undefined): ActionResult | undefined {
     const playerSession: PlayerSession = getPlayerSession();
 
+    if (!playerSession.roomSearched) {
+      return new TextActionResult(["Examine the treasury first."]);
+  }
+
     if(choiceId === 1) {
       const choiceActions: TalkChoiceAction[] = [
         new TalkChoiceAction(4, "Grab the amulet"),

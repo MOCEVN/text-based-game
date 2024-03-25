@@ -27,23 +27,25 @@ export class ThreeNumberItem extends Item implements Examine, Collect {
     // Put the item in the inventory
     const playerSession: PlayerSession = getPlayerSession();
 
-    if(!playerSession.correctAnswer){
-      playerSession.correctAnswer = true;
-      playerSession.inventory.push(ThreeNumberItemAlias);
-
-      return new TextActionResult(["You've collected the three number code! Time to escape this room."]);
-    }
-
-    if(!playerSession.collectedCode) {
+    if (playerSession.correctAnswer) {
+      // If the player has answered the riddle correctly
+      if (!playerSession.collectedCode) {
+        // If the code has not been collected yet
         playerSession.collectedCode = true;
         playerSession.inventory.push(ThreeNumberItemAlias);
-
-    // The item is now collected
-    return new TextActionResult(["You've collected the three number code"]);
+        return new TextActionResult([
+          "Correct...You've surprised me mortal.",
+          "I hope you make it out, my friend with the amulet didn't.",
+          "With this item, you can continue your quest. Good luck, and I hope I'll never see you again."
+        ]);
+      } else {
+        // If the code has already been collected
+        return new TextActionResult(["You already have the code"]);
+      }
+    } else {
+      // If the player hasn't answered correctly
+      return new TextActionResult(["You can not collect it yet...continue your quest."]);
     }
-
-    return undefined;
-    
   }
 
 }
