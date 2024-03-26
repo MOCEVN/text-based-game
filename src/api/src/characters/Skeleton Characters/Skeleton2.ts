@@ -22,18 +22,24 @@ public name(): string {
 public examine(): ActionResult | undefined {
     const playerSession: PlayerSession = getPlayerSession();
 
+    // Check if the player already examined the treausry
     if (!playerSession.roomSearched) {
         return new TextActionResult(["Examine the treasury first."]);
     }
-    
     return new TextActionResult(["You see that the skeleton seems to be holding a book. Perhaps reading it could provide some insight?"]);
 }
 
 public talk(choiceId?: number | undefined): ActionResult | undefined {
     const playerSession: PlayerSession = getPlayerSession();
 
+    // Check if the player already examined the treausry
     if (!playerSession.roomSearched) {
         return new TextActionResult(["Examine the treasury first."]);
+    }
+
+      // Check if the player has already solved the riddle
+      if (playerSession.correctAnswer) {
+        return new TextActionResult(["You've already solved the riddle. Continue your quest."]);
     }
 
     else if (choiceId === 1) {
@@ -107,8 +113,8 @@ else if (choiceId === 7) {
             ]);
         } 
     } else {
-        // If the player hasn't answered correctly, inform them
-        return new TextActionResult(["You haven't solved the riddle."]);
+        // If the player already solved the riddle
+        return new TextActionResult(["You already solved the riddle"]);
     }
 }
 

@@ -21,10 +21,12 @@ export class ThreeNumberItem extends Item implements Examine, Collect {
     const playerSession: PlayerSession = getPlayerSession();
 
     if(!playerSession.correctAnswer) {
-      return new TextActionResult(["Solve the riddle first."]);
-    }
-
-    return new TextActionResult(["It's a three-number code to open the next door"]);
+      
+      //  If the player hasn't solved the riddle
+      return new TextActionResult(["Find the skeleton"]);
+      //  If the player already solved the riddle
+    } 
+     return new TextActionResult(["It's a three-number code to open the next door"]); 
   }
 
   public CollectAction(): ActionResult | undefined {
@@ -34,7 +36,7 @@ export class ThreeNumberItem extends Item implements Examine, Collect {
     if (playerSession.correctAnswer) {
         // Check if the player has answered the riddle correctly
         if (!playerSession.collectedCode) {
-            // If the player hasn't collected the code yet
+            // If not, collect the code and provide a success message
             playerSession.collectedCode = true;
             playerSession.inventory.push(ThreeNumberItemAlias);
 
@@ -42,11 +44,11 @@ export class ThreeNumberItem extends Item implements Examine, Collect {
             return new TextActionResult(["You've collected the three number code"]);
         } else {
             // If the player has already collected the code, inform them
-            return new TextActionResult(["You already have the code"]);
+            return new TextActionResult(["You already collected the three number code"]);
         }
     } else {
         // If the player hasn't answered correctly, inform them
-        return new TextActionResult(["You can not collect it yet...continue your quest."]);
+        return new TextActionResult(["Find the skeleton"]);
     }
 }
 
