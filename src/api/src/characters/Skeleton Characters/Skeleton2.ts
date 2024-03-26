@@ -20,6 +20,12 @@ public name(): string {
 }
 
 public examine(): ActionResult | undefined {
+    const playerSession: PlayerSession = getPlayerSession();
+
+    if (!playerSession.roomSearched) {
+        return new TextActionResult(["Examine the treasury first."]);
+    }
+    
     return new TextActionResult(["You see that the skeleton seems to be holding a book. Perhaps reading it could provide some insight?"]);
 }
 
@@ -85,10 +91,11 @@ public talk(choiceId?: number | undefined): ActionResult | undefined {
         ]);
         
     }
-    // Correct answer with the item
+// Correct answer with the item
 else if (choiceId === 7) {
     // Check if the player has answered the riddle correctly
-    if (playerSession.correctAnswer) {
+    if (!playerSession.correctAnswer) {
+        playerSession.correctAnswer = true;
         // Check if the player has already collected the code
         if (!playerSession.collectedCode) {
             // If not, collect the code and provide a success message
@@ -98,16 +105,13 @@ else if (choiceId === 7) {
                 "I hope you make it out, my friend with the amulet didn't.",
                 "With this item, you can continue your quest. Good luck, and I hope I'll never see you again."
             ]);
-        } else {
-            // If the player has already collected the code, inform them
-            return new TextActionResult(["You already have the code"]);
-        }
+        } 
     } else {
         // If the player hasn't answered correctly, inform them
-        return new TextActionResult(["You haven't answered correctly"]);
+        return new TextActionResult(["You haven't solved the riddle."]);
     }
 }
-    
+
     else if (choiceId === 8) {
         return new TalkActionResult(this, ["Ethel Baker: Mortals aren't really that clever..What a waste of brains.",
     "It's not an animal anyway."],

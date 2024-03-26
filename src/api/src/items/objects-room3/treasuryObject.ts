@@ -29,14 +29,15 @@ export class TreasuryObject extends GameObject implements Examine {
             playerSession.roomSearched = true; // Mark the room as searched
 
             return new TextActionResult([
-              "As you enter the chamber, your eyes fall upon the ancient treasury",
-              "Despite your thorough examination, it yielded no clue or hint to aid your quest",
-              "The air hangs heavy with disappointment as you realize the mystery remains unsolved.",
+                "As you examine the treasury, hoping to uncover a clue to aid your quest, disappointment washes over you as you find no helpful hint or hidden treasure.", 
+                "Suddenly, you notice movement in the shadows, skeletal figures lurking ominously. You sense a lingering presence, waiting to be addressed.", 
+                "Perhaps conversing with these spectral figures will shed light on your journey.",
+              
             ]);
         } else {
             // If the player has already searched the room
             return new TextActionResult([
-                "You have already examined the treasury. Continue your search.",
+                "You have already examined the treasury. Maybe a skeleton will help you.",
                 
             ]);
         } 

@@ -6,7 +6,6 @@ import { Collect, CollectActionAlias } from "../actions/CollectRoom3";
 import { getPlayerSession } from "../instances";
 import { PlayerSession } from "../types";
 
-
 export const ThreeNumberItemAlias: string = "three-number-item";
 
 export class ThreeNumberItem extends Item implements Examine, Collect {
@@ -18,35 +17,38 @@ export class ThreeNumberItem extends Item implements Examine, Collect {
     return "Three Number code";
   }
 
-
   public examine(): ActionResult | undefined {
+    const playerSession: PlayerSession = getPlayerSession();
+
+    if(!playerSession.correctAnswer) {
+      return new TextActionResult(["Solve the riddle first."]);
+    }
+
     return new TextActionResult(["It's a three-number code to open the next door"]);
   }
-  
+
   public CollectAction(): ActionResult | undefined {
     // Put the item in the inventory
     const playerSession: PlayerSession = getPlayerSession();
 
     if (playerSession.correctAnswer) {
-      // If the player has answered the riddle correctly
-      if (!playerSession.collectedCode) {
-        // If the code has not been collected yet
-        playerSession.collectedCode = true;
-        playerSession.inventory.push(ThreeNumberItemAlias);
-        return new TextActionResult([
-          "Correct...You've surprised me mortal.",
-          "I hope you make it out, my friend with the amulet didn't.",
-          "With this item, you can continue your quest. Good luck, and I hope I'll never see you again."
-        ]);
-      } else {
-        // If the code has already been collected
-        return new TextActionResult(["You already have the code"]);
-      }
+        // Check if the player has answered the riddle correctly
+        if (!playerSession.collectedCode) {
+            // If the player hasn't collected the code yet
+            playerSession.collectedCode = true;
+            playerSession.inventory.push(ThreeNumberItemAlias);
+
+            // The item is now collected
+            return new TextActionResult(["You've collected the three number code"]);
+        } else {
+            // If the player has already collected the code, inform them
+            return new TextActionResult(["You already have the code"]);
+        }
     } else {
-      // If the player hasn't answered correctly
-      return new TextActionResult(["You can not collect it yet...continue your quest."]);
+        // If the player hasn't answered correctly, inform them
+        return new TextActionResult(["You can not collect it yet...continue your quest."]);
     }
-  }
+}
 
 }
 
