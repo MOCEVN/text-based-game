@@ -1,7 +1,6 @@
 import { LitElement, TemplateResult, css, html } from "lit";
 import { customElement, query, state } from "lit/decorators.js";
 import { choose } from "lit/directives/choose.js";
-import { when } from "lit/directives/when.js";
 
 @customElement("mini-game")
 export class MiniGame extends LitElement{
@@ -57,10 +56,10 @@ export class MiniGame extends LitElement{
     public connectedCallback(): void {
         super.connectedCallback();
         window.addEventListener("keydown", (e) => {
-            if (e.key === " "){
+            if (e.key === " "){ // space bar
                 if (!this._gameStarted) {
                     this._gameStarted = true;
-                    void this.init();
+                    void this.initialiseCanvas();
                 } else {
                     this._keyPressed = true;    
                 }
@@ -77,9 +76,9 @@ export class MiniGame extends LitElement{
         this._canvas.style.height = "70px";
     }
     /**
-     * Initialises the canvas.
+     * Initialises the canvas and starts the animation.
      */
-    private async init(): Promise<void> {
+    private async initialiseCanvas(): Promise<void> {
         // The page has to be done with updating for the canvas to be found.
         await this.updateComplete;
         this.updateCanvasSize();
@@ -128,8 +127,8 @@ export class MiniGame extends LitElement{
         }
         // This is used for the position of the pointer.
         const totalTimeElapsed: number = timeStamp - this._startTime;
-        // The pointer travels at 1000 ms * 0.5 = 500 px per second.
-        const distanceTraveled: number = totalTimeElapsed * 0.5;
+        // The pointer travels half of the bar per second.
+        const distanceTraveled: number = totalTimeElapsed * this._canvas.width * 0.5 / 1000;
         
         // When the space bar is pressed.
         if (this._keyPressed){
@@ -170,9 +169,9 @@ export class MiniGame extends LitElement{
                     [2,():TemplateResult => html`<img src="/assets/img/ui/heartfill3.png" draggable="false">`],
                     [3,():TemplateResult => html`<img src="/assets/img/ui/heart.png" draggable="false">`]
                 ],(): TemplateResult => html`<img src="/assets/img/ui/heartempty.png" draggable="false">`)}
-                ${when(this._gameStarted,
-                    () => html`<canvas id="canvas"></canvas>`,
-                    () => html`<p>Press [space] to Start</p>`)
+                ${this._gameStarted ?
+                    html`<canvas id="canvas"></canvas>` :
+                    html`<p>Press [space] to Start</p>`
                 }
             </div>
         `;
