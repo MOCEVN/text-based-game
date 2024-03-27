@@ -12,6 +12,9 @@ import { clownvoice } from "../characters/ClownCharacter/Clownvoice";
 import { Searchaction } from "../actions/SearchRoom1";
 import { flashlight } from "../characters/room1-3items/flashlight";
 import { gebruikaction } from "../base/actions/useitem";
+import { Desktop } from "../characters/Deskcharacter";
+import { PlayerSession } from "../types";
+import { flashlightitem, FlashlightitemAlias } from "../items/flashlightitem";
 export const Room1Alias: string = "room1";
 
 export class Room1 extends Room {
@@ -41,9 +44,14 @@ export class Room1 extends Room {
         ];
     }
     public objects(): GameObject[] {
+        const playerSession: PlayerSession = getPlayerSession();
+        const objects: GameObject[] = [this];
+        if (!playerSession.inventory.includes(FlashlightitemAlias)) {
+            objects.push(new flashlightitem());
+        }
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
 
-        return [this, ...inventoryItems, new flashlight(), new clownvoice()];
+        return [this, ...inventoryItems, new clownvoice(), new Desktop()];
     }
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
         if (alias === "room2") {

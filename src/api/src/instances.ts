@@ -35,6 +35,7 @@ import { ActionResult } from "./base/actionResults/ActionResult";
 import { clownvoice, clownvoicealias } from "./characters/ClownCharacter/Clownvoice";
 import { TreasuryObject, TreasuryObjectAlias } from "./items/objects-room3/treasuryObject";
 import { flashlight, FlashlightitemAlias } from "./characters/room1-3items/flashlight";
+import { Desktop, DesktopAlias } from "./characters/Deskcharacter";
 
 /**
  * Create a new player session object
@@ -225,6 +226,10 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         // Clownvoice in the distance for room 1 - Omar
         case clownvoicealias:
             return new clownvoice();
+
+        // Clownvoice in the distance for room 1 - Omar
+        case DesktopAlias:
+            return new Desktop();
 
         //NOTE: Fall back to rooms, since those are game objects too.
         default:
