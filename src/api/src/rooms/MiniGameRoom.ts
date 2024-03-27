@@ -27,6 +27,7 @@ export class MiniGAmeRoom extends Room implements Custom{
             case "win":
                 playerSession.currentRoom = playerSession.deathRoom!;
                 playerSession.hp = 3;
+                playerSession.hasRevived = true;
                 return new TextActionResult(["You have revived yourself."]);
             case "lose":
                 return sendToGameOver();
