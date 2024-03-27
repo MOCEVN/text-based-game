@@ -134,6 +134,7 @@ export class GameCanvas extends LitElement {
     private actionButtons?: ActionReference[];
     private gameObjectButtons?: GameObjectReference[];
     private hp?: number;
+    private playingMiniGame: boolean = false;
 
     private selectedActionButton?: ActionReference;
     private selectedGameObjectButtons: Set<GameObjectReference> = new Set<GameObjectReference>();
@@ -163,14 +164,15 @@ export class GameCanvas extends LitElement {
         this.selectedGameObjectButtons.clear();
 
         if (this.roomTitle === "minigame") {
+            this.playingMiniGame = true;
             gameService.addEventListener("minigame",(e:miniGameEnd) => {
-                if (e.data.win) {
-                    console.log("win");
-                    void this.handleClickAction({alias:"win",label:"",needsObject:false});
-                } else {
-                    console.log("lose");
-                    void this.handleClickAction({alias:"lose",label:"",needsObject:false});
-                    
+                this.playingMiniGame = false;
+                if (this.playingMiniGame){
+                    if (e.data.win) {
+                        void this.handleClickAction({alias:"win",label:"",needsObject:false});
+                    } else {
+                        void this.handleClickAction({alias:"lose",label:"",needsObject:false});
+                    }
                 }
             });
         }

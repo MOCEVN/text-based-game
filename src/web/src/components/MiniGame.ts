@@ -52,8 +52,6 @@ export class MiniGame extends LitElement{
     private _pointerX: number = 0;
     private _keyPressed: boolean = false;
 
-    public gameWon: boolean = false;
-
     public connectedCallback(): void {
         super.connectedCallback();
         window.addEventListener("keydown", (e) => {
@@ -151,12 +149,10 @@ export class MiniGame extends LitElement{
 
         if (this._gameProgress < 0) {
             gameService.dispatchEvent("minigame",{win:false});
-            this.gameWon = false;
             return;
         }
         if (this._gameProgress >= 3) {
             gameService.dispatchEvent("minigame",{win:true});
-            this.gameWon = true;
             return;
         }
         this.drawFrame();
