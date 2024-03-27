@@ -18,6 +18,7 @@ import { EndRoom } from "./EndRoom";
 export const Room5Alias: string = "room5";
 
 export class Room5 extends Room {
+    
     public constructor() {
         super(Room5Alias);
     }
@@ -26,7 +27,15 @@ export class Room5 extends Room {
         return "The Witch's Haven";
     }
     public images(): string[] {
-        return ["kamer5"];
+        const PlayerSession: PlayerSession = getPlayerSession();
+        if(PlayerSession.talkPotion === true){
+            return["pot"];
+        } else if(PlayerSession.talkWitch === true){
+            return ["witch"];
+        }else{
+            return ["kamer5"];
+        }
+        
     }
     public actions(): Action[] {
         return [

@@ -1,6 +1,7 @@
 import { LitElement, TemplateResult, css, html } from "lit";
 import { customElement, query, state } from "lit/decorators.js";
 import { choose } from "lit/directives/choose.js";
+import { gameService } from "../services/gameService";
 
 @customElement("mini-game")
 export class MiniGame extends LitElement{
@@ -50,8 +51,6 @@ export class MiniGame extends LitElement{
     private _barWidth: number = 0;
     private _pointerX: number = 0;
     private _keyPressed: boolean = false;
-
-    public gameWon: boolean = false;
 
     public connectedCallback(): void {
         super.connectedCallback();
@@ -149,11 +148,11 @@ export class MiniGame extends LitElement{
         }
 
         if (this._gameProgress < 0) {
-            this.gameWon = false;
+            gameService.dispatchEvent("minigame",{win:false});
             return;
         }
         if (this._gameProgress >= 3) {
-            this.gameWon = true;
+            gameService.dispatchEvent("minigame",{win:true});
             return;
         }
         this.drawFrame();

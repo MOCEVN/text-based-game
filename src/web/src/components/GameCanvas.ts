@@ -4,6 +4,8 @@ import { customElement } from "lit/decorators.js";
 import { getState, performAction } from "../services/routeService";
 import { map } from "lit/directives/map.js";
 import { range } from "lit/directives/range.js";
+import { gameService } from "../services/gameService";
+import { miniGameEnd } from "../types/events";
 @customElement("game-canvas")
 export class GameCanvas extends LitElement {
     public static styles = css`
@@ -132,6 +134,7 @@ export class GameCanvas extends LitElement {
     private actionButtons?: ActionReference[];
     private gameObjectButtons?: GameObjectReference[];
     private hp?: number;
+    private playingMiniGame: boolean = false;
 
     private selectedActionButton?: ActionReference;
     private selectedGameObjectButtons: Set<GameObjectReference> = new Set<GameObjectReference>();
@@ -159,6 +162,20 @@ export class GameCanvas extends LitElement {
 
         this.selectedActionButton = undefined;
         this.selectedGameObjectButtons.clear();
+
+        if (this.roomTitle === "minigame") {
+            this.playingMiniGame = true;
+            gameService.addEventListener("minigame",(e:miniGameEnd) => {
+                if (this.playingMiniGame){
+                    this.playingMiniGame = false;
+                    if (e.data.win) {
+                        void this.handleClickAction({alias:"win",label:"",needsObject:false});
+                    } else {
+                        void this.handleClickAction({alias:"lose",label:"",needsObject:false});
+                    }
+                }
+            });
+        }
 
         this.requestUpdate();
     }
@@ -207,11 +224,15 @@ export class GameCanvas extends LitElement {
     }
 
     protected render(): TemplateResult {
-        return html`
+        if (this.roomTitle === "minigame") {
+            return html`<mini-game></mini-game>`;
+        } else {   
+            return html`
             <div class="game">
                 ${this.renderTitle()} ${this.renderHeader()} ${this.renderContent()} ${this.renderFooter()}
             </div>
-        `;
+            `;
+        }
     }
 
     private renderTitle(): TemplateResult {

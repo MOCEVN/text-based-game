@@ -46,7 +46,7 @@ export class KeyItem2 extends Item implements Examine, Pickup, UseRoom2 {
                 playerSession.pickedUpKey2 = true;
                 playerSession.inventory.push(KeyItem2Alias);
                 
-                return new TextActionResult(["You pick up the right key."]);
+                return new TextActionResult(["You pick up the middle key."]);
             } else if (!playerSession.answeredRiddle && playerSession.pickedUpKey2) {
                 return new TextActionResult(["<I should talk to that scary ghost first...>"]);
             } else {
