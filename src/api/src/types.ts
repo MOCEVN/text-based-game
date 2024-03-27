@@ -20,4 +20,8 @@ export type PlayerSession = {
     pickedUpPotion: boolean;
     playertrys: number;
     gameOverKamer5: number;
+    talkPotion: boolean;
+    talkWitch: boolean;
+    PotRightChoise: boolean;
+
 };

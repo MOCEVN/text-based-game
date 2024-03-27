@@ -59,10 +59,14 @@ export function createNewPlayerSession(): PlayerSession {
         // room 4
         paintingPuzzleState: 0,
         paintingsTalkedTo: 0,
+        //room5
         witchRightChoise: false,
         pickedUpPotion: false,
         playertrys: 0,
         gameOverKamer5: 0,
+        talkPotion: false,
+        talkWitch: false,
+        PotRightChoise: false,
     };
 }
 

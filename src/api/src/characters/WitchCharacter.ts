@@ -5,7 +5,7 @@ import { TextActionResult } from "../base/actionResults/TextActionResult";
 import { Examine, ExamineActionAlias } from "../base/actions/ExamineAction";
 import { TalkChoiceAction } from "../base/actions/TalkAction";
 import { Character } from "../base/gameObjects/Character";
-import { damagePlayer, getPlayerSession} from "../instances";
+import { damagePlayer, getPlayerSession } from "../instances";
 import { PlayerSession } from "../types";
 
 export const WitchCharacterAlias: string = "Witch";
@@ -35,9 +35,12 @@ export class WitchCharacter extends Character implements Examine, UseRoom5 {
     public talk(choiceId?: number | undefined): ActionResult | undefined {
         const PlayerSession: PlayerSession = getPlayerSession();
 
+        PlayerSession.talkWitch = true;
+
         // PlayerSession.witchRightChoise = false;
         if (PlayerSession.witchRightChoise === true) {
             if (choiceId === 2) {
+                PlayerSession.talkWitch = false;
                 return new TextActionResult(["You left the wich alone"]);
             }
 
@@ -60,6 +63,7 @@ export class WitchCharacter extends Character implements Examine, UseRoom5 {
                 ]
             );
         } else if (choiceId === 2) {
+            PlayerSession.talkWitch = false;
             return new TextActionResult(["You left the wich alone"]);
         } else if (choiceId === 3) {
             return new TalkActionResult(
