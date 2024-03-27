@@ -3,6 +3,8 @@ export type PlayerSession = {
     currentRoom: string;
     inventory: string[];
     hp: number;
+    hasRevived: boolean;
+    deathRoom?: string;
     // room 2
     pickedUpKey1: boolean;
     pickedUpKey2: boolean;

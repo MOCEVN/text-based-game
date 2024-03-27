@@ -36,6 +36,7 @@ import { clownvoice, clownvoicealias } from "./characters/ClownCharacter/Clownvo
 import { TreasuryObject, TreasuryObjectAlias } from "./items/objects-room3/treasuryObject";
 import { flashlight, FlashlightitemAlias } from "./characters/room1-3items/flashlight";
 import { Desktop, DesktopAlias } from "./characters/Deskcharacter";
+import { MiniGAmeRoom, MiniGameRoomAlias } from "./rooms/MiniGameRoom";
 
 /**
  * Create a new player session object
@@ -47,6 +48,7 @@ export function createNewPlayerSession(): PlayerSession {
         currentRoom: "startup",
         inventory: [],
         hp: 10,
+        hasRevived: false,
         // room 2
         pickedUpKey1: false,
         pickedUpKey2: false,
@@ -96,7 +98,7 @@ export function sendToGameOver(): ActionResult | undefined {
     return room.examine();
 }
 /**
- * Lowers the players hp, also checks if the players hp is 0 or lower and if it is, sends the player to game over.
+ * Lowers the players hp, also checks if the players hp is 0 or lower and if it is, sends the player to game over or the minigame.
  * @param damageAmount Amount to lower the hp by
  * @returns Whether the player died or not: true if the player is dead, false if the player lives
  */
@@ -104,10 +106,22 @@ export function damagePlayer(damageAmount: number): boolean {
     const playerSession: PlayerSession = getPlayerSession();
     playerSession.hp -= damageAmount;
     if (playerSession.hp <= 0) {
-        sendToGameOver();
+        if (playerSession.hasRevived) {
+            sendToGameOver();
+        } else {
+            playerSession.deathRoom = playerSession.currentRoom;
+            sendToMiniGame();
+        }
         return true;
     }
     return false;
+}
+/**
+ * Sends the player to the minigame
+ */
+export function sendToMiniGame(): void {
+    const playerSession: PlayerSession = getPlayerSession();
+    playerSession.currentRoom = MiniGameRoomAlias;
 }
 /**
  * Get the instance of a room by its alias
@@ -143,6 +157,8 @@ export function getRoomByAlias(alias: string): Room | undefined {
             return new EndRoom();
         case GameOverRoomAlias:
             return new GameOverRoom();
+        case MiniGameRoomAlias:
+            return new MiniGAmeRoom();
     }
 
     return undefined;

@@ -1,6 +1,7 @@
 import { LitElement, TemplateResult, css, html } from "lit";
 import { customElement, query, state } from "lit/decorators.js";
 import { choose } from "lit/directives/choose.js";
+import { gameService } from "../services/gameService";
 
 @customElement("mini-game")
 export class MiniGame extends LitElement{
@@ -149,10 +150,12 @@ export class MiniGame extends LitElement{
         }
 
         if (this._gameProgress < 0) {
+            gameService.dispatchEvent("minigame",{win:false});
             this.gameWon = false;
             return;
         }
         if (this._gameProgress >= 3) {
+            gameService.dispatchEvent("minigame",{win:true});
             this.gameWon = true;
             return;
         }
