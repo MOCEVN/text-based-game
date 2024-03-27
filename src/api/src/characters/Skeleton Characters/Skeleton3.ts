@@ -19,12 +19,21 @@ export class SkeletonCharacter3 extends Character implements Examine {
   }
 
   public examine(): ActionResult | undefined {
+    const playerSession: PlayerSession = getPlayerSession();
+
+    if (!playerSession.roomSearched) {
+        return new TextActionResult(["Examine the treasury first."]);
+    }
     return new TextActionResult(["The skeleton with the mysterious amulet stands tall.",
     "As you observe closely, you notice a ethereal glow emanating from within the amulet, giving the skeleton an otherworldly aura."]);
   }
 
   public talk(choiceId?: number | undefined): ActionResult | undefined {
     const playerSession: PlayerSession = getPlayerSession();
+
+    if (!playerSession.roomSearched) {
+      return new TextActionResult(["Examine the treasury first."]);
+  }
 
     if(choiceId === 1) {
       const choiceActions: TalkChoiceAction[] = [

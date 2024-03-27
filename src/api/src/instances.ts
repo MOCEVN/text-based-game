@@ -55,6 +55,7 @@ export function createNewPlayerSession(): PlayerSession {
         // room 3
         roomSearched: false,
         collectedCode: false,
+        correctAnswer: false,
         // room 4
         paintingPuzzleState: 0,
         paintingsTalkedTo: 0,

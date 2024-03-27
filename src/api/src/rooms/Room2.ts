@@ -14,6 +14,7 @@ import { KeyItem1, KeyItem1Alias } from "../items/keys/KeyItem1";
 import { KeyItem2, KeyItem2Alias } from "../items/keys/KeyItem2";
 import { KeyItem3, KeyItem3Alias } from "../items/keys/KeyItem3";
 import { PlayerSession } from "../types";
+import { GameOverRoom } from "./GameOverRoom";
 import { Room3 } from "./Room3";
 
 export const Room2Alias: string = "room2";
@@ -65,5 +66,21 @@ export class Room2 extends Room {
         }
 
         return undefined;
+    }
+
+    public sendToGameOver(): ActionResult | undefined {
+        const room: GameOverRoom = new GameOverRoom();
+        getPlayerSession().currentRoom = room.alias;
+        return room.examine();
+    }
+
+    public damagePlayer(damageAmount: number): boolean {
+        const playerSession: PlayerSession = getPlayerSession();
+        playerSession.hp -= damageAmount;
+        if (playerSession.hp <= 0) {
+            this.sendToGameOver();
+            return true;
+        }
+        return false;
     }
 }

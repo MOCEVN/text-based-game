@@ -6,7 +6,6 @@ import { Collect, CollectActionAlias } from "../actions/CollectRoom3";
 import { getPlayerSession } from "../instances";
 import { PlayerSession } from "../types";
 
-
 export const ThreeNumberItemAlias: string = "three-number-item";
 
 export class ThreeNumberItem extends Item implements Examine, Collect {
@@ -18,26 +17,40 @@ export class ThreeNumberItem extends Item implements Examine, Collect {
     return "Three Number code";
   }
 
-
   public examine(): ActionResult | undefined {
-    return new TextActionResult(["It's a three-number code to open the next door"]);
+    const playerSession: PlayerSession = getPlayerSession();
+
+    if(!playerSession.correctAnswer) {
+      
+      //  If the player hasn't solved the riddle
+      return new TextActionResult(["Find the skeleton"]);
+      //  If the player already solved the riddle
+    } 
+     return new TextActionResult(["It's a three-number code to open the next door"]); 
   }
-  
+
   public CollectAction(): ActionResult | undefined {
     // Put the item in the inventory
     const playerSession: PlayerSession = getPlayerSession();
 
-    if(!playerSession.collectedCode) {
-        playerSession.collectedCode = true;
-        playerSession.inventory.push(ThreeNumberItemAlias);
+    if (playerSession.correctAnswer) {
+        // Check if the player has answered the riddle correctly
+        if (!playerSession.collectedCode) {
+            // If not, collect the code and provide a success message
+            playerSession.collectedCode = true;
+            playerSession.inventory.push(ThreeNumberItemAlias);
 
-    // The item is now collected
-    return new TextActionResult(["You've collected the three number code"]);
+            // The item is now collected
+            return new TextActionResult(["You've collected the three number code"]);
+        } else {
+            // If the player has already collected the code, inform them
+            return new TextActionResult(["You already collected the three number code"]);
+        }
+    } else {
+        // If the player hasn't answered correctly, inform them
+        return new TextActionResult(["Find the skeleton"]);
     }
-
-    return undefined;
-    
-  }
+}
 
 }
 

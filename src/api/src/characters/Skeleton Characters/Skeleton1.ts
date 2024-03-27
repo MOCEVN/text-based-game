@@ -20,11 +20,20 @@ export class SkeletonCharacter1 extends Character implements Examine {
     }
 
     public examine(): ActionResult | undefined {
+        const playerSession: PlayerSession = getPlayerSession();
+
+    if (!playerSession.roomSearched) {
+        return new TextActionResult(["Examine the treasury first."]);
+    }
         return new TextActionResult(["You noticed a sleepy skeleton, it's holding a weathered book. With a clue maybe?"]);
     }
 
     public talk(choiceId?: number | undefined): ActionResult | undefined {
         const playerSession: PlayerSession = getPlayerSession();
+
+        if (!playerSession.roomSearched) {
+            return new TextActionResult(["Examine the treasury first."]);
+        }
 
         if (choiceId === 1) {
             // Action for shaking the skeleton

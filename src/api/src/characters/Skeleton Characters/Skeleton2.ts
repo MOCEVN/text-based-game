@@ -4,7 +4,7 @@ import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { TalkChoiceAction } from "../../base/actions/TalkAction";
 import { Character } from "../../base/gameObjects/Character";
-import { getPlayerSession } from "../../instances";
+import { damagePlayer, getPlayerSession } from "../../instances";
 import { ThreeNumberItemAlias } from "../../items/ThreeNumberItem";
 import { PlayerSession } from "../../types";
 
@@ -20,14 +20,29 @@ public name(): string {
 }
 
 public examine(): ActionResult | undefined {
+    const playerSession: PlayerSession = getPlayerSession();
+
+    // Check if the player already examined the treausry
+    if (!playerSession.roomSearched) {
+        return new TextActionResult(["Examine the treasury first."]);
+    }
     return new TextActionResult(["You see that the skeleton seems to be holding a book. Perhaps reading it could provide some insight?"]);
 }
-
 
 public talk(choiceId?: number | undefined): ActionResult | undefined {
     const playerSession: PlayerSession = getPlayerSession();
 
-    if (choiceId === 1) {
+    // Check if the player already examined the treausry
+    if (!playerSession.roomSearched) {
+        return new TextActionResult(["Examine the treasury first."]);
+    }
+
+      // Check if the player has already solved the riddle
+      if (playerSession.correctAnswer) {
+        return new TextActionResult(["You've already solved the riddle. Continue your quest."]);
+    }
+
+    else if (choiceId === 1) {
         let choiceActions: TalkChoiceAction[] = [
             new TalkChoiceAction(2, "Continue to read the book"),
             new TalkChoiceAction(3, "Take a step back"),
@@ -42,7 +57,8 @@ public talk(choiceId?: number | undefined): ActionResult | undefined {
             "The faded ink tells..."], 
             choiceActions);
 
-    } else if (choiceId === 2) {            
+    }
+    else if (choiceId === 2) {            
         let choiceActions: TalkChoiceAction[] = [
             new TalkChoiceAction(4, "I'm ready for your challenge!"),
             new TalkChoiceAction(3, "*run silently away*"),
@@ -68,33 +84,57 @@ public talk(choiceId?: number | undefined): ActionResult | undefined {
             new TalkChoiceAction(8, "Can I have a clue maybe?"),
         ]);
     }
-    else if (choiceId === 5) {
-        return new TextActionResult(["I think you're a little slow, did that even made sense?"]);
-       
+    else if (choiceId === 5 || choiceId === 6) {
+        // Level down when the player asnwers the question wrong
+        if (damagePlayer(1)){
+            return new TextActionResult(["The skeleton got you in chokehold"]);
+        }; 
+        return new TalkActionResult(this, 
+            ["I think youre a little slow, did that even made sense?"],
+        [
+            new TalkChoiceAction(4, "Try again"),
+            new TalkChoiceAction(3, "*run silently away*"),
+        ]);
+        
     }
-    else if (choiceId === 6) {
-        return new TextActionResult(["Wrong! Next time you maybe have a better chance."]);
+// Correct answer with the item
+else if (choiceId === 7) {
+    // Check if the player has answered the riddle correctly
+    if (!playerSession.correctAnswer) {
+        playerSession.correctAnswer = true;
+        // Check if the player has already collected the code
+        if (!playerSession.collectedCode) {
+            // If not, collect the code and provide a success message
+            playerSession.collectedCode = true;
+            return new TextActionResult([
+                "Correct...You've surprised me mortal.",
+                "I hope you make it out, my friend with the amulet didn't.",
+                "With this item, you can continue your quest. Good luck, and I hope I'll never see you again."
+            ]);
+        } 
+    } else {
+        // If the player already solved the riddle
+        return new TextActionResult(["You already solved the riddle"]);
     }
-    else if (choiceId === 7) {
-        return new TextActionResult(["Correct...You've suprised me mortal.",
-        "I hope you make it out, my friend with the amulet didn't.",
-        "With this item you can continue your quest. Goodluck and I hope I'll never see you again."]);
-    }
-    
+}
+
     else if (choiceId === 8) {
-        return new TextActionResult(["Ethel Baker: Mortals aren't really that clever..What a waste of brains."]);
+        return new TalkActionResult(this, ["Ethel Baker: Mortals aren't really that clever..What a waste of brains.",
+    "It's not an animal anyway."],
+    [       new TalkChoiceAction(4, "Try again"),
+            new TalkChoiceAction(3, "*run silently away*")
+        ]);
     }
     
-    else if (choiceId === 9) {
+    if(choiceId === 9) {
         return new TextActionResult(["You've lost your only way out of here"]);
     }
-
     
     return new TalkActionResult(this,
         ["In her skeletal hands rests an tattered book, its pages whispering secrets of a bygone era, a silent testament to the knowledge she once held in life."],
         [
             new TalkChoiceAction(1, "Read the book"),
-            new TalkChoiceAction(3, "Run for your life"),
+            new TalkChoiceAction(3, "Take a step back"),
         ]
     );
 }

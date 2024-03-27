@@ -29,8 +29,18 @@ export class KeyItem3 extends Item implements Examine, Pickup, UseRoom2 {
         return new TextActionResult(["The right key, small and weathered, carries the weight of time in its appearance. Tiny scratches and faded grooves tell tales of countless uses.", "As you run your fingers over its aged surface, a sense of history envelopes you.", "This key has witnessed much, and though it may seem frail, there's a timeless quality to it."]);
     }
 
-    // TODO: zorg ervoor dat de user de juiste key kan gebruiken op de deur!!
+    // Modified useRoom2 method to show only the player's item inventory
     public useroom2(_gameObject: GameObject): ActionResult | undefined {
+        const playerSession: PlayerSession = getPlayerSession();
+        
+        if (!playerSession.answeredRiddle && !playerSession.pickedUpKey3) {
+            return new TextActionResult(["<I should talk to that scary ghost first...>"]);
+        }
+        
+        if (!playerSession.inventory.includes(KeyItem3Alias)) {
+            return new TextActionResult(["You haven't picked up the key yet."]);
+        }
+        
         return new TextActionResult(["You used the key"]);
     }
     
@@ -40,15 +50,16 @@ export class KeyItem3 extends Item implements Examine, Pickup, UseRoom2 {
         if (!playerSession.answeredRiddle === false) {
             if(!playerSession.pickedUpKey3) {
                 playerSession.pickedUpKey3 = true;
-                (playerSession.inventory.push(KeyItem3Alias));
-
+                playerSession.inventory.push(KeyItem3Alias);
+                
                 return new TextActionResult(["You pick up the right key."]);
-
+            } else if (!playerSession.answeredRiddle && playerSession.pickedUpKey3) {
+                return new TextActionResult(["<I should talk to that scary ghost first...>"]);
             } else {
                 return undefined;
             }
-        } else {
-            return new TextActionResult(["<I should talk to that scary ghost first...>"]);
         }
+
+        return new TextActionResult(["<I should talk to that scary ghost first...>"]);
     }
 }
