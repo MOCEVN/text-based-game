@@ -166,8 +166,8 @@ export class GameCanvas extends LitElement {
         if (this.roomTitle === "minigame") {
             this.playingMiniGame = true;
             gameService.addEventListener("minigame",(e:miniGameEnd) => {
-                this.playingMiniGame = false;
                 if (this.playingMiniGame){
+                    this.playingMiniGame = false;
                     if (e.data.win) {
                         void this.handleClickAction({alias:"win",label:"",needsObject:false});
                     } else {
