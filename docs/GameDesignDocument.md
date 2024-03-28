@@ -45,7 +45,7 @@ Onze doelstellingen omvatten:
 Voor het bedenken van een verhaal van onze tekst based game hebben wij eerst samen gebrainstormd. Wij zijn samen gaan zitten en hebben een mindmap op papier gemaakt, vervolgens hebben wij het digitaal in Figma gemaakt. Zodat het overzichtelijker is en iedereen er makkelijk toegang tot heeft.
 
 **Mindmap Terror Trial:**
-![Mindmap](/assets/mindmap.png "Mindmap")
+![Mindmap](docs/assets/mindmap.png "Mindmap")
 
 
 # Wireflow
@@ -53,7 +53,7 @@ Voor het bedenken van een verhaal van onze tekst based game hebben wij eerst sam
 Nadat de mindmap was gemaakt, hebben wij nagedacht over hoe het spel moet verlopen. Daarvoor hebben wij een wireflow gemaakt. De speler krijgt eerst een intro over hoe hij/zij daar terecht is gekomen. Als idee hebben wij, mocht alles met het project verlopen dat de speler een naam kan invullen en character kiezen. De speler begint in de startruimte en gaat vanuit daar naar de eerste kamer. De speler moet in de kamers raadsels oplossen en items verzamelen. Als de speler het laatste raadsel heeft heeft opgelost in de laatste kamer is de speler vrij.
 
 **Wireflow:**
-![Flowchart](/assets/flowchart.png "Flowchart")
+![Flowchart](docs/assets/flowchart.png "Flowchart")
 
 
 
