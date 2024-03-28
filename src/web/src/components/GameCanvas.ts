@@ -48,6 +48,31 @@ export class GameCanvas extends LitElement {
             position: absolute;
         }
 
+        .inventory {
+            grid-column: 1/2;
+            grid-row: 2/3;
+            z-index: 2;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            padding: 10px;
+        }
+        
+        .inventory p {
+            width: 100%;
+            margin: 0;
+        }
+        
+        .inventory img {
+            height: 3em;
+            width: 3em;
+            margin-top: 5px;
+            margin-right: 5px;
+            padding: 5px;
+            background-color: #141410b0;
+            border-radius: 5px;
+        }
+
         .content {
             margin-top: 5px;
             padding: 10px;
@@ -134,6 +159,7 @@ export class GameCanvas extends LitElement {
     private actionButtons?: ActionReference[];
     private gameObjectButtons?: GameObjectReference[];
     private hp?: number;
+    private inventory?: string[];
     private playingMiniGame: boolean = false;
 
     private selectedActionButton?: ActionReference;
@@ -159,6 +185,7 @@ export class GameCanvas extends LitElement {
         this.actionButtons = state.actions;
         this.gameObjectButtons = state.objects;
         this.hp = state.hp;
+        this.inventory = state.inventory;
 
         this.selectedActionButton = undefined;
         this.selectedGameObjectButtons.clear();
@@ -229,7 +256,7 @@ export class GameCanvas extends LitElement {
         } else {   
             return html`
             <div class="game">
-                ${this.renderTitle()} ${this.renderHeader()} ${this.renderContent()} ${this.renderFooter()}
+                ${this.renderTitle()} ${this.renderHeader()} ${this.renderInventory()} ${this.renderContent()} ${this.renderFooter()}
             </div>
             `;
         }
@@ -247,12 +274,21 @@ export class GameCanvas extends LitElement {
         if (this.roomImages && this.roomImages.length > 0) {
             return html`
                 <div class="header">
-                    ${this.roomImages?.map((url) => html`<img src="/assets/img/rooms/${url}.png" />`)}
+                    ${this.roomImages?.map((url) => html`<img src="/assets/img/rooms/${url}.png" draggable=false />`)}
                 </div>
             `;
         }
 
         return html`${nothing}`;
+    }
+
+    private renderInventory(): TemplateResult {
+        return html`
+            <div class="inventory">
+                ${(this.inventory?.length ?? 0 > 0 ) ? html`<p>Inventory</p>` : nothing}
+                ${this.inventory?.map((item) => html`<img src="/assets/img/ui/${item}.png" draggable=false>`)}
+            </div>
+        `;
     }
 
     private renderContent(): TemplateResult {
