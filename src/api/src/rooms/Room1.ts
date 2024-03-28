@@ -35,6 +35,10 @@ export class Room1 extends Room {
     public images(): string[] {
         return ["room1"];
     }
+
+    public audio(): string[] {
+        return ["door"];
+    }
     public actions(): Action[] {
         return [
             new ExamineAction(),

@@ -155,6 +155,7 @@ export class GameCanvas extends LitElement {
 
     private roomTitle?: string;
     private roomImages?: string[];
+    private roomAudio?: string[];
     private contentText?: string[];
     private actionButtons?: ActionReference[];
     private gameObjectButtons?: GameObjectReference[];
@@ -181,6 +182,7 @@ export class GameCanvas extends LitElement {
         //Reset the component
         this.roomTitle = state.roomTitle;
         this.roomImages = state.roomImages;
+        this.roomAudio = state.roomAudio;
         this.contentText = state.text;
         this.actionButtons = state.actions;
         this.gameObjectButtons = state.objects;
@@ -250,13 +252,17 @@ export class GameCanvas extends LitElement {
         this.updateState(state);
     }
 
+    // private handleAudio(): void {
+
+    // }
+
     protected render(): TemplateResult {
         if (this.roomTitle === "minigame") {
             return html`<mini-game></mini-game>`;
         } else {   
             return html`
             <div class="game">
-                ${this.renderTitle()} ${this.renderHeader()} ${this.renderInventory()} ${this.renderContent()} ${this.renderFooter()}
+                ${this.renderTitle()} ${this.renderHeader()} ${this.renderInventory()} ${this.renderContent()} ${this.renderFooter()} ${this.renderAudio()}
             </div>
             `;
         }
@@ -327,6 +333,11 @@ export class GameCanvas extends LitElement {
                     </div>
                 </div>
             </div>
+        `;
+    }
+    private renderAudio(): TemplateResult {
+        return html`
+            <audio src="/assets/audio/rooms/${this.roomAudio ?? [""][0]}.mp3" ?autoplay=${true}> </audio>
         `;
     }
 }

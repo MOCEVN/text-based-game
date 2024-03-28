@@ -24,7 +24,6 @@ import { TalkActionResult } from "./base/actionResults/TalkActionResult";
 import { Searchaction, SearchactionAlias } from "./actions/SearchRoom1";
 import { UseRoom2Action, UseRoom2ActionAlias } from "./actions/UseRoom2";
 import { gebruikaction, gebruiktitemAlias } from "./base/actions/useitem";
-import { UseActionResult } from "./base/actionResults/UseactionResult";
 
 export const router: Router = Router();
 
@@ -165,6 +164,7 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
         roomAlias: room.alias,
         roomTitle: room.name(),
         roomImages: room.images(),
+        roomAudio: room.audio(),
         text: (actionResult as TextActionResult)?.text || ["That doesn't make any sense."],
         actions: actions,
         objects: room.objects().map((e) => e.toReference()),
