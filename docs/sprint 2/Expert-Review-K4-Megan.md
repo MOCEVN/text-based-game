@@ -1,12 +1,18 @@
 STARRT - Megan
 
 Situatie
+
+
 Voor de expert review wilde ik graag beoordeeld worden op K4. Dat houdt in dat je requirements hebt verzameld voor je applicatie en die hebt omgezet in acceptatiecriteria. Ik had al mijn userstories met acceptatiecriteria af en liet dat ook zien.
 
 Taak
+
+
 Mijn taak was om userstories te maken met acceptatiecriteria. De userstories die ik heb gemaakt waren specifiek voor mijn kamer met mijn thema. Vanuit ons idee (een horror huis) hebben we ieder individueel bedacht wat de speler te wachten staat in een kamer.
 
 Aanpak
+
+
 Er is een gebruikersonderzoek gedaan, maar die ging meer over de UX/UI design van het spel. Dat is ons wel gelukt.
 
 Resultaat
