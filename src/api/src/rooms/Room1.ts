@@ -25,11 +25,11 @@ export class Room1 extends Room {
 
     public name(): string {
         return "Room 1";
-    }   
+    }
     public examine(): ActionResult | undefined {
         return new TextActionResult([
             "Inside room 1, the cold cuts through the air like a knife, while darkness reigns, only broken by a faint moonbeam. This seems the perfect hiding spot for a killer clown, whose mocking laughter echoes from the shadows. Unsure if it's really a clown, you feel a threat that gives you goosebumps.",
-            "Instead of searching for a clown who seems more shadow than reality, you focus on escape. In vain, you struggle with windows and chairs, until something unexpected catches your attention under the bookcase: possibly your chance at freedom. With renewed hope, you turn to this discovery, possibly the key to escaping this chilly darkness.",
+            "you struggle with windows and chairs, until something unexpected catches your attention under the bookcase: possibly your chance at freedom. With renewed hope, you turn to this discovery, possibly the key to escaping this chilly darkness.",
         ]);
     }
     public images(): string[] {
