@@ -7,7 +7,6 @@ import { ExamineAction, ExamineActionAlias } from "./base/actions/ExamineAction"
 import { TalkActionAlias, TalkAction } from "./base/actions/TalkAction";
 import { GameObject } from "./base/gameObjects/GameObject";
 import { Room } from "./base/gameObjects/Room";
-import { playerSessionMiddleware } from "./base/playerSessionMiddleware";
 import {
     createNewPlayerSession,
     getPlayerSession,
@@ -24,6 +23,7 @@ import { TalkActionResult } from "./base/actionResults/TalkActionResult";
 import { Searchaction, SearchactionAlias } from "./actions/SearchRoom1";
 import { UseRoom2Action, UseRoom2ActionAlias } from "./actions/UseRoom2";
 import { gebruikaction, gebruiktitemAlias } from "./base/actions/useitem";
+import { getPlayerSessionMiddleware } from "./base/middlewareService";
 
 export const router: Router = Router();
 
@@ -31,7 +31,7 @@ router.get("/", (_, res) => {
     res.send("Game");
 });
 
-router.use(playerSessionMiddleware("game", createNewPlayerSession));
+router.use(getPlayerSessionMiddleware()("game",createNewPlayerSession));
 
 router.get("/state", (_, res) => {
     const playerSession: PlayerSession = getPlayerSession();
