@@ -1,5 +1,4 @@
-
-![Terror Trial Logo](/assets/logo.png "Terror Trial Logo")
+![Terror Trial Logo](docs/assets/logo.png "Terror Trial Logo")
 
 **Game Design Document**
 
