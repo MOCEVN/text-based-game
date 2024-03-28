@@ -15,6 +15,7 @@ import { gebruikaction } from "../base/actions/useitem";
 import { Desktop } from "../characters/Deskcharacter";
 import { PlayerSession } from "../types";
 import { flashlightitem, FlashlightitemAlias } from "../items/flashlightitem";
+
 export const Room1Alias: string = "room1";
 
 export class Room1 extends Room {
@@ -24,7 +25,7 @@ export class Room1 extends Room {
 
     public name(): string {
         return "Room 1";
-    }
+    }   
     public examine(): ActionResult | undefined {
         return new TextActionResult([
             "Inside room 1, the cold cuts through the air like a knife, while darkness reigns, only broken by a faint moonbeam. This seems the perfect hiding spot for a killer clown, whose mocking laughter echoes from the shadows. Unsure if it's really a clown, you feel a threat that gives you goosebumps.",
@@ -62,9 +63,6 @@ export class Room1 extends Room {
 
             return room.examine();
         }
-        if ((alias = "room1")) {
-        }
-
         return undefined;
     }
 }
