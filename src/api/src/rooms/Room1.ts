@@ -16,7 +16,6 @@ import { Desktop } from "../characters/Deskcharacter";
 import { PlayerSession } from "../types";
 import { flashlightitem, FlashlightitemAlias } from "../items/flashlightitem";
 export const Room1Alias: string = "room1";
-const Enterroomsound: any = new Audio("../web/wwwroot/Audio");
 
 export class Room1 extends Room {
     public constructor() {
@@ -63,8 +62,9 @@ export class Room1 extends Room {
 
             return room.examine();
         }
+        if ((alias = "room1")) {
+        }
 
         return undefined;
     }
-    
 }
