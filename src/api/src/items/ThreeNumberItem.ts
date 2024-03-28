@@ -23,7 +23,7 @@ export class ThreeNumberItem extends Item implements Examine, Collect {
     if(!playerSession.correctAnswer) {
       
       //  If the player hasn't solved the riddle
-      return new TextActionResult(["Find the skeleton"]);
+      return new TextActionResult(["Find the skeleton with the riddle"]);
       //  If the player already solved the riddle
     } 
      return new TextActionResult(["It's a three-number code to open the next door"]); 
@@ -48,7 +48,7 @@ export class ThreeNumberItem extends Item implements Examine, Collect {
         }
     } else {
         // If the player hasn't answered correctly, inform them
-        return new TextActionResult(["Find the skeleton"]);
+        return new TextActionResult(["Find the skeleton with the riddle"]);
     }
 }
 
