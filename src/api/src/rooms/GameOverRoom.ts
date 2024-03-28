@@ -9,24 +9,26 @@ import { PlayerSession } from "../types";
 
 export const GameOverRoomAlias: string = "game-over-room";
 
-export class GameOverRoom extends Room implements Custom{
-    public constructor(){
-        super(GameOverRoomAlias,CustomActionAlias);
+export class GameOverRoom extends Room implements Custom {
+    public constructor() {
+        super(GameOverRoomAlias, CustomActionAlias);
     }
 
     public images(): string[] {
         const PlayerSession: PlayerSession = getPlayerSession();
 
-        if(PlayerSession.gameOverKamer5 === 1){
+        if (PlayerSession.gameOverKamer5 === 1) {
             return ["behekst"];
-        }else if(PlayerSession.gameOverKamer5 === 2){
+        } else if (PlayerSession.gameOverKamer5 === 2) {
+            return ["behekst"];
+        } else if (PlayerSession.gameOverKamer5 === 5) {
             return ["behekst"];
         }
-       return ["startroom"];
+        return ["startroom"];
     }
 
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["GAME OVER","YOU LOST"]);
+        return new TextActionResult(["GAME OVER", "YOU LOST"]);
     }
     public name(): string {
         return "Terror Trial";

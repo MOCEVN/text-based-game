@@ -17,13 +17,13 @@ export class FirstPot extends Character implements Examine, UseRoom5 {
     }
     public Use(): ActionResult | undefined {
         const PlayerSession: PlayerSession = getPlayerSession();
-
-        if (PlayerSession.witchRightChoise === true) {
-            return new TextActionResult(["Pot: hands off me, traveler"]);
-        } else if (PlayerSession.PotRightChoise === true) {
+  if (PlayerSession.PotRightChoise === true) {
             PlayerSession.inventory.push(PotionItemAlias);
-            return new TextActionResult(["You obtained the potion"]);
-        } else {
+            return new TextActionResult(["You obtained the potion"]);}
+    else if (PlayerSession.witchRightChoise === true) {
+            return new TextActionResult(["Pot: hands off me, traveler"]);
+        }
+         else {
             // eslint-disable-next-line quotes
             return new TextActionResult([
                 "Witch: Before you can benefit from its secrets, you must first accept my challenge, traveler.",
@@ -70,6 +70,58 @@ export class FirstPot extends Character implements Examine, UseRoom5 {
             case 2:
                 PlayerSession.talkPotion = false;
                 return new TextActionResult(["You left the pot alone"]);
+
+            case 3:
+                return new TalkActionResult(
+                    this,
+                    ["Pot: You must answer this last question for me, o traveler!"],
+                    [
+                        new TalkChoiceAction(4, "Enough riddles, pot! Hand over your elixir!"),
+                        new TalkChoiceAction(5, "Give me your riddle, Pot!"),
+                        new TalkChoiceAction(2, "Leave the conversation"),
+                    ]
+                );
+
+            case 4:
+                return new TalkActionResult(
+                    this,
+                    ["Pot: Hands off me!"],
+                    [
+                        new TalkChoiceAction(6, "Force the pot to give the potion"),
+                        new TalkChoiceAction(2, "Leave the conversation"),
+                    ]
+                );
+
+            case 6:
+                PlayerSession.gameOverKamer5 = 5;    
+
+            case 5:
+                return new TalkActionResult(
+                    this,
+                    [
+                        "Listen well, mortal. Solve this conundrum: ‘I speak without a mouth and hear without ears. I have no body, but I come alive with the wind.’ What am I?",
+                    ],
+                    [
+                        new TalkChoiceAction(7, "An echo"),
+                        new TalkChoiceAction(5, "Could it be… a ghost?"),
+                        new TalkChoiceAction(2, "Leave the conversation"),
+                    ]
+                );
+
+            case 7:
+                
+                PlayerSession.PotRightChoise = true;
+
+                return new TalkActionResult(
+                    
+
+                    this,
+                    [
+                        "Pot: Correct, seeker. You’ve pierced the veil of mystery. The potion is yours.",
+                    ],
+                    [new TalkChoiceAction(2, "Leave the conversation")]
+                );    
+
             case 10:
                 PlayerSession.travelers = true;
                 return new TextActionResult(["You have completed my test o traveler"]);
