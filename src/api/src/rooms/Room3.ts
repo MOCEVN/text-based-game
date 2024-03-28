@@ -26,15 +26,14 @@ export class Room3 extends Room {
     public name(): string {
         return "Mystical Chamber";
     }
-    public examine(): ActionResult | undefined {    
-            return new TextActionResult([
-                "As you step into the dimly lit room, your eyes adjust to the darkness, revealing a multitude of mysterious objects.",
-                "Your curiosity piqued, you start exploring the room, carefully examining the room in search of clues.",
-                "It appears to be an old treasury partially obscured by fallen debris. Perhaps investigating it further will yield valuable insights.",
-            ]);
-        
+    public examine(): ActionResult | undefined {
+        return new TextActionResult([
+            "As you step into the dimly lit room, your eyes adjust to the darkness, revealing a multitude of mysterious objects.",
+            "Your curiosity piqued, you start exploring the room, carefully examining the room in search of clues.",
+            "It appears to be an old treasury partially obscured by fallen debris. Perhaps investigating it further will yield valuable insights.",
+        ]);
     }
-    
+
     public images(): string[] {
         const playerSession: PlayerSession = getPlayerSession();
 
@@ -45,30 +44,34 @@ export class Room3 extends Room {
             return ["room3"]; // Otherwise, return the default image array
         }
     }
-    
+
     public actions(): Action[] {
         return [
-            new ExamineAction(), 
-            new TalkAction(), 
+            new ExamineAction(),
+            new TalkAction(),
             new CollectAction(),
             // new CustomAction("reset","Reset room",false),
-            new CustomAction("room4","Room 4",false),
+            new CustomAction("room4", "Room 4", false),
         ];
     }
-    
+
     public objects(): GameObject[] {
         const playerSession: PlayerSession = getPlayerSession();
 
         const objects: GameObject[] = [this, ...getGameObjectsFromInventory()];
 
-        objects.push(new TreasuryObject(), new SkeletonCharacter1(), new SkeletonCharacter2(), new SkeletonCharacter3());
+        objects.push(
+            new TreasuryObject(),
+            new SkeletonCharacter1(),
+            new SkeletonCharacter2(),
+            new SkeletonCharacter3()
+        );
 
-        if(!playerSession.inventory.includes(ThreeNumberItemAlias)) {
+        if (!playerSession.inventory.includes(ThreeNumberItemAlias)) {
             objects.push(new ThreeNumberItem());
         }
 
         return objects;
-        
     }
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
         if (alias === "room4") {
@@ -82,8 +85,4 @@ export class Room3 extends Room {
 
         return undefined;
     }
-    
 }
-
-
-
