@@ -6,6 +6,7 @@ export type GameState = {
     actions: ActionReference[];
     objects: GameObjectReference[];
     hp?: number;
+    inventory?: string[];
 };
 
 export type GameObjectReference = {

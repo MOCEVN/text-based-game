@@ -169,5 +169,6 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
         actions: actions,
         objects: room.objects().map((e) => e.toReference()),
         hp: playerSession.hp,
+        inventory: playerSession.inventory,
     };
 }
