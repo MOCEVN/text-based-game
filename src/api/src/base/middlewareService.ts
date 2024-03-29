@@ -9,9 +9,9 @@ type CreatePlayerSession = () => any;
 
 type ExpressMiddleware = (req: any, res: any, next: any) => void;
 
-export const dataBaseCredentialsFilled: any = (process.env.DB_USER && process.env.DB_DATABASE && process.env.DB_PASSWORD);
+const dataBaseCredentialsFilled: any = (process.env.DB_USER && process.env.DB_DATABASE && process.env.DB_PASSWORD);
 
-export let databaseConnectionStatus: boolean = true;
+let databaseConnectionStatus: boolean = true;
 
 export function disableDatabase(): void {
     databaseConnectionStatus = false;
