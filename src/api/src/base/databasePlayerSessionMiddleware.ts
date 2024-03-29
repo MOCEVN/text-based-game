@@ -8,7 +8,7 @@ type CreatePlayerSession = () => any;
 
 type ExpressMiddleware = (req: any, res: any, next: any) => void;
 
-type FetchResult = { data?: PlayerSession, found: boolean, error?: boolean };
+type FetchResult = { data?: PlayerSession, found: boolean };
 
 class DatabaseStorage {
     public constructor() {
@@ -131,7 +131,6 @@ export function databasePlayerSessionMiddleware(
 ): ExpressMiddleware {
     return asyncHandler(async (req, res, next) => {
         if (!databaseConnectionStatus) {
-
             playerSessionMiddleware(alias, createPlayerSession)(req, res, next);
         } else {
 
@@ -147,22 +146,26 @@ export function databasePlayerSessionMiddleware(
 
                 const playerSessionId: string = `${alias}-${PlayerSessionIdHeader}`;
                 const fetchResult: FetchResult = await databaseStorage.fetchSession(playerSessionId);
-                if (fetchResult.error) {
-                    res.status(400).end();
+
+                if (!databaseConnectionStatus) {
+                    playerSessionMiddleware(alias, createPlayerSession)(req, res, next);
                     return;
                 }
+
                 let playerSession: PlayerSession;
                 if (fetchResult.found) {
                     playerSession = fetchResult.data!;
                 } else {
                     playerSession = createPlayerSession();
                     await databaseStorage.addSession(playerSessionId, playerSession);
-                    if (!databaseStorage.session) {
-                        databaseConnectionFailed();
-                        playerSessionMiddleware(alias, createPlayerSession)(req, res, next);
-                    }
                 }
-                databaseStorage.session = playerSession;                
+
+                if (!databaseConnectionStatus) {
+                    playerSessionMiddleware(alias, createPlayerSession)(req, res, next);
+                    return;
+                }
+
+                databaseStorage.session = playerSession;
 
                 next();
 
