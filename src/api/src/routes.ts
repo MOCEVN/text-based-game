@@ -1,5 +1,5 @@
 import { GameState, PerformActionRequest, ActionReference } from "@shared/types";
-import { Router } from "express";
+import { ErrorRequestHandler, Router } from "express";
 import { ActionResult } from "./base/actionResults/ActionResult";
 import { TextActionResult } from "./base/actionResults/TextActionResult";
 import { CustomAction } from "./base/actions/CustomAction";
@@ -23,7 +23,8 @@ import { TalkActionResult } from "./base/actionResults/TalkActionResult";
 import { Searchaction, SearchactionAlias } from "./actions/SearchRoom1";
 import { UseRoom2Action, UseRoom2ActionAlias } from "./actions/UseRoom2";
 import { gebruikaction, gebruiktitemAlias } from "./base/actions/useitem";
-import { getPlayerSessionMiddleware } from "./base/middlewareService";
+import { dataBaseCredentialsFilled, databaseConnectionStatus, getPlayerSessionMiddleware } from "./base/middlewareService";
+import { databaseConnectionFailed } from "./base/databasePlayerSessionMiddleware";
 
 export const router: Router = Router();
 
@@ -87,6 +88,15 @@ router.post("/action", (req, res) => {
 
     res.json(gameState);
 });
+
+router.use(((): ErrorRequestHandler => (err,_req,res,_next) => {
+    console.error(err);
+    
+    if (dataBaseCredentialsFilled && databaseConnectionStatus) {
+        databaseConnectionFailed();
+    }
+    res.status(500).end();
+})());
 
 function handleActionInRoom(room: Room, alias: string, objectAliases?: string[]): ActionResult | undefined {
     const gameObjects: GameObject[] = getGameObjectsByAliases(objectAliases);
