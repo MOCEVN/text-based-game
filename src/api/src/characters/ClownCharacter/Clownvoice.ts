@@ -29,8 +29,8 @@ export class clownvoice extends Character {
                 ],
                 [
                     new TalkChoiceAction(3, "Respond to the shadow"),
-                    new TalkChoiceAction(4, "Look for the bookcase"),
-                    new TalkChoiceAction(5, "Search for the unknown item"),
+                    new TalkChoiceAction(4, "Insult the voice"),
+                    new TalkChoiceAction(5, "Look for your gun"),
                 ]
             );
         }
@@ -38,12 +38,16 @@ export class clownvoice extends Character {
             return new TextActionResult(["<You pee your pants and stain the floor>"]);
         }
         if (choiceId === 3) {
-            return new TextActionResult([
-                "'I'm willing to do what it takes,' you say, your voice steady despite the eerie atmosphere. 'Tell me what I need to do.''A test, then,' the shadow replies, its form rippling as if amused. 'Two truths you shall find amongst my possessions—one within the embrace of written knowledge, and the other, a light in the dark. The third is lost, hidden from view, waiting to be discovered. Bring these to me, and I will grant you the key to your path forward.        ",
-            ]);
+            return new TalkActionResult(
+                this,
+                [
+                    "'I'm willing to do what it takes,' you say, your voice steady despite the eerie atmosphere. 'Tell me what I need to do.''A test, then,' the shadow replies, its form rippling as if amused. 'Two truths you shall find amongst my possessions—one within the embrace of written knowledge, and the other, a light in the dark. The third is lost, hidden from view, waiting to be discovered. Bring these to me, and I will grant you the key to your path forward.",
+                ],
+                [new TalkChoiceAction(6, "Look for the bookcase")]
+            );
         }
         if (choiceId === 4) {
-            return new TextActionResult(["<antwoord op keuze 2>"]);
+            return new TextActionResult([""]);
         }
         if (choiceId === 5) {
             return new TextActionResult(["<antwoord op keuze 3>"]);

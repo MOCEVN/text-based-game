@@ -4,7 +4,14 @@ import { Action } from "../base/actions/Action";
 import { CustomAction } from "../base/actions/CustomAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
-import { getPlayerSession } from "../instances";
+import { damagePlayer, getPlayerSession } from "../instances";
+import { SawItemAlias } from "../items/SawItem";
+import { ThreeNumberItemAlias } from "../items/ThreeNumberItem";
+import { FlashlightitemAlias } from "../items/flashlightitem";
+import { KeyItem1Alias } from "../items/keys/KeyItem1";
+import { KeyItem2Alias } from "../items/keys/KeyItem2";
+import { KeyItem3Alias } from "../items/keys/KeyItem3";
+import { PlayerSession } from "../types";
 import { Room1 } from "./Room1";
 
 // imports for testing
@@ -29,13 +36,14 @@ export class StartupRoom extends Room {
     }
 
     public actions(): Action[] {
-        return [new CustomAction("start-game", "Start Game", false)
-            ,// actions for testing
+        return [new CustomAction("start-game", "Start Game", false),
+            // actions for testing VVVVV
             new CustomAction("r1","Room 1 (temp)",false),
             new CustomAction("r2","Room 2 (temp)",false),
             new CustomAction("r3","Room 3 (temp)",false),
             new CustomAction("r4","Room 4 (temp)",false),
-            new CustomAction("r5","Room 5 (temp)",false)
+            new CustomAction("r5","Room 5 (temp)",false),
+            new CustomAction("die","Die",false),
         ];
     }
 
@@ -55,8 +63,8 @@ export class StartupRoom extends Room {
 
             return room.examine();
         }
-
-        // actions for testing
+        const playerSession: PlayerSession = getPlayerSession();
+        // actions for testing VVVV
         let room: Room | undefined;
         switch (alias){
             case "r1":
@@ -64,16 +72,43 @@ export class StartupRoom extends Room {
                 break;
             case "r2":
                 room = new Room2;
+                playerSession.inventory.push(FlashlightitemAlias);
                 break;
             case "r3":
                 room = new Room3;
+                playerSession.inventory.push(FlashlightitemAlias,KeyItem1Alias,KeyItem2Alias,KeyItem3Alias);
+                playerSession.pickedUpKey1 = true;
+                playerSession.pickedUpKey2 = true;
+                playerSession.pickedUpKey3 = true;
+                playerSession.answeredRiddle = true;
                 break;
             case "r4":
                 room = new Room4;
+                playerSession.inventory.push(FlashlightitemAlias,KeyItem1Alias,KeyItem2Alias,KeyItem3Alias,ThreeNumberItemAlias);
+                playerSession.pickedUpKey1 = true;
+                playerSession.pickedUpKey2 = true;
+                playerSession.pickedUpKey3 = true;
+                playerSession.answeredRiddle = true;
+                playerSession.roomSearched = true;
+                playerSession.collectedCode = true;
+                playerSession.correctAnswer = true;
                 break;
             case "r5":
                 room = new Room5;
+                playerSession.inventory.push(FlashlightitemAlias,KeyItem1Alias,KeyItem2Alias,KeyItem3Alias,ThreeNumberItemAlias,SawItemAlias);
+                playerSession.pickedUpKey1 = true;
+                playerSession.pickedUpKey2 = true;
+                playerSession.pickedUpKey3 = true;
+                playerSession.answeredRiddle = true;
+                playerSession.roomSearched = true;
+                playerSession.collectedCode = true;
+                playerSession.correctAnswer = true;
+                playerSession.paintingPuzzleState = 3;
                 break;
+            case "die":
+                damagePlayer(100);
+                return new TextActionResult(["You died"]);
+        // actions for testing ^^^^^^
         }
         if (room) {
             getPlayerSession().currentRoom = room.alias;

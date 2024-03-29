@@ -1,6 +1,5 @@
 import { GameObject } from "./base/gameObjects/GameObject";
 import { Room } from "./base/gameObjects/Room";
-import { getPlayerSessionFromContext, resetPlayerSessionInContext } from "./base/playerSessionMiddleware";
 import { ExampleCharacter, ExampleCharacterAlias } from "./characters/ExampleCharacter";
 import { ExampleItem, ExampleItemAlias } from "./items/ExampleItem";
 import { ExampleRoom, ExampleRoomAlias } from "./rooms/ExampleRoom";
@@ -37,6 +36,7 @@ import { TreasuryObject, TreasuryObjectAlias } from "./items/objects-room3/treas
 import { flashlight, FlashlightitemAlias } from "./characters/room1-3items/flashlight";
 import { Desktop, DesktopAlias } from "./characters/Deskcharacter";
 import { MiniGAmeRoom, MiniGameRoomAlias } from "./rooms/MiniGameRoom";
+import { getPlayerSessionGetter, getPlayerSessionReset } from "./base/middlewareService";
 
 /**
  * Create a new player session object
@@ -80,15 +80,16 @@ export function createNewPlayerSession(): PlayerSession {
  * @returns Player session from the current request
  */
 export function getPlayerSession(): PlayerSession {
-    return getPlayerSessionFromContext<PlayerSession>();
+    return getPlayerSessionGetter()();
 }
 
 /**
  * Reset the player session
  */
 export function resetPlayerSession(): void {
-    resetPlayerSessionInContext(createNewPlayerSession);
+    getPlayerSessionReset()(createNewPlayerSession);
 }
+
 
 /**
  * Sends the player to the game over room
