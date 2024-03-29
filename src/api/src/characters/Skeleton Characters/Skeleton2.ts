@@ -32,6 +32,11 @@ public examine(): ActionResult | undefined {
 public talk(choiceId?: number | undefined): ActionResult | undefined {
     const playerSession: PlayerSession = getPlayerSession();
 
+    // Function to give the item back
+    // if (playerSession.inventory.includes(ThreeNumberItemAlias)) {
+    //     choiceActions.push(new TalkChoiceAction(3, "Throw the code!"));
+    // }
+
     // Check if the player already examined the treausry
     if (!playerSession.roomSearched) {
         return new TextActionResult(["Examine the treasury first."]);
@@ -81,10 +86,11 @@ public talk(choiceId?: number | undefined): ActionResult | undefined {
             new TalkChoiceAction(5, "Tarantula"),
             new TalkChoiceAction(6, "A second?"),
             new TalkChoiceAction(7, "The Letter M"),
+            new TalkChoiceAction(10, "Ghost"),
             new TalkChoiceAction(8, "Can I have a clue maybe?"),
         ]);
     }
-    else if (choiceId === 5 || choiceId === 6) {
+    else if (choiceId === 5 || choiceId === 6 || choiceId === 10) {
         // Level down when the player asnwers the question wrong
         if (damagePlayer(1)){
             return new TextActionResult(["The skeleton got you in chokehold"]);

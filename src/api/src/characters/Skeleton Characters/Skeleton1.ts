@@ -5,7 +5,6 @@ import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { TalkChoiceAction } from "../../base/actions/TalkAction";
 import { Character } from "../../base/gameObjects/Character";
 import { getPlayerSession } from "../../instances";
-import { ThreeNumberItemAlias } from "../../items/ThreeNumberItem";
 import { PlayerSession } from "../../types";
 
 export const SkeletonCharacter1Alias: string = "skeleton-character-1";
@@ -35,15 +34,17 @@ export class SkeletonCharacter1 extends Character implements Examine {
             return new TextActionResult(["Examine the treasury first."]);
         }
 
+        if (playerSession.spokenToSkeleton1) {
+            return new TextActionResult(["This one didn't get you any closer to escape, try another one."]);
+        }
+
         if (choiceId === 1) {
             // Action for shaking the skeleton
             const choiceActions: TalkChoiceAction[] = [
                 new TalkChoiceAction(4, " 'Is there any way you can help me out of here...' "),
                 new TalkChoiceAction(2, "Continue the quest"),
             ];
-            if (playerSession.inventory.includes(ThreeNumberItemAlias)) {
-                choiceActions.push(new TalkChoiceAction(3, "Throw the code!"));
-            }
+           
             return new TalkActionResult(this,
                 ["*You gently shake the skeleton, hoping to wake it up*",
                 "Boney McRibage: 'Hey there, pal! The name's Boney McRibcage.",
@@ -65,6 +66,7 @@ export class SkeletonCharacter1 extends Character implements Examine {
             return new TextActionResult(["You've lost the code..."]);
         } else if (choiceId === 4) {
             // Action for asking for help
+            playerSession.spokenToSkeleton1 = true;
             return new TextActionResult([
                 "Boney McRibage: 'I'm sorry pal, I cannot help you with that... but maybe one of my friends can.' ",
                 " 'I don't remember which one again haha! Goodluck fella.' "

@@ -33,6 +33,12 @@ export class ThreeNumberItem extends Item implements Examine, Collect {
     // Put the item in the inventory
     const playerSession: PlayerSession = getPlayerSession();
 
+    // The item is now collected
+    if(!playerSession.inventory.includes(ThreeNumberItemAlias)) {
+      playerSession.inventory.push(ThreeNumberItemAlias);
+      return new TextActionResult(["You've collected the three-number code"]);
+    }
+
     if (playerSession.correctAnswer) {
         // Check if the player has answered the riddle correctly
         if (!playerSession.collectedCode) {
@@ -41,10 +47,10 @@ export class ThreeNumberItem extends Item implements Examine, Collect {
             playerSession.inventory.push(ThreeNumberItemAlias);
 
             // The item is now collected
-            return new TextActionResult(["You've collected the three number code"]);
+            return new TextActionResult(["You've solved the riddle correctly, you can now collect the three-number code."]);
         } else {
             // If the player has already collected the code, inform them
-            return new TextActionResult(["You already collected the three number code"]);
+            return new TextActionResult(["You've already collected the three number code, continue your quest."]);
         }
     } else {
         // If the player hasn't answered correctly, inform them

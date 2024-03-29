@@ -35,12 +35,17 @@ export class SkeletonCharacter3 extends Character implements Examine {
       return new TextActionResult(["Examine the treasury first."]);
   }
 
+    // Check if the player already has spoken to the character
+    if (playerSession.spokenToSkeleton3) {
+        return new TextActionResult(["You've already tried to speak to this skeleton, continue your search to the right skeleton"]);
+      }
+
     if(choiceId === 1) {
       const choiceActions: TalkChoiceAction[] = [
         new TalkChoiceAction(4, "Grab the amulet"),
         new TalkChoiceAction(2, "Continue the quest"),
       ];
-      
+      playerSession.spokenToSkeleton3 = true;
       return new TalkActionResult(this, 
         ["As you attempt to converse with the skeleton wearing the mysterious amulet",
         "It appears this skeletal guardian holds no answers for your quest to escape this mysterious room.",
@@ -52,7 +57,6 @@ export class SkeletonCharacter3 extends Character implements Examine {
       return new TextActionResult(["No succes with this creature unfortunately"]);
     }
     else if(choiceId === 3) {
-      playerSession.inventory = [];
       return new TextActionResult(["You've lost the code..."]);
     } 
     else if(choiceId === 4) {
