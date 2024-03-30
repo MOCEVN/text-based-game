@@ -117,30 +117,34 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
 
         return TalkAction.handle(character, choiceId);
     }
+    try {
 
-    switch (alias) {
-        case ExamineActionAlias:
-            return ExamineAction.handle(gameObjects[0]);
+        switch (alias) {
+            case ExamineActionAlias:
+                return ExamineAction.handle(gameObjects[0]);
 
-        case ExampleActionAlias:
-            return ExampleAction.handle(gameObjects[0]);
+            case ExampleActionAlias:
+                return ExampleAction.handle(gameObjects[0]);
 
-        case UseAlias:
-            return Use.handle(gameObjects[0]);
+            case UseAlias:
+                return Use.handle(gameObjects[0]);
 
-        case CollectActionAlias:
-            return CollectAction.handle(gameObjects[0]);
+            case CollectActionAlias:
+                return CollectAction.handle(gameObjects[0]);
 
-        case PickupActionAlias:
-            return PickupAction.handle(gameObjects[0]);
-        case SearchactionAlias:
-            return Searchaction.handle(gameObjects[0]);
-        case UseRoom2ActionAlias:
-            return UseRoom2Action.handle(gameObjects[0]);
-        case gebruiktitemAlias:
-            return gebruikaction.handle(gameObjects[0]);
+            case PickupActionAlias:
+                return PickupAction.handle(gameObjects[0]);
+            case SearchactionAlias:
+                return Searchaction.handle(gameObjects[0]);
+            case UseRoom2ActionAlias:
+                return UseRoom2Action.handle(gameObjects[0]);
+            case gebruiktitemAlias:
+                return gebruikaction.handle(gameObjects[0]);
+        }
+
+    } catch {
+        return undefined;
     }
-
     return CustomAction.handle(alias, gameObjects);
 }
 
