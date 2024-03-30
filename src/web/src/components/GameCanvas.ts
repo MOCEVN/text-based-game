@@ -300,22 +300,26 @@ export class GameCanvas extends LitElement {
     }
 
     private renderInventory(): TemplateResult {
-        return html`
-            <div class="inventory">
-                ${(this.inventory?.length ?? 0 > 0 ) ? html`<p>Inventory</p>` : nothing}
-                ${this.inventory?.map((item) => 
-                    html`<img 
-                    class = "${this.selectedActionButton ? "inventoryclickable" : ""}"
-                    src="/assets/img/ui/${item}.png" 
-                    draggable=false 
-                    @click=${():void => {
-                        if (this.selectedActionButton) {
-                            void this.handleClickObject({alias: item, name: ""});
-                        }
-                    }}
-                >`)}
-            </div>
-        `;
+        if (this.inventory?.length ?? 0 > 0) {
+            return html`
+                <div class="inventory">
+                    <p>Inventory</p>
+                    ${this.inventory?.map((item) => 
+                        html`<img 
+                        class = "${this.selectedActionButton ? "inventoryclickable" : ""}"
+                        src="/assets/img/ui/${item}.png" 
+                        draggable=false 
+                        @click=${():void => {
+                            if (this.selectedActionButton) {
+                                void this.handleClickObject({alias: item, name: ""});
+                            }
+                        }}
+                    >`)}
+                </div>
+            `;
+        } else {
+            return html``;
+        }
     }
 
     private renderContent(): TemplateResult {
