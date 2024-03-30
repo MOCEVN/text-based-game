@@ -53,6 +53,8 @@ export class GameCanvas extends LitElement {
             flex-wrap: wrap;
             align-content: flex-start;
             padding: 10px;
+            background-color: #14141060;
+            border-radius: 5px;
         }
         
         .inventory p {
@@ -62,21 +64,23 @@ export class GameCanvas extends LitElement {
         
         .inventory img {
             width: 20%;
+            height: auto;
             min-width: 2.3em;
             aspect-ratio: 1;
             margin-top: 5px;
             margin-right: 5px;
             padding: 5px;
-            background-color: #141410b0;
             border-radius: 5px;
+            border-width: 3px;
+            border-style: solid;
+            border-color: #00000000;
         }
-
         img.inventoryclickable {
-            background-color: #25251fae;
+            border-color: #332c57;
             cursor: pointer;
         }
         img.inventoryclickable:hover {
-            background-color: #141410b0;
+            background-color: #332c57;
         }
 
         .content {
@@ -106,6 +110,7 @@ export class GameCanvas extends LitElement {
             display: flex;
             grid-column: 3/4;
             z-index: 2;
+            overflow: auto;
         }
 
         .footer .buttons {
@@ -339,7 +344,7 @@ export class GameCanvas extends LitElement {
                                           : ""}"
                                       @click=${(): void => void this.handleClickObject(button)}
                                       >${button.name}</a
-                                  >${console.log(button)}`
+                                  >`
                               )
                             : nothing}
                     </div>
