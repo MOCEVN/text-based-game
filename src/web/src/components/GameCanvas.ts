@@ -49,9 +49,6 @@ export class GameCanvas extends LitElement {
         }
 
         .inventory {
-            grid-column: 1/2;
-            grid-row: 2/3;
-            z-index: 2;
             display: flex;
             flex-wrap: wrap;
             align-content: flex-start;
@@ -64,13 +61,22 @@ export class GameCanvas extends LitElement {
         }
         
         .inventory img {
-            height: 3em;
-            width: 3em;
+            width: 20%;
+            min-width: 2.3em;
+            aspect-ratio: 1;
             margin-top: 5px;
             margin-right: 5px;
             padding: 5px;
             background-color: #141410b0;
             border-radius: 5px;
+        }
+
+        img.inventoryclickable {
+            background-color: #25251fae;
+            cursor: pointer;
+        }
+        img.inventoryclickable:hover {
+            background-color: #141410b0;
         }
 
         .content {
@@ -262,7 +268,7 @@ export class GameCanvas extends LitElement {
         } else {   
             return html`
             <div class="game">
-                ${this.renderTitle()} ${this.renderHeader()} ${this.renderInventory()} ${this.renderContent()} ${this.renderFooter()} ${this.renderAudio()}
+                ${this.renderTitle()} ${this.renderHeader()} ${this.renderContent()} ${this.renderFooter()} ${this.renderAudio()}
             </div>
             `;
         }
@@ -292,7 +298,17 @@ export class GameCanvas extends LitElement {
         return html`
             <div class="inventory">
                 ${(this.inventory?.length ?? 0 > 0 ) ? html`<p>Inventory</p>` : nothing}
-                ${this.inventory?.map((item) => html`<img src="/assets/img/ui/${item}.png" draggable=false>`)}
+                ${this.inventory?.map((item) => 
+                    html`<img 
+                    class = "${this.selectedActionButton ? "inventoryclickable" : ""}"
+                    src="/assets/img/ui/${item}.png" 
+                    draggable=false 
+                    @click=${():void => {
+                        if (this.selectedActionButton) {
+                            void this.handleClickObject({alias: item, name: ""});
+                        }
+                    }}
+                >`)}
             </div>
         `;
     }
@@ -323,10 +339,11 @@ export class GameCanvas extends LitElement {
                                           : ""}"
                                       @click=${(): void => void this.handleClickObject(button)}
                                       >${button.name}</a
-                                  >`
+                                  >${console.log(button)}`
                               )
                             : nothing}
                     </div>
+                    ${this.renderInventory()}
                     <div class="hp">
                         ${map(range(this.hp ?? 0), () => html`<img src="/assets/img/ui/heart.png" draggable="false">`)}
                         ${map(range(10 - (this.hp ?? 10)), () => html`<img src="/assets/img/ui/heartempty.png" draggable="false">`)}
