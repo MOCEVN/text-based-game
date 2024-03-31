@@ -2,7 +2,7 @@ export type GameState = {
     roomAlias: string;
     roomTitle: string;
     roomImages: string[];
-    roomAudio: string[];
+    audio: string[];
     text: string[];
     actions: ActionReference[];
     objects: GameObjectReference[];

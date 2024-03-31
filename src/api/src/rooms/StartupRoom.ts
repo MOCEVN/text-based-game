@@ -4,7 +4,7 @@ import { Action } from "../base/actions/Action";
 import { CustomAction } from "../base/actions/CustomAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
-import { damagePlayer, getPlayerSession } from "../instances";
+import { damagePlayer, getPlayerSession, playAudio } from "../instances";
 import { SawItemAlias } from "../items/SawItem";
 import { ThreeNumberItemAlias } from "../items/ThreeNumberItem";
 import { FlashlightitemAlias } from "../items/flashlightitem";
@@ -60,6 +60,7 @@ export class StartupRoom extends Room {
 
             //Set the current room to the example room
             getPlayerSession().currentRoom = room.alias;
+            playAudio("door");
 
             return room.examine();
         }

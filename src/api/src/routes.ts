@@ -43,6 +43,7 @@ router.get("/state", (_, res) => {
 
         return;
     }
+    playerSession.audio = [];
 
     //NOTE: Rooms always implement Examine
     const examineActionResult: ActionResult = ExamineAction.handle(room)!;
@@ -70,6 +71,7 @@ router.post("/action", (req, res) => {
 
         return;
     }
+    playerSession.audio = [];
 
     const actionResult: ActionResult | undefined = handleActionInRoom(
         room,
@@ -168,7 +170,7 @@ function convertActionResultToGameState(actionResult?: ActionResult): GameState 
         roomAlias: room.alias,
         roomTitle: room.name(),
         roomImages: room.images(),
-        roomAudio: room.audio(),
+        audio: playerSession.audio,
         text: (actionResult as TextActionResult)?.text || ["That doesn't make any sense."],
         actions: actions,
         objects: room.objects().map((e) => e.toReference()),

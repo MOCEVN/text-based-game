@@ -45,10 +45,12 @@ import { getPlayerSessionGetter, getPlayerSessionReset } from "./base/middleware
  */
 export function createNewPlayerSession(): PlayerSession {
     return {
+        // global
         currentRoom: "startup",
         inventory: [],
         hp: 10,
         hasRevived: false,
+        audio: [],
         // room 2
         pickedUpKey1: false,
         pickedUpKey2: false,
@@ -63,7 +65,7 @@ export function createNewPlayerSession(): PlayerSession {
         // room 4
         paintingPuzzleState: 0,
         paintingsTalkedTo: 0,
-        //room5
+        // room 5
         witchRightChoise: false,
         pickedUpPotion: false,
         playertrys: 0,
@@ -125,6 +127,13 @@ export function damagePlayer(damageAmount: number): boolean {
 export function sendToMiniGame(): void {
     const playerSession: PlayerSession = getPlayerSession();
     playerSession.currentRoom = MiniGameRoomAlias;
+}
+/**
+ * Adds an audio filename to be played.
+ * @param name Filename of the audio file in /public/assets/audio
+ */
+export function playAudio(name: string): void {
+    getPlayerSession().audio.push(name);
 }
 /**
  * Get the instance of a room by its alias

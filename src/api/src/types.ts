@@ -5,6 +5,7 @@ export type PlayerSession = {
     hp: number;
     hasRevived: boolean;
     deathRoom?: string;
+    audio: string[];
     // room 2
     pickedUpKey1: boolean;
     pickedUpKey2: boolean;

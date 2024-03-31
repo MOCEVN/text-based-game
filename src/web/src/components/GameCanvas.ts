@@ -166,7 +166,7 @@ export class GameCanvas extends LitElement {
 
     private roomTitle?: string;
     private roomImages?: string[];
-    private roomAudio?: string[];
+    private audio?: string[];
     private contentText?: string[];
     private actionButtons?: ActionReference[];
     private gameObjectButtons?: GameObjectReference[];
@@ -193,7 +193,7 @@ export class GameCanvas extends LitElement {
         //Reset the component
         this.roomTitle = state.roomTitle;
         this.roomImages = state.roomImages;
-        this.roomAudio = state.roomAudio;
+        this.audio = state.audio;
         this.contentText = state.text;
         this.actionButtons = state.actions;
         this.gameObjectButtons = state.objects;
@@ -363,7 +363,7 @@ export class GameCanvas extends LitElement {
     }
     private renderAudio(): TemplateResult {
         return html`
-            <audio src="/assets/audio/rooms/${this.roomAudio ?? [""][0]}.mp3" ?autoplay=${true}> </audio>
+            ${this.audio?.map((name:string) => html`<audio src="/assets/audio/rooms/${name}.mp3" ?autoplay=${true}> </audio>`)}
         `;
     }
 }
