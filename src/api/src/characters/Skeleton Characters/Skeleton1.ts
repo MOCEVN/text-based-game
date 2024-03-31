@@ -35,13 +35,13 @@ export class SkeletonCharacter1 extends Character implements Examine {
         }
 
         if (playerSession.spokenToSkeleton1) {
-            return new TextActionResult(["This one didn't get you any closer to escape, try another one."]);
+            return new TextActionResult(["This one didn't get you any closer to escape, try another skeleton."]);
         }
 
         if (choiceId === 1) {
             // Action for shaking the skeleton
             const choiceActions: TalkChoiceAction[] = [
-                new TalkChoiceAction(4, " 'Is there any way you can help me out of here...' "),
+                new TalkChoiceAction(4, "Is there any way you can help me out of here..."),
                 new TalkChoiceAction(2, "Continue the quest"),
             ];
            
@@ -69,7 +69,7 @@ export class SkeletonCharacter1 extends Character implements Examine {
             playerSession.spokenToSkeleton1 = true;
             return new TextActionResult([
                 "Boney McRibage: 'I'm sorry pal, I cannot help you with that... but maybe one of my friends can.' ",
-                " 'I don't remember which one again haha! Goodluck fella.' "
+                " 'There was one with a magnificent amulet, maybe he has more to offer for you.' "
             ]);
         }
 

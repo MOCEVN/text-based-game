@@ -32,48 +32,53 @@ export class SkeletonCharacter3 extends Character implements Examine {
     const playerSession: PlayerSession = getPlayerSession();
 
     if (!playerSession.roomSearched) {
-      return new TextActionResult(["Examine the treasury first."]);
-  }
+        return new TextActionResult(["Examine the treasury first."]);
+    }
+
+    if (!playerSession.spokenToSkeleton1){
+        return new TextActionResult(["Skeleton 1 maybe has a clue"]);
+    } 
 
     // Check if the player already has spoken to the character
     if (playerSession.spokenToSkeleton3) {
-        return new TextActionResult(["You've already tried to speak to this skeleton, continue your search to the right skeleton"]);
-      }
+        return new TextActionResult(["You've already tried to speak to this creature, try another skeleton."]);
+    }
 
     if(choiceId === 1) {
-      const choiceActions: TalkChoiceAction[] = [
-        new TalkChoiceAction(4, "Grab the amulet"),
-        new TalkChoiceAction(2, "Continue the quest"),
-      ];
-      playerSession.spokenToSkeleton3 = true;
-      return new TalkActionResult(this, 
-        ["As you attempt to converse with the skeleton wearing the mysterious amulet",
-        "It appears this skeletal guardian holds no answers for your quest to escape this mysterious room.",
-      "But maybe the amulet will help you escape this mysterious room?"], 
-        choiceActions
-      );
+        const choiceActions: TalkChoiceAction[] = [
+            new TalkChoiceAction(4, "*Grab the amulet*"),
+            new TalkChoiceAction(2, "Continue the quest"),
+        ];
+        return new TalkActionResult(this, 
+            ["As you attempt to converse with the skeleton wearing the mysterious amulet",
+            "It appears this skeletal guardian holds no answers for your quest to escape this mysterious room.",
+            "But maybe the amulet will help you escape this mysterious room?"], 
+            choiceActions
+        );
     } 
     else if(choiceId === 2) {
-      return new TextActionResult(["No succes with this creature unfortunately"]);
+        return new TextActionResult(["No success with this creature unfortunately"]);
     }
     else if(choiceId === 3) {
-      return new TextActionResult(["You've lost the code..."]);
+        return new TextActionResult(["You've lost the code..."]);
     } 
     else if(choiceId === 4) {
-      return new TextActionResult([
-        "a message unfolds: 'Seek out the keeper of riddles, whose bones whisper secrets of the past. Only through conversation with this spectral sage shall the path to enlightenment be revealed' ",
-      ]);
+      playerSession.spokenToSkeleton3 = true;
+        return new TextActionResult([
+            "a message unfolds: 'Seek out the keeper of riddles, whose bones whisper secrets of the past. Only through conversation with this spectral sage shall the path to enlightenment be revealed' ",
+        ]);
     }
 
     // Default action when no specific choice is selected
     return new TalkActionResult(this,
-      ["You see that the skeleton wears an mysterious amulet. Maybe that brings you closer to an outway?"],
-      [
-          new TalkChoiceAction(1, "Hey there, old bones. Mind sharing some wisdom to help me out?"),
-          new TalkChoiceAction(2, "Continue the quest"),
-      ]
+        ["You see that the skeleton wears an mysterious amulet. Maybe that brings you closer to an outway?"],
+        [
+            new TalkChoiceAction(1, "Hey there, old bones. Mind sharing some wisdom to help me out?"),
+            new TalkChoiceAction(2, "Continue the quest"),
+        ]
     );
-  }
+}
+
 }
 
 

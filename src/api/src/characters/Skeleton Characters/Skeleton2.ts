@@ -39,7 +39,15 @@ public talk(choiceId?: number | undefined): ActionResult | undefined {
 
     // Check if the player already examined the treausry
     if (!playerSession.roomSearched) {
-        return new TextActionResult(["Examine the treasury first."]);
+        return new TextActionResult(["Examine the treasury first"]);
+    }
+
+    if (!playerSession.spokenToSkeleton1){
+        return new TextActionResult(["Skeleton 1 maybe has a clue"]);
+    }
+
+    if (!playerSession.spokenToSkeleton3) {
+        return new TextActionResult(["Skeleton 3 maybe has a clue"]);
     }
 
       // Check if the player has already solved the riddle
@@ -83,14 +91,12 @@ public talk(choiceId?: number | undefined): ActionResult | undefined {
             "What appears once in a minute, twice in a moment, but never in a thousand years?"
         ],
         [
-            new TalkChoiceAction(5, "Tarantula"),
             new TalkChoiceAction(6, "A second?"),
-            new TalkChoiceAction(7, "The Letter M"),
             new TalkChoiceAction(10, "Ghost"),
             new TalkChoiceAction(8, "Can I have a clue maybe?"),
         ]);
     }
-    else if (choiceId === 5 || choiceId === 6 || choiceId === 10) {
+    else if (choiceId === 6 || choiceId === 10) {
         // Level down when the player asnwers the question wrong
         if (damagePlayer(1)){
             return new TextActionResult(["The skeleton got you in chokehold"]);
@@ -127,8 +133,10 @@ else if (choiceId === 7) {
     else if (choiceId === 8) {
         return new TalkActionResult(this, ["Ethel Baker: Mortals aren't really that clever..What a waste of brains.",
     "It's not an animal anyway."],
-    [       new TalkChoiceAction(4, "Try again"),
-            new TalkChoiceAction(3, "*run silently away*")
+    [
+            new TalkChoiceAction(6, "A second?"),
+            new TalkChoiceAction(10, "Ghost"),
+            new TalkChoiceAction(7, "The Letter M"),
         ]);
     }
     
