@@ -104,7 +104,7 @@ class DatabaseStorage {
     }
 }
 
-const databaseStorage: DatabaseStorage = new DatabaseStorage();
+export const databaseStorage: DatabaseStorage = new DatabaseStorage();
 
 let databaseConnectionStatus: boolean = true;
 

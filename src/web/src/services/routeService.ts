@@ -1,4 +1,4 @@
-import { GameState, PerformActionRequest } from "@shared/types";
+import { GameState, PerformActionRequest, score } from "@shared/types";
 import { getJsonApi, postJsonApi } from "../helpers";
 
 export async function getState(): Promise<GameState> {
@@ -17,4 +17,17 @@ export async function performAction(
     } catch {
         return undefined;
     }
+}
+
+export async function sendHighScore(userName:string): Promise<boolean | undefined> {
+    try {
+        return postJsonApi<boolean,{"userName": string}>("highscore",{"userName": userName});
+    } catch {
+        return undefined;
+    }
+}
+
+export async function getLeaderBoard(): Promise<score[]> {
+    const result: {"result": score[]} = await getJsonApi<{"result": score[]}>("highscore");
+    return result.result;
 }

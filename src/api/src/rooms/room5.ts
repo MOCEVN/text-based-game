@@ -67,10 +67,10 @@ export class Room5 extends Room {
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
         if (alias === "endroom") {
             const room: EndRoom = new EndRoom();
-
+            const playerSession: PlayerSession = getPlayerSession();
             //Set the current room to the example room
-            getPlayerSession().currentRoom = room.alias;
-
+            playerSession.currentRoom = room.alias;
+            playerSession.endTime = Date.now();
             return room.examine();
         }
 

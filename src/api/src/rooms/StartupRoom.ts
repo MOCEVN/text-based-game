@@ -37,6 +37,7 @@ export class StartupRoom extends Room {
 
     public actions(): Action[] {
         return [new CustomAction("start-game", "Start Game", false),
+            new CustomAction("leaderboard","show leaderboard",false),
             // actions for testing VVVVV
             new CustomAction("r1","Room 1 (temp)",false),
             new CustomAction("r2","Room 2 (temp)",false),
@@ -55,16 +56,17 @@ export class StartupRoom extends Room {
     }
 
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
+        const playerSession: PlayerSession = getPlayerSession();
         if (alias === "start-game") {
             const room: Room1 = new Room1();
 
             //Set the current room to the example room
-            getPlayerSession().currentRoom = room.alias;
+            playerSession.currentRoom = room.alias;
+            playerSession.startTime = Date.now();
             playAudio("door");
 
             return room.examine();
         }
-        const playerSession: PlayerSession = getPlayerSession();
         // actions for testing VVVV
         let room: Room | undefined;
         switch (alias){

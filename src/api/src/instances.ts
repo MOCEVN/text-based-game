@@ -37,6 +37,7 @@ import { flashlight, FlashlightitemAlias } from "./characters/room1-3items/flash
 import { Desktop, DesktopAlias } from "./characters/Deskcharacter";
 import { MiniGAmeRoom, MiniGameRoomAlias } from "./rooms/MiniGameRoom";
 import { getPlayerSessionGetter, getPlayerSessionReset } from "./base/middlewareService";
+import { saveHighScoreToDatabase } from "./base/highScoreService";
 
 /**
  * Create a new player session object
@@ -51,6 +52,7 @@ export function createNewPlayerSession(): PlayerSession {
         hp: 10,
         hasRevived: false,
         audio: [],
+        startTime: Date.now(),
         // room 2
         pickedUpKey1: false,
         pickedUpKey2: false,
@@ -134,6 +136,17 @@ export function sendToMiniGame(): void {
  */
 export function playAudio(name: string): void {
     getPlayerSession().audio.push(name);
+}
+/**
+ * Saves a score to the database
+ */
+export async function saveHighScore(userName: string): Promise<boolean> {
+    const playerSession: PlayerSession = getPlayerSession();
+    const startTime: number = playerSession.startTime;
+    const endTime: number = playerSession.endTime!;
+    const runTime: number = endTime - startTime;
+    const hp: number = playerSession.hp;
+    return await saveHighScoreToDatabase(userName,runTime,hp);
 }
 /**
  * Get the instance of a room by its alias

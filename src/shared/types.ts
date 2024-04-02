@@ -25,3 +25,9 @@ export type PerformActionRequest = {
     action: string;
     objects?: string[];
 };
+
+export type score = {
+    name: string;
+    time: number;
+    hp: number;
+}

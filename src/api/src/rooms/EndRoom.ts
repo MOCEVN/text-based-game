@@ -4,7 +4,7 @@ import { Action } from "../base/actions/Action";
 import { CustomAction } from "../base/actions/CustomAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
-import { getGameObjectsFromInventory, resetPlayerSession, sendToGameOver } from "../instances";
+import { getGameObjectsFromInventory, getPlayerSession, getRoomByAlias, resetPlayerSession, sendToGameOver } from "../instances";
 
 export const EndRoomAlias: string = "endroom";
 
@@ -23,7 +23,7 @@ export class EndRoom extends Room {
         return ["endroom"];
     }
     public actions(): Action[] {
-        return [new CustomAction("reset", "Play again",false), new CustomAction("end","GAME OVER",false)];
+        return [new CustomAction("reset", "Play again",false), new CustomAction("end","GAME OVER",false), new CustomAction("highscore", "save score",false)];
     }
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
@@ -33,7 +33,7 @@ export class EndRoom extends Room {
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
         if (alias === "reset") {
             resetPlayerSession();
-            return new TextActionResult(["GAME OVER"]);    
+            return getRoomByAlias(getPlayerSession().currentRoom)?.examine();
         }
         if (alias === "end") {
             return sendToGameOver();

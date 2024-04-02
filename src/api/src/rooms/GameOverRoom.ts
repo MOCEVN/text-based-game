@@ -4,7 +4,7 @@ import { Action } from "../base/actions/Action";
 import { Custom, CustomAction, CustomActionAlias } from "../base/actions/CustomAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
-import { getPlayerSession, resetPlayerSession } from "../instances";
+import { getPlayerSession, getRoomByAlias, resetPlayerSession } from "../instances";
 import { PlayerSession } from "../types";
 
 export const GameOverRoomAlias: string = "game-over-room";
@@ -39,7 +39,7 @@ export class GameOverRoom extends Room implements Custom {
     public custom(alias: string, _gameObjects: GameObject[] | undefined): ActionResult | undefined {
         if (alias === "reset") {
             resetPlayerSession();
-            return new TextActionResult([""]);
+            return getRoomByAlias(getPlayerSession().currentRoom)?.examine();
         }
         return undefined;
     }

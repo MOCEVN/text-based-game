@@ -1,4 +1,4 @@
-import { GameState, PerformActionRequest, ActionReference } from "@shared/types";
+import { GameState, PerformActionRequest, ActionReference, score } from "@shared/types";
 import { Router } from "express";
 import { ActionResult } from "./base/actionResults/ActionResult";
 import { TextActionResult } from "./base/actionResults/TextActionResult";
@@ -13,6 +13,7 @@ import {
     getRoomByAlias,
     getGameObjectByAlias,
     getGameObjectsByAliases,
+    saveHighScore,
 } from "./instances";
 import { PlayerSession } from "./types";
 import { ExampleAction, ExampleActionAlias } from "./actions/ExampleAction";
@@ -24,6 +25,8 @@ import { Searchaction, SearchactionAlias } from "./actions/SearchRoom1";
 import { UseRoom2Action, UseRoom2ActionAlias } from "./actions/UseRoom2";
 import { gebruikaction, gebruiktitemAlias } from "./base/actions/useitem";
 import { getPlayerSessionMiddleware } from "./base/middlewareService";
+import asyncHandler from "express-async-handler";
+import { fetchLeaderBoard } from "./base/highScoreService";
 
 export const router: Router = Router();
 
@@ -89,6 +92,22 @@ router.post("/action", (req, res) => {
 
     res.json(gameState);
 });
+
+router.post("/highscore", asyncHandler(async (req,res) => {
+    const userName: string = req.body.userName;
+    
+    if (await saveHighScore(userName)) {
+        res.status(200).send(true);
+    } else {
+        res.status(500).send(false);
+    }
+
+}));
+
+router.get("/highscore", asyncHandler(async (_,res) => {
+    const leaderboard: score[] | undefined = await fetchLeaderBoard();
+    res.json({"result": leaderboard});
+}));
 
 function handleActionInRoom(room: Room, alias: string, objectAliases?: string[]): ActionResult | undefined {
     const gameObjects: GameObject[] = getGameObjectsByAliases(objectAliases);

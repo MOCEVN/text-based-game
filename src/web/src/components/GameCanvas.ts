@@ -1,7 +1,7 @@
-import { ActionReference, GameObjectReference, GameState } from "@shared/types";
+import { ActionReference, GameObjectReference, GameState, score } from "@shared/types";
 import { LitElement, TemplateResult, css, html, nothing } from "lit";
 import { customElement } from "lit/decorators.js";
-import { getState, performAction } from "../services/routeService";
+import { getLeaderBoard, getState, performAction, sendHighScore } from "../services/routeService";
 import { map } from "lit/directives/map.js";
 import { range } from "lit/directives/range.js";
 import { gameService } from "../services/gameService";
@@ -92,6 +92,7 @@ export class GameCanvas extends LitElement {
             grid-column: 2/3;
             grid-row: 2/3;
             z-index: 2;
+            overflow: auto;
         }
 
         .content p {
@@ -227,6 +228,42 @@ export class GameCanvas extends LitElement {
 
             this.requestUpdate();
         } else {
+            if (button.alias === "highscore"){
+                let userName: string | null = window.prompt("Fill in your name (max 10 characters)");
+                if (userName === null) {
+                    return;
+                }
+                while (true) {
+                    if (!userName) {
+                        userName = window.prompt("Are you sure you want to leave this blank? Proceed if you want to save your score anonymously");
+                        if (userName === null) {
+                            return;
+                        }
+                    }
+                    userName = userName.slice(0,10) || "anonymous";
+                    if (window.confirm(`Save score as ${userName}?` )){
+                        break;
+                    }
+                    userName = window.prompt("Fill in your name");
+                    if (userName === null) {
+                        return;
+                    }
+                }
+                if (await sendHighScore(userName)) {
+                    this.contentText = ["Score saved successfully"];
+                } else {
+                    this.contentText = ["Something went wrong."];
+                }
+                this.requestUpdate();
+                return;
+            } else if (button.alias === "leaderboard") {
+                const scores: score[] = await getLeaderBoard();
+                this.contentText = scores.map((val) => `${val.name}> ${val.hp} hp, time: ${new Date(val.time).getUTCMinutes()} min, ${new Date(val.time).getUTCSeconds()} sec`);
+                
+                this.requestUpdate();
+                return;
+            }
+            
             const state: any = await performAction(button.alias);
 
             if (state === undefined) {
