@@ -5,7 +5,7 @@ import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { TalkChoiceAction } from "../../base/actions/TalkAction";
 import { Character } from "../../base/gameObjects/Character";
-import { getPlayerSession } from "../../instances";
+import { damagePlayer, getPlayerSession } from "../../instances";
 import { PotionItemAlias } from "../../items/PotionItem";
 import { PlayerSession } from "../../types";
 
@@ -93,7 +93,12 @@ export class FirstPot extends Character implements Examine, UseRoom5 {
                 );
 
             case 6:
-                PlayerSession.gameOverKamer5 = 5;    
+                damagePlayer(10);
+                PlayerSession.gameOverKamer5 = 5; 
+            return new TextActionResult([
+            "As the foolish adventurer tried to force the pot from it's potion the pot casted a spell over him",
+        ]);
+                   
 
             case 5:
                 return new TalkActionResult(
