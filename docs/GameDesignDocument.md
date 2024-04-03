@@ -180,7 +180,10 @@ _Antwoord:_
 
 Pencil
 
+![Game roadwarden](docs/assets/roadwarden.png "Game roadwarden")
+
 # Gebruikersonderzoek
+
 
 Dit onderzoek is gebaseerd op de volgende afbeelding. We hebben 2 leerlingen(Mary en Stephanie) in de klas gevraagd wat ze vonden van de volgende UI uit de game Roadwarden, waarvan elk van onze teamgenoten de UI perfect vond passen bij onze eigen game.
 
