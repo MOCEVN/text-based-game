@@ -88,7 +88,7 @@ _De speler krijgt voor dat het spel begint een kleine intro over hoe hij/zij daa
 **Kamers:** Grote hal (startkamer), kamer 1, kamer 2, kamer 3, kamer 4, kamer 5
 
 
-##Kamer 1 
+## Kamer 1 
 
 ![Kamer 1](docs/assets/kamer-1.png "Kamer 1")
 
