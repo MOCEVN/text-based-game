@@ -77,6 +77,8 @@ Met die huiveringwekkende verklaring sloegen de deuren dicht en werd je opgeslot
 
 _De speler krijgt voor dat het spel begint een kleine intro over hoe hij/zij daar terecht is gekomen en zou moeten ontsnappen._
 
+![Horror huis](docs/assets/horrorhuis.png "Horror huis")
+
 **Locatie:** Horror Huis
 
 **Belangrijke voorwerpen/benodigdheden (voorwaarden):** Sleutels, cirkelzaag, drie cijfer code, toverdank
