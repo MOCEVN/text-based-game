@@ -83,6 +83,7 @@ _De speler krijgt voor dat het spel begint een kleine intro over hoe hij/zij daa
 
 In de Horror Huis text-based game, vindt het avontuur plaats in een angstaanjagende setting. De spelers worden geconfronteerd met cruciale voorwerpen en vereisten, zoals sleutels, een cirkelzaag, een drie-cijferige code en een toverdank. Verschillende enge karakters dwalen door het huis, waaronder een clown, spook, skelet, levend schilderij en heks. Het huis is onderverdeeld in verschillende kamers, genummerd van kamer 1 tot kamer 5, waarin de spelers hun weg moeten vinden door middel van uitdagende puzzels en enge ontmoetingen.
 
+# Verkenning van de Kamers: Een Gids door de Levels
 
 ## Kamer 1 
 
