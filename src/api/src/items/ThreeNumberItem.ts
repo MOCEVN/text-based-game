@@ -50,7 +50,7 @@ export class ThreeNumberItem extends Item implements Examine, Collect {
             return new TextActionResult(["You've solved the riddle correctly, you can now collect the three-number code."]);
         } else {
             // If the player has already collected the code, inform them
-            return new TextActionResult(["You've already collected the three number code, continue your quest."]);
+            return new TextActionResult(["You've already collected the three number code, continue to the next room"]);
         }
     } else {
         // If the player hasn't answered correctly, inform them

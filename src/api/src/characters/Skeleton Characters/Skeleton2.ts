@@ -24,7 +24,7 @@ public examine(): ActionResult | undefined {
 
     // Check if the player already examined the treausry
     if (!playerSession.roomSearched) {
-        return new TextActionResult(["Examine the treasury first."]);
+        return new TextActionResult(["Examine the treasury first"]);
     }
     return new TextActionResult(["You see that the skeleton seems to be holding a book. Perhaps reading it could provide some insight?"]);
 }
@@ -52,7 +52,7 @@ public talk(choiceId?: number | undefined): ActionResult | undefined {
 
       // Check if the player has already solved the riddle
       if (playerSession.correctAnswer) {
-        return new TextActionResult(["You've already solved the riddle. Continue your quest."]);
+        return new TextActionResult(["You've already solved the riddle. Collect the item and continue to the next room."]);
     }
 
     else if (choiceId === 1) {
@@ -61,6 +61,7 @@ public talk(choiceId?: number | undefined): ActionResult | undefined {
             new TalkChoiceAction(3, "Take a step back"),
         ];
 
+        // Give the item back
     if (playerSession.inventory.includes(ThreeNumberItemAlias)) {
         choiceActions.push(new TalkChoiceAction(9, "Throw the code!"));
     }
@@ -137,6 +138,7 @@ else if (choiceId === 7) {
             new TalkChoiceAction(6, "A second?"),
             new TalkChoiceAction(10, "Ghost"),
             new TalkChoiceAction(7, "The Letter M"),
+            new TalkChoiceAction(3, "*run silently away*"),
         ]);
     }
     

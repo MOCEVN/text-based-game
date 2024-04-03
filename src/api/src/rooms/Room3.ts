@@ -46,12 +46,19 @@ export class Room3 extends Room {
     }
 
     public actions(): Action[] {
-        return [
+        const playerSession: PlayerSession = getPlayerSession();
+
+        if(playerSession.correctAnswer){
+            return [
             new ExamineAction(),
             new TalkAction(),
             new CollectAction(),
-            // new CustomAction("reset","Reset room",false),
             new CustomAction("room4", "Room 4", false),
+        ];
+        }
+        return [
+            new ExamineAction(),
+            new TalkAction(),
         ];
     }
 

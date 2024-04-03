@@ -22,7 +22,7 @@ export class SkeletonCharacter1 extends Character implements Examine {
         const playerSession: PlayerSession = getPlayerSession();
 
     if (!playerSession.roomSearched) {
-        return new TextActionResult(["Examine the treasury first."]);
+        return new TextActionResult(["Examine the treasury first"]);
     }
         return new TextActionResult(["You noticed a sleepy skeleton, it's holding a weathered book. With a clue maybe?"]);
     }
@@ -31,7 +31,7 @@ export class SkeletonCharacter1 extends Character implements Examine {
         const playerSession: PlayerSession = getPlayerSession();
 
         if (!playerSession.roomSearched) {
-            return new TextActionResult(["Examine the treasury first."]);
+            return new TextActionResult(["Examine the treasury first"]);
         }
 
         if (playerSession.spokenToSkeleton1) {
