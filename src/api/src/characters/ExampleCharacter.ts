@@ -23,8 +23,7 @@ export class ExampleCharacter extends Character implements Examine {
     public talk(_choiceId?: number): ActionResult | undefined {
         if (_choiceId === 1) {
             return new TextActionResult(["You greet the example character."]);
-        }
-        else if (_choiceId === 2) {
+        } else if (_choiceId === 2) {
             return new TextActionResult(["You do not wish to communicate any further."]);
         }
 

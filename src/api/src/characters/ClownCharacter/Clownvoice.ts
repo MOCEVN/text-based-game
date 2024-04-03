@@ -41,16 +41,28 @@ export class clownvoice extends Character {
             return new TalkActionResult(
                 this,
                 [
-                    "'I'm willing to do what it takes,' you say, your voice steady despite the eerie atmosphere. 'Tell me what I need to do.''A test, then,' the shadow replies, its form rippling as if amused. 'Two truths you shall find amongst my possessions—one within the embrace of written knowledge, and the other, a light in the dark. The third is lost, hidden from view, waiting to be discovered. Bring these to me, and I will grant you the key to your path forward.",
+                    "'I'm willing to do what it takes,' you say, your voice steady despite the eerie atmosphere. 'Tell me what I need to do.''A test, then,' the shadow replies, its form rippling as if amused. 'one truths you shall find amongst my possessions—one within the embrace of written knowledge, and the other, a light in the dark. The last 2 are lost, hidden from view, waiting to be discovered. Bring these to me, and I will grant you the key to your path forward.",
                 ],
-                [new TalkChoiceAction(6, "Look for the bookcase")]
+                [new TalkChoiceAction(6, "<Start searching for the items>")]
             );
         }
         if (choiceId === 4) {
-            return new TextActionResult([""]);
+            return new TextActionResult([
+                "You shout an insult into the darkness, mocking the unseen clown's twisted games. Silence hangs heavy for a moment, then, from the shadows, your fate is sealed with a chilling laugh.",
+            ]);
         }
         if (choiceId === 5) {
-            return new TextActionResult(["<antwoord op keuze 3>"]);
+            return new TextActionResult(["You reach for your holster, only to find it empty."]);
+        }
+        if (choiceId === 6) {
+            return new TalkActionResult(
+                this,
+                ["Where will you search for the items?"],
+                [
+                    new TalkChoiceAction(7, "Go to the next room"),
+                    new TalkChoiceAction(8, "Search in this room"),
+                ]
+            );
         }
 
         return new TalkActionResult(

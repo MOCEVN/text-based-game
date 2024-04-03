@@ -1,7 +1,7 @@
 import { UseAlias } from "../../actions/UseRoom5";
 import { ActionResult } from "../../base/actionResults/ActionResult";
 import { TextActionResult } from "../../base/actionResults/TextActionResult";
-
+import { UseActionResult } from "../../base/actionResults/UseActionResult";
 import { Examine, ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { Talk, TalkActionAlias } from "../../base/actions/TalkAction";
 import { Gebruik, gebruiktitemAlias } from "../../base/actions/useitem";
