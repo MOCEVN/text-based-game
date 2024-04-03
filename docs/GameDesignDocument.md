@@ -79,13 +79,9 @@ _De speler krijgt voor dat het spel begint een kleine intro over hoe hij/zij daa
 
 ![Horror huis](docs/assets/horrorhuis.png "Horror huis")
 
-**Locatie:** Horror Huis
+# Overzicht van de Horror Huis Text-Based Game
 
-**Belangrijke voorwerpen/benodigdheden (voorwaarden):** Sleutels, cirkelzaag, drie cijfer code, toverdank
-
-**Karakters:** clown, spook, skelet, levend schilderij, heks
-
-**Kamers:** kamer 1, kamer 2, kamer 3, kamer 4, kamer 5
+In de Horror Huis text-based game, vindt het avontuur plaats in een angstaanjagende setting. De spelers worden geconfronteerd met cruciale voorwerpen en vereisten, zoals sleutels, een cirkelzaag, een drie-cijferige code en een toverdank. Verschillende enge karakters dwalen door het huis, waaronder een clown, spook, skelet, levend schilderij en heks. Het huis is onderverdeeld in verschillende kamers, genummerd van kamer 1 tot kamer 5, waarin de spelers hun weg moeten vinden door middel van uitdagende puzzels en enge ontmoetingen.
 
 
 ## Kamer 1 
