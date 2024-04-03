@@ -106,9 +106,11 @@ _Antwoord_:
 
 C. Lucht
 
-![Kamer 2](docs/assets/kamer-2.png "Kamer 2")
 
-**Kamer 2**
+
+## Kamer 2
+
+![Kamer 2](docs/assets/kamer-2.png "Kamer 2")
 
 De speler is kamer 2 (teamlid 2) binnengekomen, hij/zij ziet op een tafel (item) 3 sleutels liggen. De speler moet het vragen aan een geest (karakter) die rond de kamer zweeft, welke sleutel de juiste is. De geest geeft de speler dan een raadsel om het op te lossen. Als de speler het raadsel heeft opgelost vertelt de geest welke sleutel (voorwerp) de juiste is. De sleutel is nodig om de deur van kamer 3 (teamlid 3) te openen.
 
@@ -130,9 +132,11 @@ _Antwoord:_
 
 Pooltable
 
-![Kamer 3](docs/assets/kamer-3.png "Kamer 3")
 
-**Kamer 3**
+
+## Kamer 3
+
+![Kamer 3](docs/assets/kamer-3.png "Kamer 3")
 
 In kamer 3 ontmoet de speler drie levende skeletten (karakter). De speler moet opzoek gaan naar het skelet met het raadsel. Voor dat de speler de optie krijgt om met de skeletten te praten, moet hij/zij eerst de schatkist wat in de kamer plaatsvindt onderzoeken. De speler krijgt dan een tekst terug met een hint dat hij/zij moet praten met de skeletten om verder met het spel te gaan. Als de speler het juiste skelet heeft gevonden, wordt er een raadsel meegegeven. De speler krijgt een raadsel met meerdere antwoord opties. Bij elk verkeerd antwoord gaat er een healthpoint vanaf. De speler krijgt ook de optie om het skelet een hint te vragen. Als de speler het juiste antwoord heeft gegeven, krijgt hij/zij een drie cijfercode (item/ voorwaarde) om de deur van de volgende kamer te openen
 
@@ -153,15 +157,19 @@ _Antwoord:_
 
 The Letter M
 
-![Kamer 4](docs/assets/kamer-4.png "Kamer 4")
 
-**Kamer 4**
+
+## Kamer 4
+
+![Kamer 4](docs/assets/kamer-4.png "Kamer 4")
 
 In kamer 4 staat een paar levende schilderijen, een daarvan heeft een cirkelzaag (item) wat de speler nodig heeft om naar de volgende kamer te kunnen. Van de vijf schilderijen zijn er drie die antwoord terug kunnen geven aan de speler. De speler moet zelf uitzoeken welke dat zijn. Als de speler het juiste schilderij heeft gevonden krijgt hij/zij een cirkelzaag.
 
-![Kamer 5](docs/assets/kamer-5.png "Kamer 5")
 
-**Kamer 5**
+
+## Kamer 5
+
+![Kamer 5](docs/assets/kamer-5.png "Kamer 5")
 
 De deur van kamer 5 (teamlid 5) moet kapot gemaakt worden met de cirkelzaag, want het heeft geen hendel of slot. Het is gemaakt van hout. Als de speler de kamer is binnengekomen ziet hij drie ketels. De speler moet elk van de ketels (item) doorzoeken om te kijken achter welke de heks (karakter) staat. Van de heks krijgt de speler een raadsel en als die is opgelost krijgt de speler een toverdrank (voorwerp). De speler kan dan dat drankje drinken en wordt uit het huis geteleporteerd.
 
@@ -181,9 +189,11 @@ _Antwoord:_
 
 Pencil
 
-![Game roadwarden](docs/assets/roadwarden.png "Game roadwarden")
+
 
 # Gebruikersonderzoek
+
+![Game roadwarden](docs/assets/roadwarden.png "Game roadwarden")
 
 
 Dit onderzoek is gebaseerd op de volgende afbeelding. We hebben 2 leerlingen(Mary en Stephanie) in de klas gevraagd wat ze vonden van de volgende UI uit de game Roadwarden, waarvan elk van onze teamgenoten de UI perfect vond passen bij onze eigen game.
