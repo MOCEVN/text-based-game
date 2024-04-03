@@ -20,6 +20,35 @@ Sonny Chim, 500930930
 
 Omar Asamoah, 500929403
 
+
+# Overzicht
+
+### Introductie
+- **Horror huis**
+
+### Creatieve Ontwikkeling
+- **Mindmap**
+- **Wireflow**
+
+### Opdracht en Doelstellingen
+
+### Verhaallijn
+- **Spelnaam: Trial Terror**
+- **Intro verhaal**
+
+### Overzicht van de Horror Huis Text-Based Game
+- **Gezondheidssysteem en Overlevingsmechanisme**
+- **Visuele Inventaris van Verzamelde Items**
+- **Scoreboard Database**
+- **Verkenning van de Kamers: Een Gids door de Levels**
+
+### Gebruikersonderzoek
+- **Vragen en antwoorden UI/UIX**
+- **Ons resultaat gebaseerd op de ontvangen**
+- **Feedback over de lay-out**
+- **Voorstel voor verbetering**
+
+
 # Introductie
 
 Welkom bij het Game Design Document voor "Terror Trial", een text-based game ontwikkeld door ons team in opdracht van Luca Stars. Dit document dient als leidraad voor het ontwikkelingsproces en presenteert een gedetailleerde blik op de concepten, verhaallijnen en mechanismen die dit project zullen vormgeven.
