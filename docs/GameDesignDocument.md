@@ -85,7 +85,7 @@ _De speler krijgt voor dat het spel begint een kleine intro over hoe hij/zij daa
 
 **Karakters:** clown, spook, skelet, levend schilderij, heks
 
-**Kamers:** Grote hal (startkamer), kamer 1, kamer 2, kamer 3, kamer 4, kamer 5
+**Kamers:** kamer 1, kamer 2, kamer 3, kamer 4, kamer 5
 
 
 ## Kamer 1 
