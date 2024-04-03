@@ -45,6 +45,7 @@ Onze doelstellingen omvatten:
 Voor het bedenken van een verhaal van onze tekst based game hebben wij eerst samen gebrainstormd. Wij zijn samen gaan zitten en hebben een mindmap op papier gemaakt, vervolgens hebben wij het digitaal in Figma gemaakt. Zodat het overzichtelijker is en iedereen er makkelijk toegang tot heeft.
 
 **Mindmap Terror Trial:**
+
 ![Mindmap](docs/assets/mindmap.png "Mindmap")
 
 
@@ -53,6 +54,7 @@ Voor het bedenken van een verhaal van onze tekst based game hebben wij eerst sam
 Nadat de mindmap was gemaakt, hebben wij nagedacht over hoe het spel moet verlopen. Daarvoor hebben wij een wireflow gemaakt. De speler krijgt eerst een intro over hoe hij/zij daar terecht is gekomen. Als idee hebben wij, mocht alles met het project verlopen dat de speler een naam kan invullen en character kiezen. De speler begint in de startruimte en gaat vanuit daar naar de eerste kamer. De speler moet in de kamers raadsels oplossen en items verzamelen. Als de speler het laatste raadsel heeft heeft opgelost in de laatste kamer is de speler vrij.
 
 **Wireflow:**
+
 ![Flowchart](docs/assets/flowchart.png "Flowchart")
 
 
@@ -82,6 +84,33 @@ _De speler krijgt voor dat het spel begint een kleine intro over hoe hij/zij daa
 # Overzicht van de Horror Huis Text-Based Game
 
 In de Horror Huis text-based game, vindt het avontuur plaats in een angstaanjagende setting. De spelers worden geconfronteerd met cruciale voorwerpen en vereisten, zoals sleutels, een cirkelzaag, een drie-cijferige code en een toverdank. Verschillende enge karakters dwalen door het huis, waaronder een clown, spook, skelet, levend schilderij en heks. Het huis is onderverdeeld in verschillende kamers, genummerd van kamer 1 tot kamer 5, waarin de spelers hun weg moeten vinden door middel van uitdagende puzzels en enge ontmoetingen.
+
+# Gezondheidssysteem en Overlevingsmechanisme
+
+In de wereld van Terror Trial, wordt de gezondheid van de speler vertegenwoordigd door een set van 10 hartjes. Elke hartje vertegenwoordigt één health point. Deze hartjes zijn zichtbaar tijdens het spelen en dienen als een visuele indicator van de gezondheidstoestand van de speler.
+
+Wanneer de speler alle 10 health points verliest, wordt een speciale mini-game geactiveerd. In deze mini-game heeft de speler de kans om 3 health points terug te verdienen. Dit geeft de speler nog drie extra kansen om het spel te voltooien en het avontuur voort te zetten. De mini-game voegt een extra laag spanning en uitdaging toe aan het spel, terwijl het tegelijkertijd een mechanisme biedt om de speler een kans te geven om te herstellen en door te gaan met het verkennen van het Horror Huis.
+
+![Health points](docs/assets/hp.png "Health points")
+
+![Mini game](docs/assets/minigame.png "Mini game")
+
+# Visuele Inventaris van Verzamelde Items
+
+In het spel wordt de voortgang van de speler bijgehouden via een visuele inventaris van verzamelde items. Items worden pas beschikbaar voor verzameling nadat de speler met succes het raadsel van het karakter in de kamer heeft opgelost. Spelers kunnen echter op elk moment de 'examine' knop gebruiken om meer details te verkrijgen over een specifiek item.
+
+Deze aanpak moedigt spelers aan om actief deel te nemen aan het oplossen van de raadsels van de personages in elke kamer, aangezien het succesvol oplossen van het raadsel leidt tot het vrijgeven van een waardevol item dat nodig is om verder te komen in het avontuur.
+
+![Inventory items](docs/assets/inventory.png "Inventory items")
+
+# Scoreboard Database
+
+In het spel is een database opgezet voor het scorebord. Spelers kunnen hun naam invoeren en hun scores worden opgeslagen, inclusief de volgende gegevens:
+
+1\. De totale speeltijd, waarmee spelers kunnen zien hoe lang ze over het spel hebben gedaan.
+2\. Het aantal overgebleven health points nadat het spel is uitgespeeld, wat een indicatie geeft van de gezondheidstoestand van de speler tijdens het avontuur.
+
+Deze database zorgt ervoor dat spelers hun prestaties kunnen bijhouden en vergelijken met anderen, waardoor een competitief element aan het spel wordt toegevoegd.
 
 # Verkenning van de Kamers: Een Gids door de Levels
 
