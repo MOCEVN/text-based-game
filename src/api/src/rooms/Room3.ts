@@ -28,9 +28,9 @@ export class Room3 extends Room {
     }
     public examine(): ActionResult | undefined {
         return new TextActionResult([
-            "As you step into the dimly lit room, your eyes adjust to the darkness, revealing a multitude of mysterious objects.",
-            "Your curiosity piqued, you start exploring the room, carefully examining the room in search of clues.",
-            "It appears to be an old treasury partially obscured by fallen debris. Perhaps investigating it further will yield valuable insights.",
+            "As you step into the dimly lit room, your eyes adjust to the darkness, revealing a multitude of mysterious objects",
+            "Your curiosity piqued, you start exploring the room, carefully examining the room in search of clues",
+            "It appears to be an old treasury partially obscured by fallen debris. Perhaps investigating it further will yield valuable insights",
         ]);
     }
 
@@ -48,6 +48,7 @@ export class Room3 extends Room {
     public actions(): Action[] {
         const playerSession: PlayerSession = getPlayerSession();
 
+        // if the player answered correctly, return collect and custom actions
         if(playerSession.correctAnswer){
             return [
             new ExamineAction(),

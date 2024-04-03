@@ -35,7 +35,7 @@ export class SkeletonCharacter1 extends Character implements Examine {
         }
 
         if (playerSession.spokenToSkeleton1) {
-            return new TextActionResult(["This one didn't get you any closer to escape, try another skeleton."]);
+            return new TextActionResult(["This one didn't get you any closer to escape, try another skeleton"]);
         }
 
         if (choiceId === 1) {
@@ -68,15 +68,15 @@ export class SkeletonCharacter1 extends Character implements Examine {
             // Action for asking for help
             playerSession.spokenToSkeleton1 = true;
             return new TextActionResult([
-                "Boney McRibage: 'I'm sorry pal, I cannot help you with that... but maybe one of my friends can.' ",
-                " 'There was one with a magnificent amulet, maybe he has more to offer for you.' "
+                "Boney McRibage: 'I'm sorry pal, I cannot help you with that... but maybe one of my friends can' ",
+                " 'There was one with a magnificent amulet, maybe he has more to offer for you' "
             ]);
         }
 
         // Default action when no specific choice is selected
         return new TalkActionResult(this,
-            ["As you cautiously approach the skeleton, you hear a soft snoring sound emanating from its gaping jaw, indicating that it's asleep.",
-                "You realize that you'll need to wake it up to proceed further."
+            ["As you cautiously approach the skeleton, you hear a soft snoring sound emanating from its gaping jaw, indicating that it's asleep",
+                "You realize that you'll need to wake it up to proceed further"
             ],
             [
                 new TalkChoiceAction(1, " *shake the skeleton* "),

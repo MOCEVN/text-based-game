@@ -36,7 +36,7 @@ export class ThreeNumberItem extends Item implements Examine, Collect {
     // The item is now collected
     if(!playerSession.inventory.includes(ThreeNumberItemAlias)) {
       playerSession.inventory.push(ThreeNumberItemAlias);
-      return new TextActionResult(["You've collected the three-number code"]);
+      return new TextActionResult(["You've collected the three-number code, continue to the next room"]);
     }
 
     if (playerSession.correctAnswer) {

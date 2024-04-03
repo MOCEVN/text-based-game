@@ -25,7 +25,7 @@ export class SkeletonCharacter3 extends Character implements Examine {
         return new TextActionResult(["Examine the treasury first"]);
     }
     return new TextActionResult(["The skeleton with the mysterious amulet stands tall.",
-    "As you observe closely, you notice a ethereal glow emanating from within the amulet, giving the skeleton an otherworldly aura."]);
+    "As you observe closely, you notice a ethereal glow emanating from within the amulet, giving the skeleton an otherworldly aura"]);
   }
 
   public talk(choiceId?: number | undefined): ActionResult | undefined {
@@ -41,7 +41,7 @@ export class SkeletonCharacter3 extends Character implements Examine {
 
     // Check if the player already has spoken to the character
     if (playerSession.spokenToSkeleton3) {
-        return new TextActionResult(["You've already tried to speak to this creature, try another skeleton."]);
+        return new TextActionResult(["You've already tried to speak to this creature, try another skeleton"]);
     }
 
     if(choiceId === 1) {
@@ -51,7 +51,7 @@ export class SkeletonCharacter3 extends Character implements Examine {
         ];
         return new TalkActionResult(this, 
             ["As you attempt to converse with the skeleton wearing the mysterious amulet",
-            "It appears this skeletal guardian holds no answers for your quest to escape this mysterious room.",
+            "It appears this skeletal guardian holds no answers for your quest to escape this mysterious room",
             "But maybe the amulet will help you escape this mysterious room?"], 
             choiceActions
         );

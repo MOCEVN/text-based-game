@@ -52,7 +52,7 @@ public talk(choiceId?: number | undefined): ActionResult | undefined {
 
       // Check if the player has already solved the riddle
       if (playerSession.correctAnswer) {
-        return new TextActionResult(["You've already solved the riddle. Collect the item and continue to the next room."]);
+        return new TextActionResult(["You've already solved the riddle. Collect the item and continue to the next room"]);
     }
 
     else if (choiceId === 1) {
@@ -80,7 +80,7 @@ public talk(choiceId?: number | undefined): ActionResult | undefined {
 
         return new TalkActionResult(this, [
             " *The skeleton wakes up* ",
-            "Ethel Baker: 'Pathetic mortal, this is not for your eyes! You think you can outwit the darkness that dwells here? Foolishness! Yet, perhaps there's a glimmer of hope for you, hidden within these cursed pages. The item you seek lies within these ancient words, but only the worthy may unlock its secrets. Proceed if you dare, but remember, not all who seek knowledge survive the journey.' "],
+            "Ethel Baker: 'Pathetic mortal, this is not for your eyes! You think you can outwit the darkness that dwells here? Foolishness! Yet, perhaps there's a glimmer of hope for you, hidden within these cursed pages. The item you seek lies within these ancient words, but only the worthy may unlock its secrets. Proceed if you dare, but remember, not all who seek knowledge survive the journey' "],
             choiceActions);
             
     } else if (choiceId === 3) {
@@ -88,7 +88,7 @@ public talk(choiceId?: number | undefined): ActionResult | undefined {
 
     } else if (choiceId === 4) {
         return new TalkActionResult(this, [
-            "Ethel Baker: Well well, then here it comes brave soul.",
+            "Ethel Baker: Well well, then here it comes brave soul",
             "What appears once in a minute, twice in a moment, but never in a thousand years?"
         ],
         [
@@ -120,9 +120,9 @@ else if (choiceId === 7) {
             // If not, collect the code and provide a success message
             playerSession.collectedCode = true;
             return new TextActionResult([
-                "Correct...You've surprised me mortal.",
-                "I hope you make it out, my friend with the amulet didn't.",
-                "With this item, you can continue your quest. Good luck, and I hope I'll never see you again."
+                "Correct...You've surprised me mortal",
+                "I hope you make it out, my friend with the amulet didn't",
+                "With this item, you can continue your quest. Good luck, and I hope I'll never see you again"
             ]);
         } 
     } else {
@@ -132,8 +132,8 @@ else if (choiceId === 7) {
 }
 
     else if (choiceId === 8) {
-        return new TalkActionResult(this, ["Ethel Baker: Mortals aren't really that clever..What a waste of brains.",
-    "It's not an animal anyway."],
+        return new TalkActionResult(this, ["Ethel Baker: Mortals aren't really that clever..What a waste of brains",
+    "It's in the alphabet."],
     [
             new TalkChoiceAction(6, "A second?"),
             new TalkChoiceAction(10, "Ghost"),
@@ -147,7 +147,7 @@ else if (choiceId === 7) {
     }
     
     return new TalkActionResult(this,
-        ["In her skeletal hands rests an tattered book, its pages whispering secrets of a bygone era, a silent testament to the knowledge she once held in life."],
+        ["In her skeletal hands rests an tattered book, its pages whispering secrets of a bygone era, a silent testament to the knowledge she once held in life"],
         [
             new TalkChoiceAction(1, "Read the book"),
             new TalkChoiceAction(3, "Take a step back"),
