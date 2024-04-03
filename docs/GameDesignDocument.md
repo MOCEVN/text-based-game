@@ -89,6 +89,7 @@ _De speler krijgt voor dat het spel begint een kleine intro over hoe hij/zij daa
 
 
 ##Kamer 1 
+
 ![Kamer 1](docs/assets/kamer-1.png "Kamer 1")
 
 In kamer 1 moet de speler opzoek gaan naar een clown karakter. Als de speler de kamer binnenkomt hoort de speler een geluid van een deur die dicht gaat. De speler kan een boekenkast onderzoeken en een desktop gebruiken. Als de clown is gevonden krijgt de speler een raadsel. Als het raadsel is opgelost krijgt de speler een sleutel (item) om de deur van kamer 2 te openen.
