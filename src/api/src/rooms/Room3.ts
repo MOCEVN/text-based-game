@@ -11,7 +11,7 @@ import { ThreeNumberItem, ThreeNumberItemAlias } from "../items/ThreeNumberItem"
 import { SkeletonCharacter1 } from "../characters/Skeleton Characters/Skeleton1";
 import { CollectAction } from "../actions/CollectRoom3";
 import { PlayerSession } from "../types";
-import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
+import { getPlayerSession } from "../instances";
 import { SkeletonCharacter2 } from "../characters/Skeleton Characters/Skeleton2";
 import { SkeletonCharacter3 } from "../characters/Skeleton Characters/Skeleton3";
 import { TreasuryObject } from "../items/objects-room3/treasuryObject";
@@ -66,7 +66,7 @@ export class Room3 extends Room {
     public objects(): GameObject[] {
         const playerSession: PlayerSession = getPlayerSession();
 
-        const objects: GameObject[] = [this, ...getGameObjectsFromInventory()];
+        const objects: GameObject[] = [this];
 
         objects.push(
             new TreasuryObject(),
