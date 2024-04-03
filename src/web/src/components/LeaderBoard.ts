@@ -33,12 +33,18 @@ export class LeaderBoard extends LitElement {
     `;
     public connectedCallback(): void {
         super.connectedCallback();
+        setInterval(() => {void this.refresh();},10000);
         void this.refresh();
     }
 
     private async refresh(): Promise<void> {
-        this.scores = await getLeaderBoard();
-        this.requestUpdate();
+        console.log("Fetching leaderboard");
+        const newScores: score[] = await getLeaderBoard();
+        if (JSON.stringify(newScores) !== JSON.stringify(this.scores)) {
+            this.scores = newScores;
+            this.requestUpdate();
+            console.log("Leaderboard refreshed");
+        }
     }
 
     private scores?: score[];
@@ -54,13 +60,19 @@ export class LeaderBoard extends LitElement {
                     </div>
                 </div>
                 <div class="content">
-                    ${this.scores?.map((val) => html`
-                    <div>
-                        <p>${val.name}</p>
-                        <p>${val.hp}</p>
-                        <p>${new Date(val.time).getUTCMinutes()} min, ${new Date(val.time).getUTCSeconds()} sec</p>
-                    </div>
-                    `)}
+                    ${this.scores?.map((val) => {
+                        const time: Date = new Date(val.time);
+                        return html`
+                            <div>
+                                <p>${val.name}</p>
+                                <p>${val.hp}</p>
+                                <p>
+                                    ${time.getUTCMinutes()} min, 
+                                    ${time.getUTCSeconds()}.${time.getUTCMilliseconds().toString().padStart(3,"0")} sec
+                                </p>
+                            </div>
+                        `;
+                    })}
                 </div>
             </div>
         `;
