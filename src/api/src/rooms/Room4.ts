@@ -12,7 +12,7 @@ import { Painting2Character } from "../characters/paintings/painting2";
 import { Painting3Character } from "../characters/paintings/painting3";
 import { Painting4Character } from "../characters/paintings/painting4";
 import { Painting5Character } from "../characters/paintings/painting5";
-import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
+import { getPlayerSession } from "../instances";
 import { Room4DoorItem, Room4DoorItemAlias } from "../items/Room4DoorItem";
 import { SawItemAlias } from "../items/SawItem";
 import { PlayerSession } from "../types";
@@ -69,8 +69,7 @@ export class Room4 extends Room implements Talk{
     }
 
     public objects(): GameObject[] {
-        const inventoryItems: GameObject[] = getGameObjectsFromInventory();
-        return [...inventoryItems, this, new Painting1Character(), new Painting2Character(), new Painting3Character(), new Painting4Character(), new Painting5Character(), new Room4DoorItem()];
+        return [this, new Painting1Character(), new Painting2Character(), new Painting3Character(), new Painting4Character(), new Painting5Character(), new Room4DoorItem()];
     }
 
     /* 
