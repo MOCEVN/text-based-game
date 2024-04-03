@@ -25,7 +25,7 @@ import { KeyItem1, KeyItem1Alias } from "./items/keys/KeyItem1";
 import { KeyItem2, KeyItem2Alias } from "./items/keys/KeyItem2";
 import { KeyItem3, KeyItem3Alias } from "./items/keys/KeyItem3";
 import { GhostCharacter, GhostCharacterAlias } from "./characters/GhostCharacter";
-import { FirstPot, FirstPotAlias } from "./characters/pots/FirstPotItem";
+import { FirstPot, FirstPotAlias } from "./characters/pots/FirstPot";
 import { SkeletonCharacter1, SkeletonCharacter1Alias } from "./characters/Skeleton Characters/Skeleton1";
 import { SkeletonCharacter2, SkeletonCharacter2Alias } from "./characters/Skeleton Characters/Skeleton2";
 import { SkeletonCharacter3, SkeletonCharacter3Alias } from "./characters/Skeleton Characters/Skeleton3";
@@ -94,7 +94,6 @@ export function resetPlayerSession(): void {
     getPlayerSessionReset()(createNewPlayerSession);
 }
 
-
 /**
  * Sends the player to the game over room
  * @returns Examine text from the game over room
@@ -146,7 +145,7 @@ export async function saveHighScore(userName: string): Promise<boolean> {
     const endTime: number = playerSession.endTime!;
     const runTime: number = endTime - startTime;
     const hp: number = playerSession.hp;
-    return await saveHighScoreToDatabase(userName,runTime,hp);
+    return await saveHighScoreToDatabase(userName, runTime, hp);
 }
 /**
  * Get the instance of a room by its alias

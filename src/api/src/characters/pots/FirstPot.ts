@@ -24,7 +24,6 @@ export class FirstPot extends Character implements Examine, UseRoom5 {
             return new TextActionResult(["Pot: hands off me, traveler"]);
         }
          else {
-            // eslint-disable-next-line quotes
             return new TextActionResult([
                 "Witch: Before you can benefit from its secrets, you must first accept my challenge, traveler.",
             ]);
@@ -108,13 +107,27 @@ export class FirstPot extends Character implements Examine, UseRoom5 {
                     ],
                     [
                         new TalkChoiceAction(7, "An echo"),
-                        new TalkChoiceAction(5, "Could it be… a ghost?"),
+                        new TalkChoiceAction(12, "Could it be… a ghost?"),
                         new TalkChoiceAction(2, "Leave the conversation"),
                     ]
                 );
 
+                case 12:
+                    damagePlayer(1);
+                    return new TalkActionResult(
+                        this,
+                        [
+                            "Pot: Incorrect, traveller try again",
+                        ],
+                        [
+                            new TalkChoiceAction(7, "An echo"),
+                            new TalkChoiceAction(12, "Could it be… a ghost?"),
+                            new TalkChoiceAction(2, "Leave the conversation"),
+                        ]
+                    );
+
             case 7:
-                
+                PlayerSession.inventory.push(PotionItemAlias);
                 PlayerSession.PotRightChoise = true;
 
                 return new TalkActionResult(

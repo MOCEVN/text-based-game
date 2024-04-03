@@ -28,6 +28,14 @@ export class GameOverRoom extends Room implements Custom {
     }
 
     public examine(): ActionResult | undefined {
+        const PlayerSession: PlayerSession = getPlayerSession();
+        if (PlayerSession.gameOverKamer5 === 1) {
+            return ["The witch killed you."];
+        } else if (PlayerSession.gameOverKamer5 === 2) {
+            return ["As the foolish adventurer reached out to touch the witch, the witch evaporated him."];
+        } else if (PlayerSession.gameOverKamer5 === 5) {
+            return [ "As the foolish adventurer tried to force the pot from it's potion the pot casted a spell over him"];
+        }
         return new TextActionResult(["GAME OVER", "YOU LOST"]);
     }
     public name(): string {
