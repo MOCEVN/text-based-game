@@ -64,7 +64,6 @@ export class Room5 extends Room {
             const playerSession: PlayerSession = getPlayerSession();
             //Set the current room to the example room
             playerSession.currentRoom = room.alias;
-            playerSession.endTime = Date.now();
             return room.examine();
         }
 

@@ -5,12 +5,17 @@ import { CustomAction } from "../base/actions/CustomAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
 import { getGameObjectsFromInventory, getPlayerSession, getRoomByAlias, resetPlayerSession, sendToGameOver } from "../instances";
+import { PlayerSession } from "../types";
 
 export const EndRoomAlias: string = "endroom";
 
 export class EndRoom extends Room {
     public constructor() {
         super(EndRoomAlias);
+        const playerSession: PlayerSession = getPlayerSession();
+        if (!playerSession.endTime) {
+            playerSession.endTime = Date.now();
+        }
     }
 
     public name(): string {
