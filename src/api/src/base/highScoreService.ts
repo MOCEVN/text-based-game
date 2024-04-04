@@ -18,8 +18,8 @@ export async function saveHighScoreToDatabase(name: string,time: number,hp: numb
         connection.release();
     }
 }
-export async function fetchLeaderBoard(): Promise<score[] | undefined>{
-    const sql: string = "SELECT name,time,hp FROM score ORDER BY hp DESC,time ASC LIMIT 20";
+export async function fetchLeaderBoard(limit?:string): Promise<score[] | undefined>{
+    const sql: string = "SELECT name,time,hp FROM score ORDER BY hp DESC,time ASC LIMIT " + (limit ?? "20");
     const connection: PoolConnection = await databaseStorage.getConnection();
     try {
         const result: score[] = await databaseStorage.queryDatabase(connection,sql);
