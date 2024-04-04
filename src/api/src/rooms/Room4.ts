@@ -53,11 +53,7 @@ export class Room4 extends Room implements Talk{
     }
 
     public actions(): Action[] {
-        const actions: Action[] = [new ExamineAction(), new TalkAction(),
-            // test
-            new CustomAction("reset","Reset (temp)",false),
-            new CustomAction("skip","Skip (temp)",false)
-        ];
+        const actions: Action[] = [new ExamineAction(), new TalkAction()];
         const playerSession: PlayerSession = getPlayerSession();
         if (playerSession.paintingPuzzleState >= 2) {
             actions.push(new CustomAction("saw", "Saw", true));
