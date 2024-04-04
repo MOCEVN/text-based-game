@@ -40,10 +40,8 @@ export class KeyItem3 extends Item implements Examine, Pickup, UseRoom2 {
         if (!playerSession.inventory.includes(KeyItem3Alias)) {
             return new TextActionResult(["You haven't picked up the key yet."]);
         }
-        
-        return new TextActionResult(["You used the key"]);
+            return undefined;
     }
-    
     public pickup(): ActionResult | undefined {
         const playerSession: PlayerSession = getPlayerSession();
 

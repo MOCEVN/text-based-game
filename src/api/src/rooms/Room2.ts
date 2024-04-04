@@ -1,11 +1,12 @@
 import { UseRoom2Action } from "../actions/UseRoom2";
 import { ActionResult } from "../base/actionResults/ActionResult";
+import { TalkActionResult } from "../base/actionResults/TalkActionResult";
 import { TextActionResult } from "../base/actionResults/TextActionResult";
 import { Action } from "../base/actions/Action";
 import { CustomAction } from "../base/actions/CustomAction";
 import { ExamineAction } from "../base/actions/ExamineAction";
 import { PickupAction } from "../base/actions/PickupAction";
-import { TalkAction } from "../base/actions/TalkAction";
+import { TalkAction, TalkChoiceAction } from "../base/actions/TalkAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
 import { GhostCharacter } from "../characters/GhostCharacter";
@@ -25,7 +26,7 @@ export class Room2 extends Room {
     }
 
     public name(): string {
-        return "Room 2";
+        return "Ghost's Hall";
     }
     public examine(): ActionResult | undefined {
         return new TextActionResult([
@@ -56,6 +57,7 @@ export class Room2 extends Room {
         return objects;
     }
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
+        const playerSession: PlayerSession = getPlayerSession();
         if (alias === "room3") {
             const room: Room3 = new Room3();
 
@@ -63,6 +65,19 @@ export class Room2 extends Room {
             getPlayerSession().currentRoom = room.alias;
 
             return room.examine();
+        } else if (alias === "key-item-3") {
+            if (playerSession.pickedUpKey1) {
+                const door: KeyItem3 = new KeyItem3;
+                return new TalkActionResult(new GhostCharacter(), ["You want to use the right key on..?"], [
+                    new TalkChoiceAction(
+                        1,
+                        "You use the right key on the door. As you insert the correct key into the lock, a faint click resonates through the chamber, echoing in the stillness. With a gentle push, the door swings open, revealing a path into the unknown. The ghostly figure hovers nearby, its ethereal presence guiding your way. \"You have chosen wisely, mortal,\" it murmurs, a whisper carried on the winds of fate. \"May the journey ahead be as rewarding as the choices you have made.\" With that, you step through the threshold, prepared to face whatever mysteries lie beyond."
+                    )
+                ]) ;
+
+            } else {
+                // Handle the case when the player hasn't picked up key 1
+            }
         }
 
         return undefined;
