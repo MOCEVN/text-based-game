@@ -4,9 +4,9 @@
 
 **Titel**: Terror Trial
 
-**Versie**: 2
+**Versie**: 3
 
-**Datum**: 28-03-2024
+**Datum**: 04-04-2024
 
 **Studenten:**
 
@@ -19,7 +19,6 @@ Giorgio de Rijp, 500926845
 Sonny Chim, 500930930
 
 Omar Asamoah, 500929403
-
 
 # Overzicht
 
@@ -37,6 +36,7 @@ Omar Asamoah, 500929403
 - **Intro verhaal**
 
 ### Overzicht van de Horror Huis Text-Based Game
+- **User stories**
 - **Gezondheidssysteem en Overlevingsmechanisme**
 - **Visuele Inventaris van Verzamelde Items**
 - **Scoreboard Database**
@@ -113,6 +113,10 @@ _De speler krijgt voor dat het spel begint een kleine intro over hoe hij/zij daa
 # Overzicht van de Horror Huis Text-Based Game
 
 In de Horror Huis text-based game, vindt het avontuur plaats in een angstaanjagende setting. De spelers worden geconfronteerd met cruciale voorwerpen en vereisten, zoals sleutels, een cirkelzaag, een drie-cijferige code en een toverdank. Verschillende enge karakters dwalen door het huis, waaronder een clown, spook, skelet, levend schilderij en heks. Het huis is onderverdeeld in verschillende kamers, genummerd van kamer 1 tot kamer 5, waarin de spelers hun weg moeten vinden door middel van uitdagende puzzels en enge ontmoetingen.
+
+# User Stories 
+
+Voor ons project hebben we user stories gemaakt die specifiek gericht zijn op de kamers die we hebben ontworpen. Deze user stories helpen ons bij het definiëren van de functionaliteit en het gedrag van elke kamer in ons spel. Door deze benadering kunnen we de gameplay-ervaring nauwkeurig afstemmen op de verwachtingen en behoeften van de spelers, waardoor een meeslepende en boeiende ervaring ontstaat terwijl ze het Horror Huis verkennen.
 
 # Gezondheidssysteem en Overlevingsmechanisme
 
@@ -251,11 +255,8 @@ Pencil
 ![Game roadwarden](docs/assets/roadwarden.png "Game roadwarden")
 
 
-Dit onderzoek is gebaseerd op de volgende afbeelding. We hebben 2 leerlingen(Mary en Stephanie) in de klas gevraagd wat ze vonden van de volgende UI uit de game Roadwarden, waarvan elk van onze teamgenoten de UI perfect vond passen bij onze eigen game.
+Voor ons gameproject hebben we een gebruikersonderzoek uitgevoerd naar het UX/UI-ontwerp van onze game. We hebben twee klasgenoten gevraagd om hun mening te geven over een voorbeeldontwerp van een bestaand spel genaamd Roadwarden. De deelnemers gaven feedback over wat ze handig vonden aan de game UI, wat er verbeterd kon worden en eventuele zorgen die ze hadden. Met behulp van deze feedback hebben we conclusies getrokken om ons eigen ontwerp te verbeteren en de gebruikerservaring van onze game te optimaliseren.
 
-
-
-Uit de vragen zijn de volgende antwoorden gekomen van onze leerlingen
 
 **Vragen en antwoorden UI/UIX**
 
