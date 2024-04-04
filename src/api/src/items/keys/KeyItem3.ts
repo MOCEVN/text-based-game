@@ -48,7 +48,7 @@ export class KeyItem3 extends Item implements Examine, Pickup, UseRoom2 {
                     playerSession.inventory.splice(0);
 
                     playerSession.openedDoor = true;
-                    return new TextActionResult(["As you insert the correct key into the lock, a faint click resonates through the chamber, echoing in the stillness.", "With a gentle push, the door swings open, revealing a path into the unknown. The ghostly figure hovers nearby, its ethereal presence guiding your way.", "\'You have chosen wisely, mortal,' it murmurs, a whisper carried on the winds of fate. 'May the journey ahead be as rewarding as the choices you have made.'"],                    );
+                    return new TextActionResult(["As you try to insert the key into the lock, a faint click resonates through the chamber, echoing in the stillness.", "With a gentle push, the door swings open, revealing a path into the unknown. The ghostly figure hovers nearby, its ethereal presence guiding your way.", "\'You have chosen wisely, mortal,' it murmurs, a whisper carried on the winds of fate. 'May the journey ahead be as rewarding as the choices you have made.'"],                    );
                 }
             }
         }
