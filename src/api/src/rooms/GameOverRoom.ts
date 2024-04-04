@@ -24,7 +24,7 @@ export class GameOverRoom extends Room implements Custom {
         } else if (PlayerSession.gameOverKamer5 === 5) {
             return ["potBehekst"];
         }
-        return ["startroom"];
+        return ["dead"];
     }
 
     public examine(): ActionResult | undefined {
