@@ -4,7 +4,7 @@ import { Action } from "../base/actions/Action";
 import { CustomAction } from "../base/actions/CustomAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
-import { getGameObjectsFromInventory, getPlayerSession, getRoomByAlias, resetPlayerSession, sendToGameOver } from "../instances";
+import { getGameObjectsFromInventory, getPlayerSession, getRoomByAlias, resetPlayerSession} from "../instances";
 import { PlayerSession } from "../types";
 
 export const EndRoomAlias: string = "endroom";
@@ -22,13 +22,13 @@ export class EndRoom extends Room {
         return "End room";
     }
     public examine(): ActionResult | undefined {
-        return new TextActionResult(["This the end room."]);
+        return new TextActionResult(["Congratulations! You've emerged victorious from the trials of Terror Trial. You've proven your worth with courage and ingenuity. Well done!"]);
     }
     public images(): string[] {
         return ["endroom"];
     }
     public actions(): Action[] {
-        return [new CustomAction("reset", "Play again",false), new CustomAction("end","GAME OVER",false), new CustomAction("highscore", "save score",false)];
+        return [new CustomAction("reset", "Play again",false), new CustomAction("highscore", "save score",false)];
     }
     public objects(): GameObject[] {
         const inventoryItems: GameObject[] = getGameObjectsFromInventory();
@@ -39,9 +39,6 @@ export class EndRoom extends Room {
         if (alias === "reset") {
             resetPlayerSession();
             return getRoomByAlias(getPlayerSession().currentRoom)?.examine();
-        }
-        if (alias === "end") {
-            return sendToGameOver();
         }
 
         return undefined;

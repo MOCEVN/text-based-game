@@ -39,7 +39,7 @@ export class LeaderBoard extends LitElement {
 
     private async refresh(): Promise<void> {
         console.log("Fetching leaderboard");
-        const newScores: score[] = await getLeaderBoard();
+        const newScores: score[] = await getLeaderBoard(100);
         if (JSON.stringify(newScores) !== JSON.stringify(this.scores)) {
             this.scores = newScores;
             this.requestUpdate();
