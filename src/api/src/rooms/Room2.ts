@@ -34,9 +34,25 @@ export class Room2 extends Room {
     public images(): string[] {
         return ["room2"];
     }
+
+    // public actions(): Action[] {
+    //     const playerSession: PlayerSession = getPlayerSession();
+
+    //     return [new ExamineAction(), new PickupAction(), new TalkAction(), new CustomAction("room3","Room 3<Temp>",false), new UseRoom2Action()];
+    // }
+
     public actions(): Action[] {
-        return [new ExamineAction(), new PickupAction(), new TalkAction(), new CustomAction("room3","Room 3<Temp>",false), new UseRoom2Action()];
+        const playerSession: PlayerSession = getPlayerSession();
+
+        // if the player answered correctly, return collect and custom actions
+        if(playerSession.openedDoor){
+            return [new ExamineAction(), new TalkAction(), new CustomAction("room3","Next Room",false)];
+        }
+
+        return [new ExamineAction(), new PickupAction(), new TalkAction(), new UseRoom2Action()];
+
     }
+    
     public objects(): GameObject[] {
         const playerSession: PlayerSession = getPlayerSession();
 

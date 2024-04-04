@@ -58,6 +58,7 @@ export function createNewPlayerSession(): PlayerSession {
         pickedUpKey2: false,
         pickedUpKey3: false,
         answeredRiddle: false,
+        openedDoor: false,
         // room 3
         roomSearched: false,
         collectedCode: false,

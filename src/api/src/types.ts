@@ -13,6 +13,7 @@ export type PlayerSession = {
     pickedUpKey2: boolean;
     pickedUpKey3: boolean;
     answeredRiddle: boolean;
+    openedDoor: boolean;
     // room 3
     collectedCode: boolean;
     roomSearched: boolean;

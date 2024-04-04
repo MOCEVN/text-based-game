@@ -9,6 +9,7 @@ import { KeyItem1Alias } from "../items/keys/KeyItem1";
 import { KeyItem2Alias } from "../items/keys/KeyItem2";
 import { KeyItem3Alias } from "../items/keys/KeyItem3";
 import { GameOverRoom } from "../rooms/GameOverRoom";
+// import { Room3 } from "../rooms/Room3";
 import { PlayerSession } from "../types";
 
 export const GhostCharacterAlias: string = "ghost";
@@ -58,7 +59,18 @@ export class GhostCharacter extends Character implements Examine {
 
             else if (choiceId === 9) {
                 return new TextActionResult(["You ran away like a little girl."]);
-            } 
+            }
+
+            else if (choiceId === 11) {
+            }
+
+            else if (choiceId === 12) {
+                playerSession.openedDoor = true;
+            }
+
+            else if (choiceId === 13) {
+                return new TextActionResult(["\"As I have already told you... The rightmost key upon the table holds the answer to your quest.\""]);
+            }
             
             else if (choiceId === 3) {
                 if (damagePlayer(1)){
@@ -106,6 +118,10 @@ export class GhostCharacter extends Character implements Examine {
             const choiceActions: TalkChoiceAction[] = [
                 new TalkChoiceAction(1, "\"...\""), new TalkChoiceAction(2, "\"I don't have time for this.\"")
             ];
+
+            const choiceActions1: TalkChoiceAction[] = [
+                new TalkChoiceAction(13, "\"What key should I use again..?\""), new TalkChoiceAction(2, "\"I don't have time for this.\"")
+            ];
             
 
             if(playerSession.inventory.includes(KeyItem1Alias)) {
@@ -120,14 +136,19 @@ export class GhostCharacter extends Character implements Examine {
                 choiceActions.push(new TalkChoiceAction(7, "Give the right key to the ghost"));
             }
             
-            if (playerSession.answeredRiddle = true) {
+            if (playerSession.answeredRiddle === false) {
                 return new TalkActionResult(
                 this,
                 ["As you tentatively approach the ghostly figure, its gaze fixes upon you with intensity.", "‎ ", "The air around you grows colder as it whispers:", "'Mortal intruder, before you may claim the keys, you must first prove your wit.", "I present to you a riddle, and your answer shall guide your choice.'"],
                 choiceActions
                 );
+            } else if (playerSession.openedDoor) {
+                return new TextActionResult(["Shoo! Go away already."]);
             } else {
-                return new TextActionResult(["\"You have already sought counsel from the depths of my knowledge", "There are no more riddles to unravel, no more secrets to unearth.\""]);
+                return new TalkActionResult(
+                    this,
+                    ["\"You have already sought counsel from the depths of my knowledge", "There are no more riddles to unravel, no more secrets to unearth.\""],
+                choiceActions1);
             }
         }    
 }
