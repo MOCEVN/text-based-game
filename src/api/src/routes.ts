@@ -104,8 +104,8 @@ router.post("/highscore", asyncHandler(async (req,res) => {
 
 }));
 
-router.get("/highscore", asyncHandler(async (req,res) => {    
-    const leaderboard: score[] | undefined = await fetchLeaderBoard(req.query.limit as string | undefined);
+router.get("/highscore", asyncHandler(async (req,res) => {
+    const leaderboard: score[] | undefined = await fetchLeaderBoard(req.query.limit as string);
     res.json({"result": leaderboard});
 }));
 

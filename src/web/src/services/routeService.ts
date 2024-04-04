@@ -28,6 +28,6 @@ export async function sendHighScore(userName:string): Promise<boolean | undefine
 }
 
 export async function getLeaderBoard(limit?: number): Promise<score[]> {
-    const result: {"result": score[]} = await getJsonApi<{"result": score[]}>("highscore",[["limit",limit?.toString()]]);
+    const result: {"result": score[]} = await getJsonApi<{"result": score[]}>("highscore",[["limit",limit ?? ""]]);
     return result.result;
 }
