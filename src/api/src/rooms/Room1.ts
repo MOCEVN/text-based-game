@@ -6,15 +6,15 @@ import { ExamineAction } from "../base/actions/ExamineAction";
 import { TalkAction } from "../base/actions/TalkAction";
 import { GameObject } from "../base/gameObjects/GameObject";
 import { Room } from "../base/gameObjects/Room";
-import { getGameObjectsFromInventory, getPlayerSession } from "../instances";
+import { getPlayerSession } from "../instances";
 import { Room2 } from "./Room2";
 import { clownvoice } from "../characters/ClownCharacter/Clownvoice";
 import { Searchaction } from "../actions/SearchRoom1";
-import { flashlight } from "../characters/room1-3items/flashlight";
 import { gebruikaction } from "../base/actions/useitem";
 import { Desktop } from "../characters/Deskcharacter";
 import { PlayerSession } from "../types";
-import { flashlightitem, FlashlightitemAlias } from "../items/flashlightitem";
+import { Bookcase } from "../characters/Bookcasecharacter";
+import { FlashlightitemAlias } from "../items/flashlightitem";
 
 export const Room1Alias: string = "room1";
 
@@ -24,7 +24,7 @@ export class Room1 extends Room {
     }
 
     public name(): string {
-        return "Room 1";
+        return "The Hidden Clown Chamber";
     }
     public examine(): ActionResult | undefined {
         return new TextActionResult([
@@ -47,12 +47,16 @@ export class Room1 extends Room {
     public objects(): GameObject[] {
         const playerSession: PlayerSession = getPlayerSession();
         const objects: GameObject[] = [this];
-        if (!playerSession.inventory.includes(FlashlightitemAlias)) {
-            objects.push(new flashlightitem());
+        if (playerSession.showdesktop) {
+            objects.push(new Desktop());
         }
-        const inventoryItems: GameObject[] = getGameObjectsFromInventory();
-
-        return [this, ...inventoryItems, new clownvoice(), new Desktop()];
+        if (playerSession.showbookcase) {
+            objects.push(new Bookcase());
+        }
+        if (!playerSession.inventory.includes(FlashlightitemAlias)) {
+            objects.push(new clownvoice());
+        }
+        return objects;
     }
     public custom(alias: string, _gameObjects?: GameObject[]): ActionResult | undefined {
         if (alias === "room2") {

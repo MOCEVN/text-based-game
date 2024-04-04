@@ -53,6 +53,10 @@ export function createNewPlayerSession(): PlayerSession {
         hasRevived: false,
         audio: [],
         startTime: Date.now(),
+        // room 1
+        showdesktop: false,
+        showbookcase: false,
+        collectedflashlight: false,
         // room 2
         pickedUpKey1: false,
         pickedUpKey2: false,

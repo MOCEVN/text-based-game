@@ -4,6 +4,8 @@ import { TextActionResult } from "../../base/actionResults/TextActionResult";
 import { ExamineActionAlias } from "../../base/actions/ExamineAction";
 import { TalkActionAlias, TalkChoiceAction } from "../../base/actions/TalkAction";
 import { Character } from "../../base/gameObjects/Character";
+import { damagePlayer, getPlayerSession } from "../../instances";
+import { PlayerSession } from "../../types";
 
 export const clownvoicealias: string = "swan";
 export class clownvoice extends Character {
@@ -21,6 +23,7 @@ export class clownvoice extends Character {
     }
 
     public talk(choiceId?: number | undefined): ActionResult | undefined {
+        const playerSession: PlayerSession = getPlayerSession();
         if (choiceId === 1) {
             return new TalkActionResult(
                 this,
@@ -47,6 +50,7 @@ export class clownvoice extends Character {
             );
         }
         if (choiceId === 4) {
+            damagePlayer(9);
             return new TextActionResult([
                 "You shout an insult into the darkness, mocking the unseen clown's twisted games. Silence hangs heavy for a moment, then, from the shadows, your fate is sealed with a chilling laugh.",
             ]);
@@ -58,11 +62,32 @@ export class clownvoice extends Character {
             return new TalkActionResult(
                 this,
                 ["Where will you search for the items?"],
+                [new TalkChoiceAction(7, "Search this room"), new TalkChoiceAction(8, "Go to the next room")]
+            );
+        }
+        if (choiceId === 8) {
+            return new TalkActionResult(
+                this,
                 [
-                    new TalkChoiceAction(7, "Go to the next room"),
-                    new TalkChoiceAction(8, "Search in this room"),
+                    "In the dim light, the player notices a desktop and a bookcase. Wondering where to search first, they consider the desktop, potentially full of immediate clues. Yet, the bookcase's shadow hints at hidden secrets among its tomes. Decision time: the obvious digital trove or the mysterious collection of books?",
+                ],
+                [
+                    new TalkChoiceAction(9, "Walk up to the Desktop"),
+                    new TalkChoiceAction(10, "Walk up to the Bookcase"),
                 ]
             );
+        }
+        if (choiceId === 9) {
+            playerSession.showdesktop = true;
+            return new TextActionResult([
+                "The desktop, with its possible hidden items, might be worth a search.",
+            ]);
+        }
+        if (choiceId === 10) {
+            playerSession.showbookcase = true;
+            return new TextActionResult([
+                "The bookcase, hinting at concealed mysteries, could be the right place to look.",
+            ]);
         }
 
         return new TalkActionResult(

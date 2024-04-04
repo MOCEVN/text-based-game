@@ -8,6 +8,10 @@ export type PlayerSession = {
     audio: string[];
     startTime: number;
     endTime?: number;
+    // room 1
+    showdesktop: boolean;
+    showbookcase: boolean;
+    collectedflashlight: boolean;
     // room 2
     pickedUpKey1: boolean;
     pickedUpKey2: boolean;
@@ -32,5 +36,4 @@ export type PlayerSession = {
     talkPotion: boolean;
     talkWitch: boolean;
     PotRightChoise: boolean;
-
 };
