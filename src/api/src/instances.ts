@@ -64,6 +64,7 @@ export function createNewPlayerSession(): PlayerSession {
         correctAnswer: false,
         spokenToSkeleton1: false,
         spokenToSkeleton3: false,
+        examinedRoom: false,
         // room 4
         paintingPuzzleState: 0,
         paintingsTalkedTo: 0,

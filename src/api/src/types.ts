@@ -19,6 +19,7 @@ export type PlayerSession = {
     correctAnswer: boolean;
     spokenToSkeleton3: boolean;
     spokenToSkeleton1: boolean;
+    examinedRoom: boolean;
     // room 4
     paintingPuzzleState: number;
     paintingsTalkedTo: number;

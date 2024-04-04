@@ -57,7 +57,7 @@ export class SkeletonCharacter3 extends Character implements Examine {
         );
     } 
     else if(choiceId === 2) {
-        return new TextActionResult(["No success with this creature unfortunately"]);
+        return new TextActionResult(["You chickened out..."]);
     }
     else if(choiceId === 3) {
         return new TextActionResult(["You've lost the code..."]);

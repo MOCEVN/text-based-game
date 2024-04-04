@@ -27,10 +27,16 @@ export class Room3 extends Room {
         return "Mystical Chamber";
     }
     public examine(): ActionResult | undefined {
-        return new TextActionResult([
-            "As you step into the dimly lit room, your eyes adjust to the darkness, revealing a multitude of mysterious objects",
+        const playerSession: PlayerSession = getPlayerSession();
+        playerSession.examinedRoom = true
+        if (!playerSession.examinedRoom) {
+            return new TextActionResult(["As you step into the dimly lit room, your eyes adjust to the darkness, revealing a multitude of mysterious objects",
             "Your curiosity piqued, you start exploring the room, carefully examining the room in search of clues",
-            "It appears to be an old treasury partially obscured by fallen debris. Perhaps investigating it further will yield valuable insights",
+            "It appears to be an old treasury partially obscured by fallen debris. Perhaps investigating it further will yield valuable insights",]);
+        }
+        
+        return new TextActionResult([
+            "Before delving into the mystery of the skeletal remains littering the room, your attention is drawn irresistibly to the opulent treasury",
         ]);
     }
 
