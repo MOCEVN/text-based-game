@@ -67,6 +67,7 @@ export function createNewPlayerSession(): PlayerSession {
         showfishbowl: false,
         contineusearch: false,
         noshowclownvoice: false,
+        ventOpened: false,
         // room 2
         pickedUpKey1: false,
         pickedUpKey2: false,

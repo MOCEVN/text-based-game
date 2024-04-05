@@ -60,13 +60,15 @@ export class Room1 extends Room {
         return ["room1"];
     }
     public actions(): Action[] {
-        return [
+        const actionList: Action[] = [
             new ExamineAction(),
             new Use(),
             new TalkAction(),
-            new Searchaction(),
-            new CustomAction("room2", "Room 2", false),
-        ];
+            new Searchaction(),];
+        if (getPlayerSession().ventOpened) {
+            actionList.push(new CustomAction("room2", "Enter air vent", false));
+        }
+        return actionList;
     }
     public objects(): GameObject[] {
         const playerSession: PlayerSession = getPlayerSession();

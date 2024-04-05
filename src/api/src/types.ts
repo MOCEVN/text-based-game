@@ -18,6 +18,7 @@ export type PlayerSession = {
     walkinroom: boolean;
     showfishbowl: boolean;
     contineusearch: boolean;
+    ventOpened: boolean;
     // room 2
     pickedUpKey1: boolean;
     pickedUpKey2: boolean;
