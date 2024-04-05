@@ -6,10 +6,7 @@ import { Talk, TalkActionAlias } from "../../base/actions/TalkAction";
 
 import { Character } from "../../base/gameObjects/Character";
 import { getPlayerSession } from "../../instances";
-<<<<<<< HEAD
-=======
 import { PlayerSession } from "../../types";
->>>>>>> d28cb54 (kamer 1 done)
 
 export const FlashlightitemAlias: string = "flashlight";
 
@@ -28,12 +25,9 @@ export class flashlight extends Character implements Examine, Talk, UseRoom5 {
         return new TextActionResult(["it's fully charged flashlight?"]);
     }
     public Use(): ActionResult | undefined {
-<<<<<<< HEAD
         getPlayerSession().ventOpened = true;
-=======
         const playerSession: PlayerSession = getPlayerSession();
         playerSession.showventilation = true;
->>>>>>> d28cb54 (kamer 1 done)
         return new TextActionResult([
             "With the beam of my flashlight cutting through the darkness, I swept across the room's forgotten corners until it caught on something unusual. A sliver of metal gleamed back at me from the wall. Curiosity piqued, I approached and brushed away years of dust and cobwebs, revealing a secret air vent cleverly disguised within the wall's design. Its presence was a revelation, a hidden passage that whispered promises of untold stories and secrets lying just beyond its grate.",
         ]);
