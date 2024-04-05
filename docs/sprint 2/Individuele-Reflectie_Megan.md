@@ -14,7 +14,7 @@ Weinig obstakels: Het team heeft relatief weinig obstakels ervaren tijdens het p
 Succesvol project: Over het algemeen was het project succesvol en zijn de teamdoelstellingen bereikt. Dit benadrukt de effectiviteit van het teamwerk en de inzet van elk teamlid.
 
 
-# Individuele Reflectie
+# Individuele Reflectie - Megan
 
 ## Externe Adviseur Expertise 
 
