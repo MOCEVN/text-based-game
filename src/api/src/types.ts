@@ -18,12 +18,11 @@ export type PlayerSession = {
     walkinroom: boolean;
     showfishbowl: boolean;
     contineusearch: boolean;
-<<<<<<< HEAD
+
     ventOpened: boolean;
-=======
+
     showfinaleclown: boolean;
     showventilation: boolean;
->>>>>>> d28cb54 (kamer 1 done)
     // room 2
     pickedUpKey1: boolean;
     pickedUpKey2: boolean;
