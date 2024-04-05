@@ -92,7 +92,7 @@ export class FirstPot extends Character implements Examine, UseRoom5 {
                 );
 
             case 6:
-                damagePlayer(10);
+                damagePlayer(1);
                 PlayerSession.gameOverKamer5 = 5; 
             return new TextActionResult([
             "As the foolish adventurer tried to force the pot from it's potion the pot casted a spell over him",

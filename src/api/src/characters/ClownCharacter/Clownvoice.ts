@@ -54,7 +54,7 @@ export class clownvoice extends Character {
             );
         }
         if (choiceId === 4) {
-            damagePlayer(9);
+            damagePlayer(3);
             return new TextActionResult([
                 "You shout an insult into the darkness, mocking the unseen clown's twisted games. Silence hangs heavy for a moment, then, from the shadows, your fate is sealed with a chilling laugh.",
             ]);

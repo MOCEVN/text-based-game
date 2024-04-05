@@ -16,7 +16,7 @@ export class WitchCharacter extends Character implements Examine, UseRoom5 {
     }
 
     public Use(): ActionResult | undefined {
-        damagePlayer(10);
+        damagePlayer(5);
         const PlayerSession: PlayerSession = getPlayerSession();
         PlayerSession.gameOverKamer5 = 2;
         return new TextActionResult([

@@ -42,7 +42,7 @@ export class KeyItem2 extends Item implements Examine, Pickup, UseRoom2 {
                     playerSession.pickedUpKey2 = false;
                     playerSession.inventory.splice(0);
 
-                    if (damagePlayer(10)){
+                    if (damagePlayer(1)){
                         return new TextActionResult(["GAME OVER", "The ghost killed you."]);
                     }
                     return new UseActionResult(
