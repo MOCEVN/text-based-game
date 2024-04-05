@@ -108,11 +108,11 @@ router.post(
 
 router.get(
     "/highscore",
-    asyncHandler(async (_, res) => {
-        const leaderboard: score[] | undefined = await fetchLeaderBoard();
-        res.json({ result: leaderboard });
-    })
-);
+    asyncHandler(async (req, res) => {
+    const leaderboard: score[] | undefined = await fetchLeaderBoard(req.query.limit as string);
+    res.json({ "result": leaderboard });
+}));
+
 
 function handleActionInRoom(room: Room, alias: string, objectAliases?: string[]): ActionResult | undefined {
     const gameObjects: GameObject[] = getGameObjectsByAliases(objectAliases);
