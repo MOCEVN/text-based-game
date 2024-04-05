@@ -34,7 +34,7 @@ router.get("/", (_, res) => {
     res.send("Game");
 });
 
-router.use(getPlayerSessionMiddleware()("game",createNewPlayerSession));
+router.use(getPlayerSessionMiddleware()("game", createNewPlayerSession));
 
 router.get("/state", (_, res) => {
     const playerSession: PlayerSession = getPlayerSession();
@@ -93,21 +93,26 @@ router.post("/action", (req, res) => {
     res.json(gameState);
 });
 
-router.post("/highscore", asyncHandler(async (req,res) => {
-    const userName: string = req.body.userName;
-    
-    if (await saveHighScore(userName)) {
-        res.status(200).send(true);
-    } else {
-        res.status(500).send(false);
-    }
+router.post(
+    "/highscore",
+    asyncHandler(async (req, res) => {
+        const userName: string = req.body.userName;
 
-}));
+        if (await saveHighScore(userName)) {
+            res.status(200).send(true);
+        } else {
+            res.status(500).send(false);
+        }
+    })
+);
 
-router.get("/highscore", asyncHandler(async (req,res) => {
-    const leaderboard: score[] | undefined = await fetchLeaderBoard(req.query.limit as string);
-    res.json({"result": leaderboard});
-}));
+router.get(
+    "/highscore",
+    asyncHandler(async (_, res) => {
+        const leaderboard: score[] | undefined = await fetchLeaderBoard();
+        res.json({ result: leaderboard });
+    })
+);
 
 function handleActionInRoom(room: Room, alias: string, objectAliases?: string[]): ActionResult | undefined {
     const gameObjects: GameObject[] = getGameObjectsByAliases(objectAliases);
@@ -139,7 +144,6 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
         return TalkAction.handle(character, choiceId);
     }
     try {
-
         switch (alias) {
             case ExamineActionAlias:
                 return ExamineAction.handle(gameObjects[0]);
@@ -162,7 +166,6 @@ function handleActionInRoom(room: Room, alias: string, objectAliases?: string[])
             case gebruiktitemAlias:
                 return gebruikaction.handle(gameObjects[0]);
         }
-
     } catch {
         return undefined;
     }

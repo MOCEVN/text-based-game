@@ -38,6 +38,10 @@ import { Desktop, DesktopAlias } from "./characters/Deskcharacter";
 import { MiniGAmeRoom, MiniGameRoomAlias } from "./rooms/MiniGameRoom";
 import { getPlayerSessionGetter, getPlayerSessionReset } from "./base/middlewareService";
 import { saveHighScoreToDatabase } from "./base/highScoreService";
+import { Bookcase, BookcaseAlias } from "./characters/Bookcasecharacter";
+import { ContiniueSearch, ContiniueSearchAlias } from "./characters/ClownCharacter/ContinueSearch";
+import { continueenteroom, ContinueenterroomAlias } from "./characters/ClownCharacter/Continueenterroom";
+import { Fishbowl, FishbowlAlias } from "./characters/Fishbowlcharachter";
 
 /**
  * Create a new player session object
@@ -57,6 +61,12 @@ export function createNewPlayerSession(): PlayerSession {
         showdesktop: false,
         showbookcase: false,
         collectedflashlight: false,
+        searchbookcase: false,
+        searchdesktop: false,
+        walkinroom: false,
+        showfishbowl: false,
+        contineusearch: false,
+        noshowclownvoice: false,
         // room 2
         pickedUpKey1: false,
         pickedUpKey2: false,
@@ -278,10 +288,19 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
         case clownvoicealias:
             return new clownvoice();
 
-        // Clownvoice in the distance for room 1 - Omar
+        // Dekstop where you can find the flashlight 1 - Omar
         case DesktopAlias:
             return new Desktop();
-
+        // Dekstop where you can find the flashlight 1 - Omar
+        case BookcaseAlias:
+            return new Bookcase();
+        case FishbowlAlias:
+            return new Fishbowl();
+        // Doorgaan met zoeken[Boekenkast optie] - Omar
+        case ContiniueSearchAlias:
+            return new ContiniueSearch();
+        case ContinueenterroomAlias:
+            return new continueenteroom();
         //NOTE: Fall back to rooms, since those are game objects too.
         default:
             return getRoomByAlias(alias);

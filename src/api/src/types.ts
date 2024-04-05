@@ -11,7 +11,13 @@ export type PlayerSession = {
     // room 1
     showdesktop: boolean;
     showbookcase: boolean;
+    searchbookcase: boolean;
+    searchdesktop: boolean;
     collectedflashlight: boolean;
+    noshowclownvoice: boolean;
+    walkinroom: boolean;
+    showfishbowl: boolean;
+    contineusearch: boolean;
     // room 2
     pickedUpKey1: boolean;
     pickedUpKey2: boolean;

@@ -46,7 +46,11 @@ export class clownvoice extends Character {
                 [
                     "'I'm willing to do what it takes,' you say, your voice steady despite the eerie atmosphere. 'Tell me what I need to do.''A test, then,' the shadow replies, its form rippling as if amused. 'one truths you shall find amongst my possessions—one within the embrace of written knowledge, and the other, a light in the dark. The last 2 are lost, hidden from view, waiting to be discovered. Bring these to me, and I will grant you the key to your path forward.",
                 ],
-                [new TalkChoiceAction(6, "<Start searching for the items>")]
+                [
+                    new TalkChoiceAction(6, "Start searching for the items"),
+                    new TalkChoiceAction(13, "try to run away"),
+                    new TalkChoiceAction(11, "refuse to search for the items"),
+                ]
             );
         }
         if (choiceId === 4) {
@@ -55,6 +59,18 @@ export class clownvoice extends Character {
                 "You shout an insult into the darkness, mocking the unseen clown's twisted games. Silence hangs heavy for a moment, then, from the shadows, your fate is sealed with a chilling laugh.",
             ]);
         }
+        if (choiceId === 11) {
+            return new TalkActionResult(
+                this,
+                [
+                    "You're simply standing there, unwilling to search for the items. Your lack of effort is quite evident.",
+                ],
+                [
+                    new TalkChoiceAction(6, "Start searching for the items"),
+                    new TalkChoiceAction(13, "try to run away"),
+                ]
+            );
+        }
         if (choiceId === 5) {
             return new TextActionResult(["You reach for your holster, only to find it empty."]);
         }
@@ -62,10 +78,34 @@ export class clownvoice extends Character {
             return new TalkActionResult(
                 this,
                 ["Where will you search for the items?"],
+                [
+                    new TalkChoiceAction(7, "Search this room"),
+                    new TalkChoiceAction(8, "Go to the next room"),
+                    new TalkChoiceAction(
+                        12,
+                        "Inquire with the clown about the location where he believes he may have left the items."
+                    ),
+                ]
+            );
+        }
+        if (choiceId === 12) {
+            return new TalkActionResult(
+                this,
+                [
+                    "'Ah, the last spot I recall having that handy thing that brightens up dim corners... Well, let me think.' says with an evil smirk 'But to be honest, I can't seem to recall exactly...'",
+                ],
                 [new TalkChoiceAction(7, "Search this room"), new TalkChoiceAction(8, "Go to the next room")]
             );
         }
+        if (choiceId === 13) {
+            damagePlayer(1);
+            return new TextActionResult([
+                "You try to run away and feel you legs giving out under neath you, this results in you hitting your head against a table",
+            ]);
+        }
         if (choiceId === 8) {
+            playerSession.walkinroom = true;
+            playerSession.noshowclownvoice = true;
             return new TalkActionResult(
                 this,
                 [
@@ -79,14 +119,43 @@ export class clownvoice extends Character {
         }
         if (choiceId === 9) {
             playerSession.showdesktop = true;
+            playerSession.showbookcase = false;
+            playerSession.noshowclownvoice = true;
+            playerSession.walkinroom = false;
             return new TextActionResult([
                 "The desktop, with its possible hidden items, might be worth a search.",
             ]);
         }
         if (choiceId === 10) {
             playerSession.showbookcase = true;
+            playerSession.contineusearch = true;
+            playerSession.noshowclownvoice = true;
+            playerSession.walkinroom = false;
             return new TextActionResult([
                 "The bookcase, hinting at concealed mysteries, could be the right place to look.",
+            ]);
+        }
+        if (choiceId === 7) {
+            return new TalkActionResult(
+                this,
+                ["What will you do in this room?"],
+                [
+                    new TalkChoiceAction(14, "Walk up to the Fishbowl"),
+                    new TalkChoiceAction(15, "search the walls"),
+                ]
+            );
+        }
+        if (choiceId === 14) {
+            playerSession.showfishbowl = true;
+            playerSession.contineusearch = true;
+            playerSession.noshowclownvoice = true;
+            return new TextActionResult([
+                "The ornate bowl on the desk, seemingly out of place amidst the papers and tomes, caught your eye. Its opaque water whispered secrets, inviting a closer inspection. Perhaps, within its depths, there lies more than meets the eye. A gentle reach into the cool water might reveal what is hidden beneath the surface.",
+            ]);
+        }
+        if (choiceId === 15) {
+            return new TextActionResult([
+                "After a thorough examination of the walls, every corner and crevice, the truth reveals itself in the barest whisper of dust - there is nothing here. No hidden compartments, no secret messages or forgotten lore. Just the silent, stoic walls, standing guard over emptiness.",
             ]);
         }
 

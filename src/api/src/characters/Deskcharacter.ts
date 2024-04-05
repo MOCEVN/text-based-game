@@ -27,7 +27,11 @@ export class Desktop extends Character {
     }
     public Search(): ActionResult | undefined {
         const playerSession: PlayerSession = getPlayerSession();
-
+        playerSession.searchdesktop = true;
+        playerSession.contineusearch = false;
+        playerSession.showfishbowl = false;
+        playerSession.showbookcase = false;
+        playerSession.showdesktop = false;
         if (!playerSession.inventory.includes(FlashlightitemAlias)) {
             playerSession.inventory.push(FlashlightitemAlias);
         }
