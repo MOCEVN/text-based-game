@@ -47,6 +47,7 @@ Omar Asamoah, 500929403
 - **Ons resultaat gebaseerd op de ontvangen**
 - **Feedback over de lay-out**
 - **Voorstel voor verbetering**
+- **Prototype design**
 
 
 # Introductie
@@ -453,3 +454,9 @@ Hoewel de gebruikers over het algemeen tevreden waren met de lay-out van het spe
 **Voorstel voor verbetering**
 
 Op basis van deze feedback stellen we voor om de lay-out van het spel te verfijnen en te verfraaien om een meer visueel aantrekkelijke ervaring te bieden. Dit kan worden bereikt door het toevoegen van grafische elementen, zoals achtergrondafbeeldingen of illustraties. Door deze verbeteringen aan te brengen, streven we ernaar om de algehele visuele aantrekkingskracht van het spel te vergroten en de betrokkenheid van de spelers te versterken.
+
+# Prototype design
+
+Na het uitvoeren van een gebruikersonderzoek voor ons spel Terror Trial, hebben we een nieuw prototype ontwikkeld met een verbeterd design. Dit prototype is gebaseerd op de feedback die we hebben ontvangen van ons gebruikersonderzoek, waarbij we hebben gekeken naar de ervaringen en suggesties van onze klasgenoten. Het nieuwe design richt zich op het optimaliseren van de gebruikerservaring en het verbeteren van de algehele esthetiek van het spel. We geloven dat deze aanpassingen de speelbaarheid en het visuele aantrekkingsvermogen van ons spel zullen vergroten, waardoor spelers een meeslepende en plezierige ervaring krijgen tijdens het spelen van Terror Trial.
+
+![Prototype](docs/assets/prototype.png "Prototype")
