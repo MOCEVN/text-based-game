@@ -37,14 +37,7 @@ export class StartupRoom extends Room {
 
     public actions(): Action[] {
         return [new CustomAction("start-game", "Start Game", false),
-            new CustomAction("leaderboard","show leaderboard",false),
-            // actions for testing VVVVV
-            new CustomAction("r1","Room 1 (temp)",false),
-            new CustomAction("r2","Room 2 (temp)",false),
-            new CustomAction("r3","Room 3 (temp)",false),
-            new CustomAction("r4","Room 4 (temp)",false),
-            new CustomAction("r5","Room 5 (temp)",false),
-            new CustomAction("die","Die",false),
+            new CustomAction("leaderboard","show leaderboard",false)
         ];
     }
 
