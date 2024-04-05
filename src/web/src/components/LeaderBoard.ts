@@ -22,7 +22,7 @@ export class LeaderBoard extends LitElement {
 
         .content div {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
         }
 
         .content p {
@@ -54,16 +54,18 @@ export class LeaderBoard extends LitElement {
             <div class="container">
                 <div class="content">
                     <div>
+                        <p>#</p>
                         <p>Name</p>
                         <p>HP</p>
                         <p>Time</p>
                     </div>
                 </div>
                 <div class="content">
-                    ${this.scores?.map((val) => {
+                    ${this.scores?.map((val,idx) => {
                         const time: Date = new Date(val.time);
                         return html`
                             <div>
+                                <p>${idx + 1}</p>
                                 <p>${val.name}</p>
                                 <p>${val.hp}</p>
                                 <p>
