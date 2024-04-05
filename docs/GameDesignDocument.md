@@ -97,17 +97,16 @@ Tijdens onze brainstormsessie was de eerste optie een horror verhaallijn. Iedere
 
 **Intro verhaal**
 
-In het kleine, schijnbaar vergeten stadje Ravenswood, verscholen diep in een dicht bos, stond een onheilspellend landhuis met een huiveringwekkende geschiedenis. Volgens de legende werd gezegd dat het Blackthorn Manor, zoals het bekend stond, vervloekt was door een oude kracht, die iedereen die het waagde zijn sinistere muren binnen te treden, gevangen hield.
+In het kleine, schijnbaar vergeten stadje Ravenswood, verscholen diep in een dicht bos, stond een onheilspellend landhuis met een huiveringwekkende geschiedenis. Volgens de legende werd gezegd dat het Terror Trial, zoals het bekend stond, vervloekt was door een oude kracht, die iedereen die het waagde zijn sinistere muren binnen te treden, gevangen hield.
 
 Jij, een reiziger, bevond je op een sombere nacht in Ravenswood. Je auto begaf het, waardoor je gestrand achterbleef in dit verlaten stadje met geen andere optie dan toevlucht te zoeken in de enige structuur die leek te gloeien met een flakkerend licht - het Blackthorn Manor.
 
 Terwijl je de drempel overstak, piepte de zware deur dreigend achter je, jouw lot bezegelend binnen de doolhofachtige gangen van het landhuis. De lucht werd dik van een ongemakkelijke stilte, en schaduwen dansten huiveringwekkend op de muren alsof ze geheimen uit het verleden fluisterden.
 
-Plotseling weerklonk er een onlichamelijke stem door de gangen, waarbij de kwaadaardige bedoelingen van het landhuis werden onthuld. "Welkom in Blackthorn Manor, waar nachtmerries vorm aannemen. De enige manier om te ontsnappen, is om je diepste angsten te overwinnen. Ontsnap, als je kunt."
+Plotseling weerklonk er een onlichamelijke stem door de gangen, waarbij de kwaadaardige bedoelingen van het landhuis werden onthuld. "Welkom in Terror Trial, waar nachtmerries vorm aannemen. De enige manier om te ontsnappen, is om je diepste angsten te overwinnen. Ontsnap, als je kunt."
 
-Met die huiveringwekkende verklaring sloegen de deuren dicht en werd je opgesloten. Het eens welkome gloren van de verlichting in de foyer dimde, waardoor je werd omgeven door de verstikkende omhelzing van duisternis. De enige manier vooruit is om door de kronkelende gangen te navigeren, raadsels op te lossen en de gruwelen onder ogen te zien die op de loer liggen in Blackthorn Manor. Zal je de mysteries van het vervloekte landhuis ontrafelen en ontsnappen aan zijn klauwen, of word je slechts een echo van de schaduwen die zijn vervloekte gangen bevolken? De keuze is aan jou, dappere ziel, maar wees gewaarschuwd - niet iedereen die Blackthorn Manor betreedt, komt ongedeerd naar buiten.
+Met die huiveringwekkende verklaring sloegen de deuren dicht en werd je opgesloten. Het eens welkome gloren van de verlichting in de foyer dimde, waardoor je werd omgeven door de verstikkende omhelzing van duisternis. De enige manier vooruit is om door de kronkelende gangen te navigeren, raadsels op te lossen en de gruwelen onder ogen te zien die op de loer liggen in Terror Trial. Zal je de mysteries van het vervloekte landhuis ontrafelen en ontsnappen aan zijn klauwen, of word je slechts een echo van de schaduwen die zijn vervloekte gangen bevolken? De keuze is aan jou, dappere ziel, maar wees gewaarschuwd - niet iedereen die Terror Trial betreedt, komt ongedeerd naar buiten.
 
-_De speler krijgt voor dat het spel begint een kleine intro over hoe hij/zij daar terecht is gekomen en zou moeten ontsnappen._
 
 ![Horror huis](docs/assets/horrorhuis.png "Horror huis")
 
