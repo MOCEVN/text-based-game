@@ -42,6 +42,8 @@ import { Bookcase, BookcaseAlias } from "./characters/Bookcasecharacter";
 import { ContiniueSearch, ContiniueSearchAlias } from "./characters/ClownCharacter/ContinueSearch";
 import { continueenteroom, ContinueenterroomAlias } from "./characters/ClownCharacter/Continueenterroom";
 import { Fishbowl, FishbowlAlias } from "./characters/Fishbowlcharachter";
+import { VentAlias, ventilation } from "./characters/ClownCharacter/vent";
+import { ClowncharachterAlias, Clowncharacter } from "./characters/ClownCharacter/Clowncharacter";
 
 /**
  * Create a new player session object
@@ -67,7 +69,12 @@ export function createNewPlayerSession(): PlayerSession {
         showfishbowl: false,
         contineusearch: false,
         noshowclownvoice: false,
+<<<<<<< HEAD
         ventOpened: false,
+=======
+        showfinaleclown: false,
+        showventilation: false,
+>>>>>>> d28cb54 (kamer 1 done)
         // room 2
         pickedUpKey1: false,
         pickedUpKey2: false,
@@ -297,6 +304,10 @@ export function getGameObjectByAlias(alias: string): GameObject | undefined {
             return new Bookcase();
         case FishbowlAlias:
             return new Fishbowl();
+        case VentAlias:
+            return new ventilation();
+        case ClowncharachterAlias:
+            return new Clowncharacter();
         // Doorgaan met zoeken[Boekenkast optie] - Omar
         case ContiniueSearchAlias:
             return new ContiniueSearch();

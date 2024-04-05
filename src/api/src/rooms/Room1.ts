@@ -17,6 +17,8 @@ import { ContiniueSearch } from "../characters/ClownCharacter/ContinueSearch";
 import { continueenteroom } from "../characters/ClownCharacter/Continueenterroom";
 import { Fishbowl } from "../characters/Fishbowlcharachter";
 import { Use } from "../actions/UseRoom5";
+import { ventilation } from "../characters/ClownCharacter/vent";
+import { Clowncharacter } from "../characters/ClownCharacter/Clowncharacter";
 
 export const Room1Alias: string = "room1";
 
@@ -57,6 +59,9 @@ export class Room1 extends Room {
         if (PlayerSession.showfishbowl) {
             return ["Fishbowl"];
         }
+        if (PlayerSession.showfinaleclown) {
+            return ["clownfound"];
+        }
         return ["room1"];
     }
     public actions(): Action[] {
@@ -79,6 +84,12 @@ export class Room1 extends Room {
         }
         if (playerSession.searchdesktop) {
             objects.pop();
+        }
+        if (playerSession.showventilation) {
+            objects.push(new ventilation());
+        }
+        if (playerSession.showfinaleclown) {
+            objects.push(new Clowncharacter());
         }
         if (playerSession.showdesktop === true) {
             objects.push(new Desktop());
