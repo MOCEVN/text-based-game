@@ -18,7 +18,13 @@ Succesvol project: Over het algemeen was het project succesvol en zijn de teamdo
 
 ## Externe Adviseur Expertise 
 
-Als team meer met elkaar communiceren over waar iedereen in een sprint precies mee bezig is. Niet iedereen kan altijd met hetzelfde bezig zijn, want de een is beter in een onderdeel dan de ander. 
+Verbetering van communicatiekanalen:
+Hoewel er algemene tevredenheid is over de samenwerking, kan het verbeteren van de communicatiekanalen de effectiviteit van het team vergroten. Het introduceren van regelmatige teamupdates via e-mail, chat of korte meetings kan ervoor zorgen dat iedereen op de hoogte blijft van de voortgang en eventuele knelpunten tijdig kan aanpakken. Daarnaast kan het implementeren van een duidelijke protocol voor het delen van belangrijke informatie en beslissingen helpen om misverstanden te voorkomen en de samenwerking te verbeteren.
+
+Proactieve probleemidentificatie en -oplossing:
+Aangezien het team weinig obstakels heeft ervaren tijdens het project, kan het nuttig zijn om proactiever te zijn in het identificeren en aanpakken van potentiële problemen. Het organiseren van regelmatige 'risicoanalyse'-sessies, waarbij het team potentiële obstakels en risico's bespreekt en gezamenlijk oplossingen bedenkt, kan helpen om toekomstige problemen te voorkomen of te minimaliseren. Dit bevordert een cultuur van proactieve probleemoplossing en verbetert de veerkracht van het team bij het omgaan met uitdagingen.
+
+Als externe adviseur zou ik ook willen benadrukken dat het belangrijk is om open te staan voor feedback en constructieve kritiek. Dit kan helpen bij het identificeren van eventuele blinde vlekken en het continu verbeteren van de teamdynamiek en prestaties.
 
 ## Zelfontwikkeling blok 3
 
