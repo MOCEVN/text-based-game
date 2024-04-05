@@ -1,23 +1,25 @@
-**Individuele Reflectie - Omar**
+# Team Retrospective Starfish
 
-## Team Retrospective Starfish
+## Sterke punten (Stars):
 
-### Sterke punten (Stars):
+Goede samenwerking: Het team heeft over het algemeen goed samengewerkt, wat heeft bijgedragen aan het succes van het project.
+Onderlinge hulp: Er was altijd bereidheid om elkaar te helpen wanneer dat nodig was, wat de teamspirit versterkte en de productiviteit bevorderde.
 
-- **Goede samenwerking:** We werkten als een team heel goed samen, en dat hielp ons veel bij het slagen van het project.
-- **Onderlinge hulp:** Iedereen stond klaar om een handje te helpen, dat was fijn en maakte ons team sterker.
+## Verbeterpunten (Wishes):
 
-### Verbeterpunten (Wishes):
+Communicatieverbetering: Hoewel over het algemeen goed, was er ruimte voor verbetering in de communicatie. Het identificeren van specifieke gebieden waar communicatie kan worden verbeterd, kan helpen om dit in de toekomst te versterken.
 
-- **Communicatieverbetering:** We communiceerden wel goed, maar soms was het een beetje onduidelijk. We kunnen kijken hoe we dit kunnen verbeteren voor de volgende keer.
+## Obstakels (Obstacles):
 
-### Obstakels (Obstacles):
+Weinig obstakels: Het team heeft relatief weinig obstakels ervaren tijdens het project, wat suggereert dat het project soepel is verlopen.
 
-- **Weinig obstakels:** We zijn niet veel problemen tegengekomen, dat was heel goed voor ons project.
+## Resultaten (Results):
 
-### Resultaten (Results):
+Succesvol project: Over het algemeen was het project succesvol en zijn de teamdoelstellingen bereikt. Dit benadrukt de effectiviteit van het teamwerk en de inzet van elk teamlid.
 
 - **Succesvol project:** We hebben onze doelen behaald en dat laat echt zien dat we goed kunnen samenwerken.
+
+# Individuele Reflectie - Omar
 
 **Persoonlijke Groei en Ontwikkeling:**
 Ondanks mijn ervaring met Object-georiënteerd Programmeren (OOP), had ik in blok 3 moeite om bij te blijven vanwege mijn planning en omstandigheden buiten school. Dit heeft mijn aanwezigheid en bijdrage aan het team beïnvloed, maar ik ben vastbesloten om deze uitdagingen aan te pakken. Ik realiseer me dat open communicatie over mijn beschikbaarheid en het stellen van realistische doelen cruciaal is voor mijn bijdrage aan het team.
