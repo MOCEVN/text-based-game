@@ -28,7 +28,7 @@ export class Room3 extends Room {
     }
     public examine(): ActionResult | undefined {
         const playerSession: PlayerSession = getPlayerSession();
-        playerSession.examinedRoom = true
+        playerSession.examinedRoom = true;
         if (!playerSession.examinedRoom) {
             return new TextActionResult(["As you step into the dimly lit room, your eyes adjust to the darkness, revealing a multitude of mysterious objects",
             "Your curiosity piqued, you start exploring the room, carefully examining the room in search of clues",
@@ -55,12 +55,19 @@ export class Room3 extends Room {
         const playerSession: PlayerSession = getPlayerSession();
 
         // if the player answered correctly, return collect and custom actions
-        if(playerSession.correctAnswer){
+        if(playerSession.inventory.indexOf(ThreeNumberItemAlias) >= 0){
             return [
             new ExamineAction(),
             new TalkAction(),
             new CollectAction(),
             new CustomAction("room4", "Room 4", false),
+            ];
+        }
+        if(playerSession.correctAnswer){
+            return [
+            new ExamineAction(),
+            new TalkAction(),
+            new CollectAction(),
         ];
         }
         return [
